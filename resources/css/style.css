@@ -1,0 +1,81 @@
+/* MAIN-CSS */
+@import "root.css";
+@import "slick.css";
+@import "../fonts/iconfont-v1.0/style.css";
+@import "info.css";
+
+
+
+
+
+.Nav p.Logo{
+  color: #ccc;
+  font-size: 20px;
+  margin-top: 8px;
+  position: absolute;
+  left: 20px;
+  font-family: "Comfortaa", "IconFont";
+  /* font-weight: bold; */
+}
+.Block{
+  width: 10px;
+  height: 10px;
+  background: #FF1847;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+div.DisplaySafe{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 1px solid red;
+  box-sizing: border-box;
+}
