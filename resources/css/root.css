@@ -181,8 +181,8 @@ nav ul li.User p i{
 
 div.Content{
   width: 100%;
-  /* padding: 10px; */
-  height: calc(100% - 60px);
+  /* padding: 5px; */
+  height: calc(100% - 65px);
   position: absolute;
   bottom: 0px;
   display: flex;
@@ -215,6 +215,23 @@ div.Content{
 @font-face {
   font-family: "Pacifico";
   src: url(../fonts/pacifico.ttf);
+}
+@font-face {
+  font-family: "ubuntu-bold";
+  src: url(../fonts/ubuntu-bold.ttf);
+}
+@font-face {
+  font-family: "ubuntu-lightitalic";
+  src: url(../fonts/ubuntu-lightitalic.ttf);
+}
+
+@font-face {
+  font-family: "ubuntu-medium";
+  src: url(../fonts/ubuntu-medium.ttf);
+}
+@font-face {
+  font-family: "ubuntu-regular";
+  src: url(../fonts/ubuntu-regular.ttf);
 }
 
 

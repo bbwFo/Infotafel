@@ -95,11 +95,23 @@
 
           ?>
 
-            <div class="Item"><div class="ItemInner">
-              <?php echo $slider_id." / ".$itemNum++ ?>
-              <br><br>
-              <?php echo $item_tag." / ".$item_titel." / ".$item_text ?>
-            </div></div>
+            <div class="Item">
+              <div class="ItemInner">
+
+              <img src=".files/test.png">
+
+              <div class="ImgOverlay">
+                <div class="icon"><i class="icon-calendar1"></i></div>
+                <div class="txt">
+                  <div class="Titel"><p>Lorem ipsum</p></div>
+                  <div class="Text"><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p></div>
+                </div>
+              </div>
+
+
+
+              </div>
+            </div>
 
           <?php } ?>
 

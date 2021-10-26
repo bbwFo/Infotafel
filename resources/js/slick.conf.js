@@ -32,7 +32,7 @@ $('.Slider[data-size=2]').slick({
   speed: 1800,
   dots: false,
   arrows: false,
-  adaptiveHeight: true
+  swipe: true
 });
 
 $('.Slider[data-size=3]').slick({
@@ -53,7 +53,7 @@ $('.Slider[data-size=3]').slick({
   adaptiveHeight: true
 });
 
-
+setInterval(function(){  }, 1000);
 
 // function LoadMarquee() {
 //   $('.news-ticker').marquee({
