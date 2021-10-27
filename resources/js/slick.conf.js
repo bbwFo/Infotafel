@@ -14,7 +14,7 @@ $('.Slider[data-size=1]').slick({
   speed: 1800,
   dots: false,
   arrows: false,
-  adaptiveHeight: true
+  touchMove: true
 });
 
 $('.Slider[data-size=2]').slick({
@@ -32,7 +32,7 @@ $('.Slider[data-size=2]').slick({
   speed: 1800,
   dots: false,
   arrows: false,
-  swipe: true
+  touchMove: true
 });
 
 $('.Slider[data-size=3]').slick({
@@ -50,10 +50,32 @@ $('.Slider[data-size=3]').slick({
   speed: 1800,
   dots: false,
   arrows: false,
-  adaptiveHeight: true
+  touchMove: true
 });
 
-setInterval(function(){  }, 1000);
+
+
+
+
+$( window ).on( "load", function() {
+
+  setInterval(function(){
+
+    setTimeout(function(){ $('.Slider[data-slider=1]').slick("slickNext"); }, 0);
+    setTimeout(function(){ $('.Slider[data-slider=2]').slick("slickPrev"); }, 1800);
+    setTimeout(function(){ $('.Slider[data-slider=3]').slick("slickNext"); }, 1800 * 2);
+    setTimeout(function(){ $('.Slider[data-slider=4]').slick("slickPrev"); }, 1800 * 3);
+
+  }, 30000);
+})
+
+
+
+
+
+     // $('.carousel-one').slickPrev();
+
+     // $('.Slider[data-size=1]').slickNext();
 
 // function LoadMarquee() {
 //   $('.news-ticker').marquee({

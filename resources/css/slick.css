@@ -82,6 +82,7 @@
 {
     display: none;
     float: left;
+    outline: none;
 
     height: 100%;
     min-height: 100%;
