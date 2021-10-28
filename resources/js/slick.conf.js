@@ -20,7 +20,7 @@ $('.Slider[data-size=1]').slick({
 $('.Slider[data-size=2]').slick({
   infinite: true,
   slidesToShow: 2,
-  slidesToScroll: 1,
+  slidesToScroll: 2,
   pauseOnFocus: false,
   pauseOnHover: true,
   pauseOnDotsHover: false,
@@ -38,7 +38,7 @@ $('.Slider[data-size=2]').slick({
 $('.Slider[data-size=3]').slick({
   infinite: true,
   slidesToShow: 3,
-  slidesToScroll: 1,
+  slidesToScroll: 3,
   pauseOnFocus: false,
   pauseOnHover: true,
   pauseOnDotsHover: false,

@@ -44,24 +44,29 @@
 
 
 
+        <!-- <div class="Preloader">
+          <span id="preloader"><i class="icon-spinner2 loader"></i><i class="icon-hipster2 middle"></i></span>
+        </div> -->
 
 
-        <!-- <div class="Slider" data-size="1">
+        <!-- <div class="BigSite">
 
-          <div class="Item">
-            <div class="ItemInner" data-type="img">
-              <img src=".files/test.png">
-              <div class="ImgOverlay"></div>
-            </div>
-          </div>
-
-          <div class="Item"><div class="ItemInner"></div></div>
-          <div class="Item"><div class="ItemInner"></div></div>
-          <div class="Item"><div class="ItemInner"></div></div>
         </div> -->
 
 
 
+
+
+
+        <?php
+
+        $animaArr = array("animate__backInDown", "animate__backInLeft", "animate__backInRight", "animate__backInUp");
+        $amination = $animaArr[array_rand($animaArr, 1)];
+
+
+        $ItemID = 0;
+
+        ?>
 
 
         <?php
@@ -77,7 +82,7 @@
             $slider_row = utf8_encode($wert["row"]);
         ?>
 
-        <div class="Slider animate__animated animate__backInDown" data-size="<?php echo $slider_size; ?>" data-slider="<?php echo $slider_row ?>" style="order:<?php echo $slider_row ?>;">
+        <div class="Slider animate__animated <?php echo $amination ?>" data-size="<?php echo $slider_size; ?>" data-slider="<?php echo $slider_row ?>" style="order:<?php echo $slider_row ?>;">
 
           <?php
             $db_zeile2 = $db -> prepare("SELECT * FROM item WHERE slider_id = '$slider_id'");
@@ -93,10 +98,13 @@
               $item_text = utf8_encode($wert2["text"]);
               $item_image = utf8_encode($wert2["img"]);
               $item_badge = utf8_encode($wert2["badge"]);
+
+              $ItemfinalID = $ItemID++;
+
+
           ?>
 
-            <div class="Item">
-
+            <div class="Item" id="Item<?php echo $ItemfinalID ?>" onclick="openSite(<?php echo $ItemfinalID ?>)">
 
               <?php
                 $db_zeile3 = $db -> prepare("SELECT * FROM tags WHERE id = '$item_tag'");
@@ -112,7 +120,7 @@
                 } ?>
 
 
-              <div class="ItemInner"<?php if ($item_badge == 1) { ?> style="border-color:<?php echo $tag_color ?>" <?php } ?>>
+              <div class="ItemInner" <?php if ($item_badge == 1) { ?> style="border-color:<?php echo $tag_color ?>" <?php } ?>>
 
                 <?php if ($item_badge == 1) { ?>
 
@@ -181,38 +189,6 @@
         </div>
 
         <?php } ?>
-
-
-
-
-
-
-
-
-        <!-- <div class="Slider" data-size="2">
-          <div class="Item"><div class="ItemInner"></div></div>
-          <div class="Item"><div class="ItemInner"></div></div>
-          <div class="Item"><div class="ItemInner"></div></div>
-          <div class="Item"><div class="ItemInner"></div></div>
-        </div>
-
-        <div class="Slider" data-size="3">
-          <div class="Item"><div class="ItemInner"></div></div>
-          <div class="Item"><div class="ItemInner"></div></div>
-          <div class="Item"><div class="ItemInner"></div></div>
-          <div class="Item"><div class="ItemInner"></div></div>
-        </div>
-
-        <div class="Slider" data-size="2">
-          <div class="Item"><div class="ItemInner"></div></div>
-          <div class="Item"><div class="ItemInner"></div></div>
-          <div class="Item"><div class="ItemInner"></div></div>
-          <div class="Item"><div class="ItemInner"></div></div>
-        </div>
-
-      </div> -->
-
-
 
 
 
