@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="de" dir="ltr">
 
-  <?php include("resources/php/db.php"); ?>
+  <?php include("resources/php/php_functions/db.php"); ?>
+  <?php include('resources/php/php_functions/functions.php'); ?>
 
   <head>
     <meta charset="utf-8">
     <title>IT-Infotafel</title>
     <link rel="icon" type="image/png" href="resources/img/favicon.png">
     <link rel="stylesheet" href="resources/css/style.css">
-    <link rel="stylesheet" href="resources/css/animate.css">
   </head>
   <body>
 
@@ -22,15 +22,7 @@
         <p class="Logo"><span class="Block"></span>IT-Infotafel</p>
 
         <p class="dateandtime" id="dateandtime"></p>
-        <nav>
-          <ul>
-            <!-- <li class="active"><p id="NavBut1"><i class="icon-info_outline"></i>Information</p></li> -->
-            <!-- <li><p id="NavBut2"><i class="icon-school"></i>Schulplan</p></li> -->
-            <!-- <li><p id="NavBut3"><i class="icon-fastfood"></i>Essensplan</p></li> -->
-            <!-- <li><p id="NavBut3"><i class="icon-attach_file"></i>Unterlagen</p></li> -->
-            <!-- <li><p id="NavBut3"><i class="icon-settings"></i>Einstellungen</p></li> -->
-          </ul>
-        </nav>
+
       </div>
 
       <!-- <span class="preloader" id="preloader"><i class="icon-spinner9"></i></span> -->
@@ -49,129 +41,32 @@
         </div> -->
 
 
-        <!-- <div class="BigSite">
+        <div class="BigSite">
+          <iframe src="http://google.com/"></iframe>
 
-        </div> -->
-
-
-
-
-
-
-        <?php
-
-        $animaArr = array("animate__backInDown", "animate__backInLeft", "animate__backInRight", "animate__backInUp");
-        $amination = $animaArr[array_rand($animaArr, 1)];
-
-
-        $ItemID = 0;
-
-        ?>
-
-
-        <?php
-
-          $db_zeile = $db -> prepare("SELECT * FROM slider");
-          $db_zeile -> execute();
-          $NEUEVAR = $db_zeile->fetchAll();
-
-          foreach ($NEUEVAR as $wert) {
-
-            $slider_id = utf8_encode($wert["id"]);
-            $slider_size = utf8_encode($wert["size"]);
-            $slider_row = utf8_encode($wert["row"]);
-        ?>
-
-        <div class="Slider animate__animated <?php echo $amination ?>" data-size="<?php echo $slider_size; ?>" data-slider="<?php echo $slider_row ?>" style="order:<?php echo $slider_row ?>;">
 
           <?php
-            $db_zeile2 = $db -> prepare("SELECT * FROM item WHERE slider_id = '$slider_id'");
-            $db_zeile2 -> execute();
-            $NEUEVAR2 = $db_zeile2->fetchAll();
+          // foreach (db_select_all_from("user") as $wert) {
+          //
+          //   echo utf8_encode($wert["username"]);?><br><br><?php
+          //   echo utf8_encode($wert["password"]);?><br><br><?php
+          //   echo utf8_encode($wert["var"]);?><br><br><?php
+          //
+          // }
 
-            foreach ($NEUEVAR2 as $wert2) {
 
-              $item_style = utf8_encode($wert2["style"]);
-              $item_link = utf8_encode($wert2["link"]);
-              $item_tag = utf8_encode($wert2["tag"]);
-              $item_titel = utf8_encode($wert2["titel"]);
-              $item_text = utf8_encode($wert2["text"]);
-              $item_image = utf8_encode($wert2["img"]);
-              $item_badge = utf8_encode($wert2["badge"]);
+          // db_update_table();
 
-              $ItemfinalID = $ItemID++;
 
+          echo login("askylan","1234");
+
+          // if (login("askylan","1234") == 1) {
+          //   echo "string";
+          // }
 
           ?>
 
-            <div class="Item" id="Item<?php echo $ItemfinalID ?>" onclick="openSite(<?php echo $ItemfinalID ?>)">
-
-              <?php
-                $db_zeile3 = $db -> prepare("SELECT * FROM tags WHERE id = '$item_tag'");
-                $db_zeile3 -> execute();
-                $NEUEVAR3 = $db_zeile3->fetchAll();
-
-                foreach ($NEUEVAR3 as $wert3) {
-
-                  $tag_name = utf8_encode($wert3["name"]);
-                  $tag_color = utf8_encode($wert3["color"]);
-                  $tag_icon = utf8_encode($wert3["icon"]);
-
-                } ?>
-
-
-              <div class="ItemInner" <?php if ($item_badge == 1) { ?> style="border-color:<?php echo $tag_color ?>" <?php } ?>>
-
-                <?php if ($item_badge == 1) { ?>
-
-                  <div class="Badge" style="background:<?php echo $tag_color ?>">
-                    <i class="<?php echo $tag_icon ?>"></i>
-                  </div>
-
-                <?php } ?>
-
-
-                <!-- STYLE 0 ################################################# -->
-                <?php if ($item_style == 0) { ?>
-
-                  <img src="<?php echo $item_image ?>">
-                  <div class="ImgOverlay">
-                    <?php if ($item_badge == 0) { ?>
-                      <div class="Icon">
-                        <?php if ($item_badge == 0) { ?>
-                          <i class="<?php echo $tag_icon ?>"></i>
-                        <?php } ?>
-                      </div>
-                    <?php } ?>
-
-                    <div class="ItemContent">
-                      <div class="Titel"><p><?php echo $item_titel ?></p></div>
-                      <div class="Text"><p><?php echo $item_text ?></p></div>
-                    </div>
-                  </div>
-
-                <?php } ?>
-
-                <!-- STYLE 1 ################################################# -->
-                <?php if ($item_style == 1) { ?>
-
-                  <img src="<?php echo $item_image ?>">
-                  <div class="Titel_Style_1"><p>
-                    <?php if ($item_badge == 0) {
-                      ?><i class="<?php echo $tag_icon ?>"></i><?php
-                    } ?>
-                    <?php echo $item_titel ?></p></div>
-
-                <?php } ?>
-
-                <!-- STYLE 2 ################################################# -->
-                <?php if ($item_style == 2) { ?>
-
-                  <img src="<?php echo $item_image ?>">
-
-                <?php } ?>
-
-                <!-- STYLE 3 ################################################# -->
+          <br><br><br>
 
 
 
@@ -179,16 +74,15 @@
 
 
 
-
-
-              </div>
-            </div>
-
-          <?php } ?>
 
         </div>
 
-        <?php } ?>
+
+        <?php include ('resources/blueprints/sliders.php.php'); ?>
+
+
+
+
 
 
 

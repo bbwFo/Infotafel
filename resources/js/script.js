@@ -21,10 +21,10 @@ function openSite(itemID){
 
 
   $('#Item' + itemID).addClass("ItemFullscreen");
-  
 
 
 
 
-  // var data_rang = $('#dbRang' + id).data('value');
+
+  var data_rang = $('#dbRang' + id).data('value');
 }
