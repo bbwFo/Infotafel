@@ -18,13 +18,7 @@ function openSite(itemID){
 
   console.log(itemID);
 
-
-
   $('#Item' + itemID).addClass("ItemFullscreen");
-
-
-
-
 
   var data_rang = $('#dbRang' + id).data('value');
 }

@@ -57,8 +57,51 @@
 
           // db_update_table();
 
+          ?>
+          <input id="input1" type="text" name="" value="" placeholder="username">
+          <input id="input2" type="text" name="" value="" placeholder="password">
 
-          echo login("askylan","1234");
+          <button onclick="sendLogin()" type="button" name="button">login</button>
+
+
+          <script type="text/javascript">
+
+            function sendLogin(){
+
+              var username = $('#input1').val();
+              var password = $('#input2').val();
+
+              $.ajax({
+                type: "POST",
+                url: "resources/php/php_functions/login.php",
+                data: {USERNAME: username, PASSWORD: password},
+                success: function(data) {
+                  alert(data);
+                }
+              })
+            }
+
+          </script>
+
+
+
+
+          <?php
+
+
+
+
+          // echo login("RedDrake","4321");
+
+          ?><br><br><?php
+
+          echo regist("RedDrake1337","4321","reddke@gmail.com");
+
+          ?><br><br><?php
+
+          echo verify("RedDrake1337","3784-5908-4007");
+
+          // echo regist_mail("askylan");
 
           // if (login("askylan","1234") == 1) {
           //   echo "string";
