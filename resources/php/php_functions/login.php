@@ -5,8 +5,6 @@ $INPUT_PASSWORD = $_POST["PASSWORD"];
 
 login($INPUT_USERNAME, $INPUT_PASSWORD);
 
-
-
 function login(string $user, string $psw){
 
   // DATENBANKVERBINDUNG

@@ -1,4 +1,11 @@
 <?php
+
+$INPUT_USERNAME = $_POST["USERNAME"];
+$INPUT_PASSWORD = $_POST["PASSWORD"];
+$INPUT_EMAIL = $_POST["EMAIL"];
+
+regist($INPUT_USERNAME, $INPUT_PASSWORD, $INPUT_EMAIL);
+
 function regist(string $user, string $psw, string $email){
 
   // DATENBANKVERBINDUNG

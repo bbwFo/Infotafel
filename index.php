@@ -60,17 +60,11 @@
           ?>
           <input id="input1" type="text" name="" value="" placeholder="username">
           <input id="input2" type="text" name="" value="" placeholder="password">
-
           <button onclick="sendLogin()" type="button" name="button">login</button>
-
-
           <script type="text/javascript">
-
             function sendLogin(){
-
               var username = $('#input1').val();
               var password = $('#input2').val();
-
               $.ajax({
                 type: "POST",
                 url: "resources/php/php_functions/login.php",
@@ -80,7 +74,29 @@
                 }
               })
             }
+          </script>
 
+          <br><br><br>
+
+
+          <input id="input3" type="text" name="" value="" placeholder="username">
+          <input id="input4" type="text" name="" value="" placeholder="password">
+          <input id="input5" type="text" name="" value="" placeholder="email">
+          <button onclick="sendRegist()" type="button" name="button">login</button>
+          <script type="text/javascript">
+            function sendRegist(){
+              var username = $('#input3').val();
+              var password = $('#input4').val();
+              var email = $('#input5').val();
+              $.ajax({
+                type: "POST",
+                url: "resources/php/php_functions/regist.php",
+                data: {USERNAME: username, PASSWORD: password, EMAIL: email},
+                success: function(data) {
+                  alert(data);
+                }
+              })
+            }
           </script>
 
 
@@ -95,11 +111,11 @@
 
           ?><br><br><?php
 
-          echo regist("RedDrake1337","4321","reddke@gmail.com");
+          // echo regist("RedDrake1337","4321","reddke@gmail.com");
 
           ?><br><br><?php
 
-          echo verify("RedDrake1337","3784-5908-4007");
+          // echo verify("RedDrake1337","3784-5908-4007");
 
           // echo regist_mail("askylan");
 

@@ -1,4 +1,10 @@
 <?php
+
+$INPUT_USERNAME = $_POST["USERNAME"];
+$INPUT_CODE = $_POST["CODE"];
+
+verify($INPUT_USERNAME, $INPUT_CODE);
+
 function verify(string $user, string $code){
 
   // DATENBANKVERBINDUNG
