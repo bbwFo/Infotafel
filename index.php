@@ -42,7 +42,7 @@
 
 
         <div class="BigSite">
-          <iframe src="http://google.com/"></iframe>
+          <!-- <iframe src="http://localhost/arklifenet/mediadrake/"></iframe> -->
 
 
           <?php
