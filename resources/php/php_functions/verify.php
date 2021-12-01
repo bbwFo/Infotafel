@@ -11,19 +11,10 @@ function verify(string $user, string $code){
   include ('db.php');
 
   // WENN USERNAME & CODE NICHT GESETZT SIND
-  if ($user == null && $code == null)
+  if ($user == null || $code == null)
   {
-    echo "User und Code = NULL";
-  }
-  // WENN USERNAME NICHT GESETZT IST
-  else if ($user == null)
-  {
-    echo "User = NULL";
-  }
-  // WENN CODE NICHT GESETZT IST
-  else if ($code == null)
-  {
-    echo "Code = NULL";
+    // echo "User und Code = NULL";
+    echo "5";
   }
   // WENN USERNAME & CODE GESETZT SIND
   else{
@@ -64,23 +55,27 @@ function verify(string $user, string $code){
           $update = $db -> prepare("UPDATE user SET aktivierung = 1 WHERE username = '$user'");
           $update -> execute();
 
-          echo "Account aktiviert!";
+          // echo "Account aktiviert!";
+          echo "1";
         }
         // WENN CODE FALSCH IST
         else
         {
-          echo "Der Code ist Falsch!";
+          // echo "Der Code ist Falsch!";
+          echo "3";
         }
       }
       // WENN ACCOUNT BEREITS AKTIVIERT IST
       else {
-        echo "Account bereits aktiviert!";
+        // echo "Account bereits aktiviert!";
+        echo "2";
       }
     }
     // WENN USER NICHT EXISTIERT
     else
     {
-      echo "Benutzer existiert nicht!";
+      // echo "Benutzer existiert nicht!";
+      echo "4";
     }
   }
 }

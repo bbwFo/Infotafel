@@ -58,46 +58,59 @@
           // db_update_table();
 
           ?>
-          <input id="input1" type="text" name="" value="" placeholder="username">
-          <input id="input2" type="text" name="" value="" placeholder="password">
-          <button onclick="sendLogin()" type="button" name="button">login</button>
-          <script type="text/javascript">
-            function sendLogin(){
-              var username = $('#input1').val();
-              var password = $('#input2').val();
-              $.ajax({
-                type: "POST",
-                url: "resources/php/php_functions/login.php",
-                data: {USERNAME: username, PASSWORD: password},
-                success: function(data) {
-                  alert(data);
-                }
-              })
-            }
-          </script>
-
-          <br><br><br>
 
 
-          <input id="input3" type="text" name="" value="" placeholder="username">
-          <input id="input4" type="text" name="" value="" placeholder="password">
-          <input id="input5" type="text" name="" value="" placeholder="email">
-          <button onclick="sendRegist()" type="button" name="button">login</button>
-          <script type="text/javascript">
-            function sendRegist(){
-              var username = $('#input3').val();
-              var password = $('#input4').val();
-              var email = $('#input5').val();
-              $.ajax({
-                type: "POST",
-                url: "resources/php/php_functions/regist.php",
-                data: {USERNAME: username, PASSWORD: password, EMAIL: email},
-                success: function(data) {
-                  alert(data);
-                }
-              })
-            }
-          </script>
+
+          <div class="LoginForm" id="LoginForm">
+            <div class="Image">
+              <img src="resources/img/alc.png" alt="">
+              <!-- <i class="icon-login1"></i> -->
+            </div>
+            <p id="loginOutput"></p>
+            <input id="loginInput1" type="text" value="" placeholder="Username">
+            <input id="loginInput2" type="password" value="" placeholder="Passwort">
+            <button onclick="sendLogin()" type="button" name="button">Einloggen<i class="icon-arrow-right4"></i></button>
+          </div>
+
+
+
+
+
+
+          <div class="VerifyForm" id="VerifyForm">
+            <div class="Image">
+              <img src="resources/img/alc.png" alt="">
+              <i class="icon-key"></i>
+            </div>
+            <p class="info_massage">Deinen Verify-Code bekommst du bei einem unserer Team-Mitglider im Support unseres Discord-Servers.</p>
+            <p class="massage" id="verifyOutput_All"></p>
+            <input id="verifyInput_Username" type="text" value="" placeholder="Username">
+            <p class="massage" id="verifyOutput_Username"></p>
+            <input id="verifyInput_Code" type="text" value="" placeholder="Verify-Code">
+            <p class="massage" id="verifyOutput_Code"></p>
+            <button onclick="sendVerify()" type="button" name="button">Account Verifizieren<i class="icon-arrow-right4"></i></button>
+          </div>
+
+
+
+
+
+
+          <div class="RegistForm" id="RegistForm">
+            <div class="Image">
+              <img src="resources/img/alc.png" alt="">
+              <i class="icon-user-add"></i>
+            </div>
+            <p class="massage" id="registOutput_All"></p>
+            <input id="registInput_Username" type="text" value="" placeholder="Username">
+            <p class="massage" id="registOutput_Username"></p>
+            <input id="registInput_Passwort1" type="password" value="" placeholder="Passwort">
+            <input id="registInput_Passwort2" type="password" value="" placeholder="Passwort wiederholen">
+            <p class="massage" id="registOutput_Passwort"></p>
+            <input id="registInput_Email" type="text" value="" placeholder="Email">
+            <p class="massage" id="registOutput_Email"></p>
+            <button onclick="sendRegist()" type="button" name="button">Registrieren<i class="icon-arrow-right4"></i></button>
+          </div>
 
 
 
@@ -154,8 +167,8 @@
     <script src="resources/js/slick.min.js"></script>
     <script src="resources/js/slick.conf.js"></script>
     <script src="resources/js/marquee.js"></script>
-    <script src="resources/js/bg.js"></script>
     <script src="resources/js/script.js"></script>
+    <script src="resources/php/php_functions/php_action.js"></script>
 
   </body>
 </html>

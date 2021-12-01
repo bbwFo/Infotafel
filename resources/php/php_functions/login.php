@@ -11,19 +11,10 @@ function login(string $user, string $psw){
   include ('db.php');
 
   // WENN USERNAME & PASSWORD NICHT GESETZT SIND
-  if ($user == null && $psw == null)
+  if ($user == null || $psw == null)
   {
-    echo "User und Passwort = NULL";
-  }
-  // WENN USERNAME NICHT GESETZT IST
-  else if ($user == null)
-  {
-    echo "User = NULL";
-  }
-  // WENN PASSWORD NICHT GESETZT IST
-  else if ($psw == null)
-  {
-    echo "Passwort = NULL";
+    // echo "User und Passwort = NULL";
+    echo "5";
   }
   // WENN USERNAME & PASSWORD GESETZT SIND
   else
@@ -55,23 +46,27 @@ function login(string $user, string $psw){
         // WENN ALLES RICHTIG IST
         if (password_verify($psw, $db_psw))
         {
-          echo "Eingeloggt!";
+          // echo "Eingeloggt!";
+          echo "1";
         }
         // WENN PASSWORD FALSCH IST
         else
         {
-          echo "Passwort ist Falsch!";
+          // echo "Passwort ist Falsch!";
+          echo "2";
         }
       }
       // WENN ACCOUNT NICHT AKTIVIERT
       else {
-        echo "Du musst dich erst verifiziren!";
+        // echo "Du musst dich erst verifiziren!";
+        echo "3";
       }
     }
     // WENN USER NICHT EXISTIERT
     else
     {
-      echo "User Existiert nicht!";
+      // echo "User Existiert nicht!";
+      echo "4";
     }
   }
 }
