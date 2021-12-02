@@ -9,6 +9,7 @@
     <title>IT-Infotafel</title>
     <link rel="icon" type="image/png" href="resources/img/favicon.png">
     <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/css/php_functions.css">
   </head>
   <body>
 
@@ -55,9 +56,17 @@
           // }
 
 
+
+          start_global_session("askylan");
+
+
           // db_update_table();
 
           ?>
+
+
+
+
 
 
 
@@ -66,6 +75,7 @@
               <img src="resources/img/alc.png" alt="">
               <!-- <i class="icon-login1"></i> -->
             </div>
+            <p class="info_massage"><?php echo sayhello() ?><br>Willkommen bei ARK-LIFE.NET<br>Bitte melde dich an!</p>
             <p id="loginOutput"></p>
             <input id="loginInput1" type="text" value="" placeholder="Username">
             <input id="loginInput2" type="password" value="" placeholder="Passwort">
@@ -73,7 +83,11 @@
           </div>
 
 
+          <?php echo $_SESSION['coins'] ?>
+          <?php echo $_SESSION['diamonds'] ?>
+          <?php echo $_SESSION['username'] ?>
 
+          <?php echo session_name() ?>
 
 
 
@@ -82,7 +96,8 @@
               <img src="resources/img/alc.png" alt="">
               <i class="icon-key"></i>
             </div>
-            <p class="info_massage">Deinen Verify-Code bekommst du bei einem unserer Team-Mitglider im Support unseres Discord-Servers.</p>
+            <p class="info_massage">Deinen Verify-Code bekommst du nach dem Aufnahmegespräch bei einem unserer Administratoren im Support unseres Discord-Servers. Bitte beachete das wir auch mal nicht erreichbar sein können!</p>
+            <p class="info_massage">Solltest du dich jedoch umentschieden haben sag uns bescheid und wir löschen alle deine angegebenen Daten aus unserer Datenbank.</p>
             <p class="massage" id="verifyOutput_All"></p>
             <input id="verifyInput_Username" type="text" value="" placeholder="Username">
             <p class="massage" id="verifyOutput_Username"></p>
@@ -92,14 +107,20 @@
           </div>
 
 
+          <?php
 
+            // echo EchoPlayerName("76561198936641063");
+
+
+
+          ?>
 
 
 
           <div class="RegistForm" id="RegistForm">
             <div class="Image">
               <img src="resources/img/alc.png" alt="">
-              <i class="icon-user-add"></i>
+              <i class="icon-user-plus"></i>
             </div>
             <p class="massage" id="registOutput_All"></p>
             <input id="registInput_Username" type="text" value="" placeholder="Username">
@@ -107,9 +128,32 @@
             <input id="registInput_Passwort1" type="password" value="" placeholder="Passwort">
             <input id="registInput_Passwort2" type="password" value="" placeholder="Passwort wiederholen">
             <p class="massage" id="registOutput_Passwort"></p>
+
+            <input id="registInput_Steam" type="text" value="" placeholder="Steam64-ID">
+            <p class="massage" id="registOutput_Steam"></p>
+
+            <input id="registInput_Discord" type="text" value="" placeholder="Discord-Name & Tag">
+            <p class="massage" id="registOutput_Discord"></p>
+
             <input id="registInput_Email" type="text" value="" placeholder="Email">
             <p class="massage" id="registOutput_Email"></p>
-            <button onclick="sendRegist()" type="button" name="button">Registrieren<i class="icon-arrow-right4"></i></button>
+            <button onclick="sendRegist()" type="button">Weiter<i class="icon-arrow-right4"></i></button>
+            <!-- <i id="registLoader" class="icon-spinner8"></i> -->
+          </div>
+
+
+          <div class="RegistForm" id="RegistForm">
+            <div class="Image">
+              <img src="resources/img/alc.png" alt="">
+              <i class="icon-user-check"></i>
+            </div>
+            <p class="info_massage">Bitte überprüfe nochmal deine angaben befor der spaß los geht.</p>
+            <p class="info_massage">Dein ALC-Username: <br>- Askylan#1337</p>
+            <p class="info_massage">Dein Steam-Username:<br>- Askylan</p>
+            <p class="info_massage">Dein Discord-Username:<br>- Askylan</p>
+            <p class="info_massage">Deine Email-Adresse: <br>- askylan@gmail.com</p>
+            <button onclick="" type="button">Registrieren<i class="icon-arrow-right4"></i></button>
+            <button onclick="" type="button">Zurück<i class="icon-arrow-right4"></i></button>
           </div>
 
 
