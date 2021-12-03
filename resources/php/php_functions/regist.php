@@ -3,58 +3,37 @@
 $INPUT_USERNAME = $_POST["USERNAME"];
 $INPUT_PASSWORD_ONE = $_POST["PASSWORD_ONE"];
 $INPUT_PASSWORD_TWO = $_POST["PASSWORD_TWO"];
+$INPUT_STEAM = $_POST["STEAM"];
+$INPUT_DISCORD = $_POST["DISCORD"];
 $INPUT_EMAIL = $_POST["EMAIL"];
+$INPUT_RULES = $_POST["RULES"];
 
-regist($INPUT_USERNAME, $INPUT_PASSWORD_ONE, $INPUT_PASSWORD_TWO, $INPUT_EMAIL);
+regist($INPUT_USERNAME, $INPUT_PASSWORD_ONE, $INPUT_PASSWORD_TWO, $INPUT_STEAM, $INPUT_DISCORD, $INPUT_EMAIL, $INPUT_RULES);
 
-function regist(string $user, string $psw_one, string $psw_two, string $email){
+
+function regist(string $user, string $psw_one, string $psw_two, string $steam, string $discord, string $email, bool $rules){
 
   // DATENBANKVERBINDUNG
   include ('db.php');
 
   // WENN USERNAME, PASSWORD 1, PASSWORD 2 UND EMAIL NICHT GESETZT SIND
-  if ($user == null || $psw_one == null || $psw_two == null || $email == null) {
-    // echo "User, Passwort und Email = NULL";
+  if ($user == null || $psw_one == null || $psw_two == null || $steam == null || $discord == null|| $email == null || $rules == false)
+  {
     echo "6";
   }
-  // WENN USERNAME, PASSWORD UND EMAIL GESETZT SIND
   else
   {
-    if ($psw_one == $psw_two) {
-
+    if ($psw_one == $psw_two)
+    {
       $psw = $psw_one;
 
-      // DATENBANK ABFRAGE OB USERNAME EXISTIERT
-      $zeile_1 = $db -> prepare("SELECT * FROM user WHERE username = '$user'");
-      $zeile_1 -> execute();
-      $db_result_1 = $zeile_1 -> fetchAll();
-      $user_exist = count($db_result_1);
 
-      // DATENBANK ABFRAGE OB EMAIL EXISTIERT
-      $zeile_2 = $db -> prepare("SELECT * FROM user WHERE email = '$email'");
-      $zeile_2 -> execute();
-      $db_result_2 = $zeile_2 -> fetchAll();
-      $email_exist = count($db_result_2);
+      // CECKEN OB VARIABLEN EXISTIEREN
+           if (db_value_exist('user', 'username', $user)){ echo "4"; }
+      else if (db_value_exist('user', 'steam_id', $steam)){ echo "3"; }
+      else if (db_value_exist('user', 'discord', $discord)){ echo "3"; }
+      else if (db_value_exist('user', 'email', $email)){ echo "2"; }
 
-      // WENN USER UND EMAIL EXISTIERT
-      if ($user_exist && $email_exist)
-      {
-        // echo "User und Email existiert!";
-        echo "4";
-      }
-      // WENN USER EXISTIERT
-      else if ($user_exist)
-      {
-        // echo "User existiert!";
-        echo "3";
-      }
-      // WENN EMAIL EXISTIERT
-      else if ($email_exist)
-      {
-        // echo "Email existiert!";
-        echo "2";
-      }
-      // WENN USER UND EMAIL NICHT EXISTIERT
       else
       {
         // PASSWORT HASHEN
@@ -64,17 +43,57 @@ function regist(string $user, string $psw_one, string $psw_two, string $email){
         $code = rand(0,9).rand(0,9).rand(0,9).rand(0,9)."-".rand(0,9).rand(0,9).rand(0,9).rand(0,9)."-".rand(0,9).rand(0,9).rand(0,9).rand(0,9);
 
         // DATENBANKEINTRAG
-        $db_eintrag = "INSERT INTO user(username, password, email, code) VALUES ('$user', '$psw_hash', '$email', '$code')";
+        $db_eintrag = "INSERT INTO user(username, password, steam_id, steam_username, discord, email, code) VALUES ('$user', '$psw_hash', '$steam', '0', '$discord', '$email', '$code')";
         $db -> exec($db_eintrag);
 
-        // echo "Benuzter angelegt!";
         echo "1";
       }
     }
-    else {
-      // echo "Passwörter stimmen nicht überein";
-      echo "5";
-    }
+    else { echo "5"; }
   }
 }
+
+
+
+
+function db_value_exist($table, $row, $value){
+
+  include ('db.php');
+
+  $zeile = $db -> prepare("SELECT * FROM $table WHERE $row = '$value'");
+  $zeile -> execute();
+  $db_result = $zeile -> fetchAll();
+
+  return count($db_result);
+}
+
+
+
+
+
+
+
+
+
+
+// $zeile_user = $db -> prepare("SELECT * FROM user WHERE username = '$user'");
+// $zeile_user -> execute();
+// $db_result_user = $zeile_user -> fetchAll();
+// $user_exist = count($db_result_user);
+//
+// $zeile_steam = $db -> prepare("SELECT * FROM user WHERE steam_id = '$steam'");
+// $zeile_steam -> execute();
+// $db_result_steam = $zeile_steam -> fetchAll();
+// $steam_exist = count($db_result_steam);
+//
+// $zeile_discord = $db -> prepare("SELECT * FROM user WHERE discord = '$discord'");
+// $zeile_discord -> execute();
+// $db_result_discord = $zeile_discord -> fetchAll();
+// $discord_exist = count($db_result_discord);
+//
+// $zeile_email = $db -> prepare("SELECT * FROM user WHERE email = '$email'");
+// $zeile_email -> execute();
+// $db_result_email = $zeile_email -> fetchAll();
+// $email_exist = count($db_result_email);
+
 ?>

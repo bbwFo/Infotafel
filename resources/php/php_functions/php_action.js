@@ -50,62 +50,67 @@ function sendVerify(){
 
 function sendRegist(){
 
-  $('#RegistForm input').removeClass("InputError");
-  $('#RegistForm .massage').html("");
+  // $('#RegistForm input').removeClass("InputError");
+  // $('#RegistForm .massage').html("");
 
 
 
   var username = $('#registInput_Username').val();
   var password1 = $('#registInput_Passwort1').val();
   var password2 = $('#registInput_Passwort2').val();
+  var steam = $('#registInput_Steam').val();
+  var discord = $('#registInput_Discord').val();
   var email = $('#registInput_Email').val();
+  var rules = $('#registInput_Rules').val();
 
   $.ajax({
     type: "POST",
     url: "resources/php/php_functions/regist.php",
-    data: {USERNAME: username, PASSWORD_ONE: password1, PASSWORD_TWO: password2, EMAIL: email},
+    data: {USERNAME: username, PASSWORD_ONE: password1, PASSWORD_TWO: password2, STEAM: steam, DISCORD: discord, EMAIL: email, RULES: rules},
     success: function(data) {
 
-      var output_all = $("#registOutput_All");
-      var output_username = $("#registOutput_Username");
-      var output_password = $("#registOutput_Passwort");
-      var output_email = $("#registOutput_Email");
+      alert(data);
 
-      if (data == 6)
-      {
-        output_all.html("Bitte fülle alle Felder aus!");
-      }
-      else if (data == 5)
-      {
-        output_password.html("Passwörter stimmen nicht miteinander übernander ein");
-        $('#registInput_Passwort1').addClass("InputError");
-        $('#registInput_Passwort2').addClass("InputError");
-      }
-      else if (data == 4)
-      {
-        output_username.html("Der Username ist bereits vergeben!");
-        $('#registInput_Username').addClass("InputError");
-        output_email.html("Diese Email ist bereits verknüpft!");
-        $('#registInput_Email').addClass("InputError");
-      }
-      else if (data == 3)
-      {
-        output_username.html("Der Username ist bereits vergeben!");
-        $('#registInput_Username').addClass("InputError");
-      }
-      else if (data == 2)
-      {
-        output_email.html("Diese Email ist bereits verknüpft!");
-        $('#registInput_Email').addClass("InputError");
-      }
-      else if (data == 1)
-      {
-        output_email.html("Benuzter angelegt!");
-      }
-      else
-      {
-        output_all.html("Ein Fehler ist aufgetreten!");
-      }
+      // var output_all = $("#registOutput_All");
+      // var output_username = $("#registOutput_Username");
+      // var output_password = $("#registOutput_Passwort");
+      // var output_email = $("#registOutput_Email");
+      //
+      // if (data == 6)
+      // {
+      //   output_all.html("Bitte fülle alle Felder aus!");
+      // }
+      // else if (data == 5)
+      // {
+      //   output_password.html("Passwörter stimmen nicht miteinander übernander ein");
+      //   $('#registInput_Passwort1').addClass("InputError");
+      //   $('#registInput_Passwort2').addClass("InputError");
+      // }
+      // else if (data == 4)
+      // {
+      //   output_username.html("Der Username ist bereits vergeben!");
+      //   $('#registInput_Username').addClass("InputError");
+      //   output_email.html("Diese Email ist bereits verknüpft!");
+      //   $('#registInput_Email').addClass("InputError");
+      // }
+      // else if (data == 3)
+      // {
+      //   output_username.html("Der Username ist bereits vergeben!");
+      //   $('#registInput_Username').addClass("InputError");
+      // }
+      // else if (data == 2)
+      // {
+      //   output_email.html("Diese Email ist bereits verknüpft!");
+      //   $('#registInput_Email').addClass("InputError");
+      // }
+      // else if (data == 1)
+      // {
+      //   output_email.html("Benuzter angelegt!");
+      // }
+      // else
+      // {
+      //   output_all.html("Ein Fehler ist aufgetreten!");
+      // }
 
     }
   })

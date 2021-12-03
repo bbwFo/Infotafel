@@ -15,28 +15,35 @@ include ('session.php');
 function sayhello(){
   if(date("G") < 12)
   {
-    $a="Guten Morgen ";
+    $hello = "Guten Morgen";
   }
   if(date("G") <= 18 && date("G") >= 12)
   {
-    $a='Guten Tag ';
+    $hello = 'Guten Tag';
   }
   if(date("G") >= 19)
   {
-    $a='Guten Abend ';
+    $hello = 'Guten Abend';
   }
-  return $a;
+  return $hello;
 }
 
 
 
-function get_steam_username($steamid){
-  $xml = simplexml_load_file("http://steamcommunity.com/profiles/$steamid/?xml=1");
-  if(!empty($xml)) {
-      $username = $xml->steamID;
-      echo $username;
-  }
-}
+
+
+
+
+
+
+
+// function get_steam_username($steamid){
+//   $xml = simplexml_load_file("http://steamcommunity.com/profiles/$steamid/?xml=1");
+//   if(!empty($xml)) {
+//       $username = $xml->steamID;
+//       echo $username;
+//   }
+// }
 
 
 
