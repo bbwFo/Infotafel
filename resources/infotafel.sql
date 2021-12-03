@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 01. Dez 2021 um 16:13
+-- Erstellungszeit: 03. Dez 2021 um 11:50
 -- Server-Version: 10.4.20-MariaDB
 -- PHP-Version: 8.0.8
 
@@ -131,20 +131,30 @@ CREATE TABLE `user` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `steam_id` varchar(255) NOT NULL,
+  `steam_username` varchar(255) NOT NULL,
+  `discord` varchar(255) NOT NULL,
+  `xp` int(255) NOT NULL DEFAULT 0,
+  `coins` int(255) NOT NULL DEFAULT 0,
+  `diamonds` int(255) NOT NULL DEFAULT 0,
   `code` varchar(255) NOT NULL,
-  `aktivierung` int(1) NOT NULL DEFAULT 0
+  `aktivierung` int(1) NOT NULL DEFAULT 0,
+  `bann` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `code`, `aktivierung`) VALUES
-(1, 'askylan', '$2y$10$NGuWX/c82qhs6u08ThL9AuSEk3a4XQ2P/aMwGhVhx6sEgOTmmLUFq', 'askylan@gmail.com', '1337-1337-1337', 1),
-(27, 'Josie', '$2y$10$JntWpZUO03jbEyq9lbVLM.CZ5iUq3cfaWpaRIDzTJXVKUSdK786g.', 'josie@gmail.com', '3924-5386-7787', 1),
-(28, 'alex', '$2y$10$KDj8GH2e27gB71EooPy2J.5gvyVsuYUwodQ5OlpW.OacJbPzJ0T8e', 'alex@gmail.com', '3637-9607-5714', 1),
-(29, 'alexi', '$2y$10$OQhZlR8lbs/6/Rd704SAbOfcSqRyPKrAT4s/tyKICFwrqXud0OA6i', 'alex@gmail.de', '8146-1960-6993', 0),
-(30, '2rf23', '$2y$10$PAX4Q6JnVqDDd99cXQPS7OCss73cxfFl/tzgUZ6icG1pgtJSLp.22', '23r23r2', '9249-0388-3287', 0);
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `steam_id`, `steam_username`, `discord`, `xp`, `coins`, `diamonds`, `code`, `aktivierung`, `bann`) VALUES
+(1, 'Askylan', '$2y$10$NGuWX/c82qhs6u08ThL9AuSEk3a4XQ2P/aMwGhVhx6sEgOTmmLUFq', 'askylan@gmail.com', '', '', '', 300, 100, 25, '1337-1337-1337', 1, 0),
+(27, 'Josie', '$2y$10$JntWpZUO03jbEyq9lbVLM.CZ5iUq3cfaWpaRIDzTJXVKUSdK786g.', 'josie@gmail.com', '', '', '', 0, 0, 0, '3924-5386-7787', 1, 0),
+(28, 'alex', '$2y$10$KDj8GH2e27gB71EooPy2J.5gvyVsuYUwodQ5OlpW.OacJbPzJ0T8e', 'alex@gmail.com', '', '', '', 0, 0, 0, '3637-9607-5714', 1, 0),
+(29, 'alexi', '$2y$10$OQhZlR8lbs/6/Rd704SAbOfcSqRyPKrAT4s/tyKICFwrqXud0OA6i', 'alex@gmail.de', '', '', '', 0, 0, 0, '8146-1960-6993', 0, 0),
+(30, '2rf23', '$2y$10$PAX4Q6JnVqDDd99cXQPS7OCss73cxfFl/tzgUZ6icG1pgtJSLp.22', '23r23r2', '', '', '', 0, 0, 0, '9249-0388-3287', 0, 0),
+(31, 'knödel', '$2y$10$4FZpvTe/YnIyu.wVZO6r6ueBcGnVxmP6GxTqpZBZgKnUaEDeddYnK', 'knödel@gmail.com', '', '', '', 0, 0, 0, '0668-7462-1081', 0, 0),
+(32, 'Jake', '$2y$10$Avudd8ybXydwf6fztkMX.OHKHpQ/3T1K0BRhZnZnXmTU1yRatjDL2', 'jake@gmail.com', '102895612785123460187234', '0', 'jakw#1337', 0, 0, 0, '7965-9175-0100', 0, 0),
+(33, 'asrerer', '$2y$10$Nc2vCNFYpmi2wqvCLbQiWe3yHBCHB/XTMnH2Crfu.iVrRyeQ8wRk.', 'erferferferfer', 'erferfer', '0', 'ferferf', 0, 0, 0, '3211-9594-1291', 0, 0);
 
 --
 -- Indizes der exportierten Tabellen
@@ -212,7 +222,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
