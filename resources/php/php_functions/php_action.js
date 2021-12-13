@@ -48,20 +48,37 @@ function sendVerify(){
   })
 }
 
+
+
+
+
+
+
+
+
+
+
 function sendRegist(){
 
-  // $('#RegistForm input').removeClass("InputError");
-  // $('#RegistForm .massage').html("");
-
-
-
   var username = $('#registInput_Username').val();
+  var username_text = $('.registOutput_Username');
+
   var password1 = $('#registInput_Passwort1').val();
   var password2 = $('#registInput_Passwort2').val();
+  var password_text = $('.registOutput_Passwort');
+
   var steam = $('#registInput_Steam').val();
+  var steam_text = $('.registOutput_Steam');
+
   var discord = $('#registInput_Discord').val();
+  var discord_text = $('.registOutput_Discord');
+
   var email = $('#registInput_Email').val();
+  var email_text = $('.registOutput_Email');
+
   var rules = $('#registInput_Rules').val();
+
+  var loader = $('.icon-spinner8');
 
   $.ajax({
     type: "POST",
@@ -69,49 +86,61 @@ function sendRegist(){
     data: {USERNAME: username, PASSWORD_ONE: password1, PASSWORD_TWO: password2, STEAM: steam, DISCORD: discord, EMAIL: email, RULES: rules},
     success: function(data) {
 
-      alert(data);
+      loader.addClass('loaderAKTIV');
 
-      // var output_all = $("#registOutput_All");
-      // var output_username = $("#registOutput_Username");
-      // var output_password = $("#registOutput_Passwort");
-      // var output_email = $("#registOutput_Email");
-      //
-      // if (data == 6)
-      // {
-      //   output_all.html("Bitte fülle alle Felder aus!");
-      // }
-      // else if (data == 5)
-      // {
-      //   output_password.html("Passwörter stimmen nicht miteinander übernander ein");
-      //   $('#registInput_Passwort1').addClass("InputError");
-      //   $('#registInput_Passwort2').addClass("InputError");
-      // }
-      // else if (data == 4)
-      // {
-      //   output_username.html("Der Username ist bereits vergeben!");
-      //   $('#registInput_Username').addClass("InputError");
-      //   output_email.html("Diese Email ist bereits verknüpft!");
-      //   $('#registInput_Email').addClass("InputError");
-      // }
-      // else if (data == 3)
-      // {
-      //   output_username.html("Der Username ist bereits vergeben!");
-      //   $('#registInput_Username').addClass("InputError");
-      // }
-      // else if (data == 2)
-      // {
-      //   output_email.html("Diese Email ist bereits verknüpft!");
-      //   $('#registInput_Email').addClass("InputError");
-      // }
-      // else if (data == 1)
-      // {
-      //   output_email.html("Benuzter angelegt!");
-      // }
-      // else
-      // {
-      //   output_all.html("Ein Fehler ist aufgetreten!");
-      // }
+      if (data == 1)
+      {
+        sendRegistEmail(username, email);
+      }
+      else if (data == 2)
+      {
+        loader.removeClass('loaderAKTIV');
+        email_text.html("Diese Email ist bereits verknüpft!");
+        $('#registInput_Email').addClass("InputError");
+      }
+      else if (data == 3)
+      {
+        loader.removeClass('loaderAKTIV');
+        discord_text.html("Dieser Discord-Account ist bereits verknüpft!");
+        $('#registInput_Discord').addClass("InputError");
+      }
+      else if (data == 4)
+      {
+        loader.removeClass('loaderAKTIV');
+        steam_text.html("Dieser Steam-Account ist bereits verknüpft!");
+        $('#registInput_Steam').addClass("InputError");
+      }
+      else if (data == 5)
+      {
+        loader.removeClass('loaderAKTIV');
+        username_text.html(username + " ist bereits vergeben!");
+        $('#registInput_Username').addClass("InputError");
+      }
+      else if (data == 6)
+      {
+        loader.removeClass('loaderAKTIV');
+        password_text.html("Passwörter stimmen nicht überein!");
+        $('#registInput_Passwort1').addClass("InputError");
+        $('#registInput_Passwort2').addClass("InputError");
+      }
+      else if (data == 7)
+      {
+        loader.removeClass('loaderAKTIV');
+      }
+      else { alert(data); }
+    }
+  })
+}
 
+function sendRegistEmail(username, email){
+  $.ajax({
+    type: "POST",
+    url: "resources/php/php_functions/regist_mail.php",
+    data: {USERNAME: username, EMAIL: email},
+    success: function(data) {
+      // alert('mail geschickt');
+
+      $('.icon-spinner8').removeClass('loaderAKTIV');
     }
   })
 }

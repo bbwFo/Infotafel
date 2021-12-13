@@ -169,7 +169,10 @@ div.LoginForm p.massage, div.VerifyForm p.massage, div.RegistForm p.massage {
   font-family: "ubuntu-bold";
   font-size: 14px;
   text-align: left;
+  /* transition: 0.2s all ease-in-out; */
+
 }
+
 
 div.LoginForm p.info_massage, div.VerifyForm p.info_massage, div.RegistForm p.info_massage {
   width: 100%;
@@ -271,8 +274,8 @@ div.LoginForm p span.highlight, div.VerifyForm p span.highlight, div.RegistForm 
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: rgba(33, 150, 244, 0.2);
-  border-color: #2196F3;
+  background-color: rgba(20, 193, 89, 0.2);
+  border-color: rgb(20, 193, 89);
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -296,8 +299,38 @@ div.LoginForm p span.highlight, div.VerifyForm p span.highlight, div.RegistForm 
   width: 6px;
   height: 12px;
   border: solid #eee;
-  border-width: 0 2px 2px 0;
+  border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.icon-spinner8{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 20px;
+  transition: 0.1s all ease-in-out;
+
+}
+
+
+.loaderAKTIV{
+  opacity: 1;
+  visibility: visible;
 }

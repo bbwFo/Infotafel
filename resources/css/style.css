@@ -266,7 +266,7 @@ div.Slider .Item .ItemInner i{
   z-index: 10000;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 

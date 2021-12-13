@@ -1,5 +1,6 @@
 <?php
 
+
 $INPUT_USERNAME = $_POST["USERNAME"];
 $INPUT_PASSWORD_ONE = $_POST["PASSWORD_ONE"];
 $INPUT_PASSWORD_TWO = $_POST["PASSWORD_TWO"];
@@ -19,7 +20,7 @@ function regist(string $user, string $psw_one, string $psw_two, string $steam, s
   // WENN USERNAME, PASSWORD 1, PASSWORD 2 UND EMAIL NICHT GESETZT SIND
   if ($user == null || $psw_one == null || $psw_two == null || $steam == null || $discord == null|| $email == null || $rules == false)
   {
-    echo "6";
+    echo "7";
   }
   else
   {
@@ -28,9 +29,9 @@ function regist(string $user, string $psw_one, string $psw_two, string $steam, s
       $psw = $psw_one;
 
 
-      // CECKEN OB VARIABLEN EXISTIEREN
-           if (db_value_exist('user', 'username', $user)){ echo "4"; }
-      else if (db_value_exist('user', 'steam_id', $steam)){ echo "3"; }
+      // CECKEN OB EINTRÄGE EXISTIEREN
+           if (db_value_exist('user', 'username', $user)){ echo "5"; }
+      else if (db_value_exist('user', 'steam_id', $steam)){ echo "4"; }
       else if (db_value_exist('user', 'discord', $discord)){ echo "3"; }
       else if (db_value_exist('user', 'email', $email)){ echo "2"; }
 
@@ -47,9 +48,10 @@ function regist(string $user, string $psw_one, string $psw_two, string $steam, s
         $db -> exec($db_eintrag);
 
         echo "1";
+
       }
     }
-    else { echo "5"; }
+    else { echo "6"; }
   }
 }
 
