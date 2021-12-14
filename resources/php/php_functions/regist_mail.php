@@ -36,7 +36,14 @@ $mail->addAddress($EMAIL, $USERNAME);
 //Content
 $mail->isHTML(true);
 $mail->Subject = 'Willkommen bei ARK-LIFE.NET '.$USERNAME.'!';
-$mail->Body    = 'Dein Aktivierungscode ist: <b>'.$CODE.'</b>';
+
+$mail->Body    = '<h3><span style="color: #111111;">Hallo '.$USERNAME.',</span></h3>
+                  <p><span style="color: #111111;">Wir heisen dich in unserer Community herzlich Willkommen und w&uuml;nschen dir viel spa&szlig;!</span></p>
+                  <p><span style="color: #111111;">Mit diesem Aktivierungscode kannst du deinen Acount freischalten.</span></p>
+                  <p><span style="color: #111111;">Gib den Code nicht an andere weiter.</span></p>
+                  <h3><strong><span style="color: #111111;"><span style="color: #3366ff;">'.$CODE.'</span></span></strong></h3>
+                  <p>Mit freundlichen Gr&uuml;&szlig;en das ARK-LIFE.NET Team.</p>';
+
 $mail->AltBody = 'Dein Aktivierungscode ist: '.$CODE;
 
 $mail->send();

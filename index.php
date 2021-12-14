@@ -60,11 +60,48 @@
           start_global_session("askylan");
 
 
+
+
+
+
+
+
+
+
+
+          function db_user_check_fehlversuche($USER){
+
+            include ('resources/php/php_functions/db.php');
+
+            $zeile = $db -> prepare("SELECT fehlversuche FROM user WHERE username = '$USER'");
+            $zeile -> execute();
+            $db_result = $zeile -> fetchAll();
+
+            foreach ($db_result as $spalte) {
+             $fehlversuche = $spalte["fehlversuche"];
+            }
+
+            if ($fehlversuche >= 5)
+            {
+              return 'Account deaktiviert';
+            }
+            else
+            {
+              $newcounter = $fehlversuche + 1;
+
+              $update = $db -> prepare("UPDATE user SET fehlversuche = '$newcounter' WHERE username = '$USER'");
+              $update -> execute();
+
+              return $fehlversuche++;
+            }
+          }
+
+
+          echo db_user_check_fehlversuche('pskylan');
+
+
+
           // db_update_table();
-
-
-
-
 
 
 
@@ -74,6 +111,45 @@
 
 
 
+          <div class="LoginForm" id="LoginForm">
+            <div class="Image">
+              <img src="resources/img/alc.png" alt="">
+              <!-- <i class="icon-login1"></i> -->
+            </div>
+            <p class="info_massage"><?php echo sayhello() ?><br>Willkommen bei ARK-LIFE.NET<br>Bitte melde dich an!</p>
+            <p id="loginOutput"></p>
+            <input id="loginInput1" type="text" spellcheck="false" value="" placeholder="Username">
+            <input id="loginInput2" type="password" spellcheck="false" value="" placeholder="Passwort">
+            <label class="container">Angemeldet bleiben
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+            <button onclick="sendLogin()" type="button" name="button">Einloggen<i class="icon-arrow-right4"></i></button>
+            <div class="ButtonBox">
+              <p class="go_to">Verifizieren</p>
+              <p class="info_massage">/</p>
+              <p class="go_to">Registrieren</p>
+            </div>
+          </div>
+
+
+          <div class="VerifyForm" id="VerifyForm">
+            <div class="Image">
+              <img src="resources/img/alc.png" alt="">
+              <i class="icon-key"></i>
+            </div>
+            <p class="info_massage">Deinen Verify-Code bekommst du nach dem Aufnahmegespräch bei einem unserer Administratoren im Support unseres Discord-Servers. Bitte beachete das wir auch mal nicht erreichbar sein können!</p>
+            <p class="info_massage">Solltest du dich jedoch umentschieden haben sag uns bescheid und wir löschen alle deine angegebenen Daten aus unserer Datenbank.</p>
+            <p class="massage" id="verifyOutput_All"></p>
+            <input id="verifyInput_Username" type="text" spellcheck="false" spellcheck="false" value="pskylan" placeholder="Username">
+            <p class="massage" id="verifyOutput_Username"></p>
+            <input id="verifyInput_Code" type="text" spellcheck="false" spellcheck="false" value="KDT2GT-NBZ04P-163T56" placeholder="Verify-Code">
+            <p class="massage" id="verifyOutput_Code"></p>
+            <div class="ButtonBox">
+              <button onclick="" type="button" name="button"><i class="icon-arrow-left4"></i></button>
+              <button onclick="sendVerify()" type="button" name="button">Account Verifizieren<i class="icon-arrow-right4"></i></button>
+            </div>
+          </div>
 
 
 

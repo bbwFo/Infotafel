@@ -21,6 +21,12 @@ function sendLogin(){
   })
 }
 
+
+
+
+
+
+
 function sendVerify(){
 
   $('#VerifyForm input').removeClass("InputError");
@@ -43,7 +49,7 @@ function sendVerify(){
       else if (data == 3) { output_code.html("Der Code ist Falsch!"); }
       else if (data == 2) { output_all.html("Account bereits aktiviert!"); }
       else if (data == 1) { output_all.html("Account aktiviert!"); }
-                     else { output_all.html("Fehler"); }
+                     else { alert(data); }
     }
   })
 }
