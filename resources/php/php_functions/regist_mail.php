@@ -42,7 +42,13 @@ $mail->Body    = '<h3><span style="color: #111111;">Hallo '.$USERNAME.',</span><
                   <p><span style="color: #111111;">Mit diesem Aktivierungscode kannst du deinen Acount freischalten.</span></p>
                   <p><span style="color: #111111;">Gib den Code nicht an andere weiter.</span></p>
                   <h3><strong><span style="color: #111111;"><span style="color: #3366ff;">'.$CODE.'</span></span></strong></h3>
+
+                  <p>oder</p>
+
+                  <a href="http://localhost/Infotafel/index.php?code='.$CODE.'">http://localhost/Infotafel/index.php?code='.$CODE.'</a>
+
                   <p>Mit freundlichen Gr&uuml;&szlig;en das ARK-LIFE.NET Team.</p>';
+
 
 $mail->AltBody = 'Dein Aktivierungscode ist: '.$CODE;
 

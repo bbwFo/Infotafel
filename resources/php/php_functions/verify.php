@@ -20,14 +20,20 @@ function verify(string $USER, string $CODE){
     {
       if (db_user_check_aktiv($USER) == 0)
       {
-        if (db_user_check_code($USER) == $CODE)
+        if (check_verify_fehlversuche($USER) == false)
         {
-          $update = $db -> prepare("UPDATE user SET aktivierung = 1 WHERE username = '$USER'");
-          $update -> execute();
+          if (db_user_check_code($USER) == $CODE)
+          {
+            reset_verify_fehlversuche($USER);
 
-          echo "1";
+            $update = $db -> prepare("UPDATE user SET aktivierung = 1 WHERE username = '$USER'");
+            $update -> execute();
+
+            echo "1";
+          }
+          else { echo "3"; }
         }
-        else { echo "3"; }
+        else {echo "Konto deaktiviert"; }
       }
       else { echo "2"; }
     }
@@ -37,31 +43,43 @@ function verify(string $USER, string $CODE){
 
 
 
-// function db_user_check_fehlversuche($USER){
-//
-//   include ('db.php');
-//
-//   $zeile = $db -> prepare("SELECT fehlversuche FROM user WHERE username = '$USER'");
-//   $zeile -> execute();
-//   $db_result = $zeile -> fetchAll();
-//
-//   foreach ($db_result as $spalte) {
-//    $fehlversuche = $spalte["code"];
-//   }
-//
-//   if ($fehlversuche <= 5)
-//   {
-//     return 'deaktivate';
-//   }
-//   else
-//   {
-//     $update = $db -> prepare("UPDATE user SET fehlversuche = '$fehlversuche++' WHERE username = '$USER'");
-//     $update -> execute();
-//
-//     return $fehlversuche++;
-//   }
-// }
 
+
+function check_verify_fehlversuche($USER){
+
+  include ('db.php');
+
+  $zeile = $db -> prepare("SELECT fehlversuche FROM user WHERE username = '$USER'");
+  $zeile -> execute();
+  $db_result = $zeile -> fetchAll();
+
+  foreach ($db_result as $spalte) {
+   $fehlversuche = $spalte["fehlversuche"];
+  }
+
+  if ($fehlversuche == 5)
+  {
+    return true;
+  }
+  else
+  {
+    $newcounter = $fehlversuche + 1;
+
+    $update = $db -> prepare("UPDATE user SET fehlversuche = '$newcounter' WHERE username = '$USER'");
+    $update -> execute();
+
+    return false;
+  }
+}
+
+
+function reset_verify_fehlversuche($USER){
+
+  include ('db.php');
+
+  $update = $db -> prepare("UPDATE user SET fehlversuche = 0 WHERE username = '$USER'");
+  $update -> execute();
+}
 
 
 

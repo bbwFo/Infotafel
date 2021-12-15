@@ -112,6 +112,10 @@ div.Content{
   /* border: 1px solid red; */
 }
 
+@font-face {
+  font-family: "arklifenet";
+  src: url(../fonts/arklifenet.ttf);
+}
 
 @font-face {
   font-family: "Marker";

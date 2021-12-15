@@ -69,38 +69,6 @@
 
 
 
-          function db_user_check_fehlversuche($USER){
-
-            include ('resources/php/php_functions/db.php');
-
-            $zeile = $db -> prepare("SELECT fehlversuche FROM user WHERE username = '$USER'");
-            $zeile -> execute();
-            $db_result = $zeile -> fetchAll();
-
-            foreach ($db_result as $spalte) {
-             $fehlversuche = $spalte["fehlversuche"];
-            }
-
-            if ($fehlversuche >= 5)
-            {
-              return 'Account deaktiviert';
-            }
-            else
-            {
-              $newcounter = $fehlversuche + 1;
-
-              $update = $db -> prepare("UPDATE user SET fehlversuche = '$newcounter' WHERE username = '$USER'");
-              $update -> execute();
-
-              return $fehlversuche++;
-            }
-          }
-
-
-          echo db_user_check_fehlversuche('pskylan');
-
-
-
           // db_update_table();
 
 
@@ -133,6 +101,9 @@
           </div>
 
 
+
+          <?php if (isset($_GET['code'])) { $CODE = $_GET['code']; } else { $CODE = NULL; } ?>
+
           <div class="VerifyForm" id="VerifyForm">
             <div class="Image">
               <img src="resources/img/alc.png" alt="">
@@ -143,13 +114,36 @@
             <p class="massage" id="verifyOutput_All"></p>
             <input id="verifyInput_Username" type="text" spellcheck="false" spellcheck="false" value="pskylan" placeholder="Username">
             <p class="massage" id="verifyOutput_Username"></p>
-            <input id="verifyInput_Code" type="text" spellcheck="false" spellcheck="false" value="KDT2GT-NBZ04P-163T56" placeholder="Verify-Code">
+            <input id="verifyInput_Code" type="text" spellcheck="false" spellcheck="false" value="<?php echo $CODE ?>" placeholder="Verify-Code">
             <p class="massage" id="verifyOutput_Code"></p>
             <div class="ButtonBox">
               <button onclick="" type="button" name="button"><i class="icon-arrow-left4"></i></button>
               <button onclick="sendVerify()" type="button" name="button">Account Verifizieren<i class="icon-arrow-right4"></i></button>
             </div>
           </div>
+
+
+
+
+
+          <svg viewBox="0 0 600 300">
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#00bc9b" />
+                <stop offset="100%" stop-color="#5eaefd" />
+              </linearGradient>
+            </defs>
+            <!-- Symbol-->
+            <symbol id="s-text">
+              <text text-anchor="middle" x="50%" y="50%" dy=".35em" stroke="url(#gradient)">Alc</text>
+            </symbol>
+            <!-- Duplicate symbols-->
+            <use class="text" xlink:href="#s-text"></use>
+            <use class="text" xlink:href="#s-text"></use>
+            <use class="text" xlink:href="#s-text"></use>
+            <use class="text" xlink:href="#s-text"></use>
+            <use class="text" xlink:href="#s-text"></use>
+          </svg>
 
 
 
