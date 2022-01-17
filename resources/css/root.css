@@ -4,156 +4,227 @@ body{
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
-  background-color: #111111;
-  color: #ccc;
+  /* align-items: center;
+  justify-content: center; */
+  background: #000000;
+  color: #eeeeee;
   overflow-x: hidden;
   overflow-y: hidden;
   -ms-user-select: None;
   -moz-user-select: None;
   -webkit-user-select: None;
   user-select: None;
-  font-family: "Comfortaa", "IconFont";
+  font-family: "ubuntu-medium";
+  font-size: 16px;
   scroll-behavior: smooth;
 }
-body img.BodyBg{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Content {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
   position: absolute;
-
-}
-
-div.Frame{
-  width: 100%;
-  height: 100%;
-  /* background-color: #eee; */
-  background: rgba(17, 17, 17, 1);
-  /* backdrop-filter: blur(4px); */
-  box-shadow: 0px 0px 20px 0px rgba(17, 17, 17, 0.8);
-  border-left: 1px solid #333;
-  border-right: 1px solid #333;
-  display: flex;
-  position: absolute;
-  /* align-items: center; */
-  justify-content: center;
-  overflow-x: hidden;
-  overflow-y: hidden;
-
-}
-div.Nav{
-  width: 100%;
-  height: 60px;
-  /* padding-right: 8px; */
-  background: rgba(17, 17, 17, 0.8);
-  backdrop-filter: blur(4px);
-  /* border-bottom: 2px solid #1273EB; */
-  box-shadow: 0px 4px 10px 0px rgba(17, 17, 17, 0.8);
-  display: flex;
-  position: sticky;
-  top: 0;
-  left: 0px;
-  z-index: 9000;
-  align-items: center;
-  justify-content: flex-end;
-}
-div.Nav img.Logo{
-  width: auto;
-  height: 40px;
-  position: absolute;
-  left: 10px;
-}
-
-.Nav p.Logo{
-  color: #ccc;
-  font-size: 20px;
-  margin-top: 8px;
-  position: absolute;
-  left: 20px;
-  font-family: "Comfortaa", "IconFont";
-  /* font-weight: bold; */
-}
-.Block{
-  width: 10px;
-  height: 10px;
-  background: #1273EB;
-  position: absolute;
-  top: -10px;
-  left: -10px;
-}
-
-
-.dateandtime{
-  color: #ccc;
-  font-size: 20px;
-  margin-top: 8px;
-  position: absolute;
-  right: 20px;
-  font-family: monospace;
-  /* font-weight: bold; */
-}
-
-
-
-div.Content{
-  width: 100%;
-  /* padding: 5px; */
-  height: calc(100% - 65px);
-  position: absolute;
-  bottom: 0px;
-  display: flex;
-  flex-direction: column;
-  transition: 0.2s;
-  display: flex;
-  flex-direction: column;
-  /* padding: 20px; */
+  /* border: 1px solid #999; */
   box-sizing: border-box;
-  /* border: 1px solid red; */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 10px 0px;
+  /* padding: 10px; */
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Content-Area-1"
+    "Content-Area-2"
+    "Content-Area-3"
+    "Content-Area-4";
 }
 
-@font-face {
-  font-family: "arklifenet";
-  src: url(../fonts/arklifenet.ttf);
+
+
+.Content-Area-1 {
+  /* border: 1px solid #999; */
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 10px;
+  grid-auto-flow: row;
+  grid-area: Content-Area-1;
+  grid-template-areas:
+    "Area_Item_A Area_Item_A Area_Item_A Area_Item_B Area_Item_B Area_Item_B";
 }
 
-@font-face {
-  font-family: "Marker";
-  src: url(../fonts/marker.ttf);
-}
-@font-face {
-  font-family: "Comfortaa";
-  src: url(../fonts/comfortaa.ttf);
-}
-@font-face {
-  font-family: "LatoFont";
-  src: url(../fonts/lato.ttf);
-}
-@font-face {
-  font-family: "IconFont";
-  src: url(../fonts/ALC-Icon-Font-v1.0/fonts/ALC-Icon-Font.ttf);
-}
-@font-face {
-  font-family: "Pacifico";
-  src: url(../fonts/pacifico.ttf);
-}
-@font-face {
-  font-family: "ubuntu-bold";
-  src: url(../fonts/ubuntu-bold.ttf);
-}
-@font-face {
-  font-family: "ubuntu-lightitalic";
-  src: url(../fonts/ubuntu-lightitalic.ttf);
+.Content-Area-2 {
+  /* border: 1px solid #999; */
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 10px;
+  grid-auto-flow: row;
+  grid-area: Content-Area-2;
+  grid-template-areas:
+    "Area_Item_A Area_Item_A Area_Item_A Area_Item_A Area_Item_A Area_Item_A";
 }
 
-@font-face {
-  font-family: "ubuntu-medium";
-  src: url(../fonts/ubuntu-medium.ttf);
+.Content-Area-3 {
+  /* border: 1px solid #999; */
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 10px;
+  grid-auto-flow: row;
+  grid-area: Content-Area-3;
+  grid-template-areas:
+    "Area_Item_A Area_Item_A Area_Item_B Area_Item_B Area_Item_C Area_Item_C";
 }
-@font-face {
-  font-family: "ubuntu-regular";
-  src: url(../fonts/ubuntu-regular.ttf);
+
+.Content-Area-4 {
+  /* border: 1px solid #999; */
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 10px;
+  grid-auto-flow: row;
+  grid-area: Content-Area-4;
+  grid-template-areas:
+    "Area_Item_A Area_Item_A Area_Item_A Area_Item_B Area_Item_B Area_Item_B";
 }
+
+
+
+
+
+
+
+
+.Area_Item {
+  position: relative;
+  border: 5px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  box-sizing: border-box;
+  /* border-radius: 5px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-behavior: smooth;
+
+}
+
+.Area_Item_A { grid-area: Area_Item_A; }
+.Area_Item_B { grid-area: Area_Item_B; }
+.Area_Item_C { grid-area: Area_Item_C; }
+
+
+
+
+
+
+
+
+.Area_Item_Innerframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+}
+
+.Area_Item_Innerframe_Item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 5px solid rgba(255,255,255,0.2);
+  /* background: rgba(255,255,255,0.1); */
+  box-sizing: border-box;
+  /* border-radius: 5px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.map {
+  --mapSize: 400px;
+  --mapGrid: 10;
+
+  width: var(--mapSize);
+  height: var(--mapSize);
+  /* border: 2px solid rgba(255,255,255,0.2); */
+  display: grid;
+  grid-template-columns: repeat(var(--mapGrid), 1fr);
+  grid-template-rows: repeat(var(--mapGrid), 1fr);
+  gap: 5px 5px;
+  grid-auto-flow: row;
+  box-sizing: border-box;
+}
+
+.map_mark {
+
+  border: 2px solid rgba(18, 115, 235,0.5);
+  background: rgba(18, 115, 235,0.3);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.map_mark:hover {
+  background: rgba(18, 115, 235,0.8);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* COLORS */
@@ -202,33 +273,4 @@ div.Content{
 }
 ::-webkit-scrollbar-thumb:hover{
   background-color: #999999;
-}
-
-
-
-
-.preloader {
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  top: 50%;
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-  /* border: 1px solid red; */
-  border-radius: 50%;
-  box-shadow: 0px 4px 10px 0px rgba(17, 17, 17, 0.8);
-  background: rgba(17, 17, 17, 0.8);
-  z-index: 100000;
-}
-.preloader i{
-  font-size: 30px;
-  color: #fff;
-  animation: spin .5s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
