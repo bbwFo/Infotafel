@@ -179,7 +179,7 @@ body{
   margin: 20px;
   border-radius: 8px;
 
-  /* border: 2px solid rgba(255,255,255,0.2); */
+  border: 2px solid rgba(255,255,255,0.2);
   background: rgba(17, 17, 17,1);
   display: grid;
   grid-template-columns: min-content 300px;
@@ -188,6 +188,7 @@ body{
   grid-auto-flow: row;
   grid-template-areas:
     "map map_settings";
+  font-family: "ubuntu-regular";
 }
 
 
@@ -195,40 +196,64 @@ body{
 
 
 
-
-.map {
+.map_frame {
   --mapSize: 700px;
-  --mapGrid: 50;
+
 
   width: var(--mapSize);
   height: var(--mapSize);
-  /* border: 2px solid #333; */
-  display: grid;
-  grid-template-columns: repeat(var(--mapGrid), 1fr);
-  grid-template-rows: repeat(var(--mapGrid), 1fr);
-  gap: 0px 0px;
-  grid-auto-flow: row;
+  border: 2px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   box-sizing: border-box;
   grid-area: map;
-  /* overflow: hidden; */
-  /* border-radius: 4px; */
+  overflow: hidden;
 
   background: url("../../resources/img/textures/map.jpg");
   background-position: center;
   background-size: 700px;
   background-repeat: no-repeat;
 
+
+}
+
+
+.map {
+  --mapSize: 100%;
+  --mapGrid: 50;
+
+
+  padding: 60px;
+
+  width: var(--mapSize);
+  height: var(--mapSize);
+  /* border: 2px dashed #333; */
+  display: grid;
+  grid-template-columns: repeat(var(--mapGrid), 1fr);
+  grid-template-rows: repeat(var(--mapGrid), 1fr);
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  box-sizing: border-box;
+  /* overflow: hidden; */
+  /* border-radius: 4px; */
+
+  background: rgba(17, 17, 17,0.3);
+
 }
 
 .map_mark {
   /* border: 2px solid rgba(18, 115, 235,0.5); */
-  background: rgba(17, 17, 17,0.5);
+  /* background: rgba(17, 17, 17,0.3); */
   /* backdrop-filter: blur(1px); LAG*/
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+
+  /* border: 1px solid #111111; */
 }
 
 
@@ -356,9 +381,9 @@ body{
 .map_settings select {
   width: 100%;
   padding: 5px 5px;
-  font-family: "ubuntu-medium";
+  font-family: "ubuntu-medium" , "iconfont";
   color: #eeeeee;
-  font-size: 14px;
+  font-size: 16px;
   position: relative;
   display: flex;
   align-items: center;
@@ -369,6 +394,13 @@ body{
   grid-area: map_settings;
   /* border: 1px solid rgba(255,255,255,0.2); */
   background: rgba(255, 255, 255,0.4);
+}
+.map_settings select option {
+
+  background: rgba(255, 255, 255,0.4);
+  font-family: "ubuntu-medium" , "iconfont";
+  color: #111111;
+
 }
 
 

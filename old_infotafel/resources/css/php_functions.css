@@ -1,0 +1,421 @@
+div.LoginForm, div.VerifyForm, div.RegistForm {
+  width: 400px;
+  height: auto;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(-45deg, rgba(238, 119, 82, 0.6), rgba(177, 013, 201, 0.6), rgba(018, 115, 235, 0.6), rgba(35, 213, 171, 0.6));
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+  margin: 20px 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+div.LoginForm .Image, div.VerifyForm .Image, div.RegistForm .Image {
+  width: 100px;
+  height: 100px;
+  /* padding-top: 100%; */
+  border-radius: 50%;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.1);
+  margin: 10px 20px;
+  padding: 5px;
+  /* overflow: hidden; */
+}
+
+div.LoginForm .Image img, div.VerifyForm .Image img, div.RegistForm .Image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+div.LoginForm .Image i, div.VerifyForm .Image i, div.RegistForm .Image i {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 30px;
+  color: rgba(255,255,255,0.6);
+  -webkit-text-stroke: 4px rgba(255,255,255,0.3);
+}
+
+div.LoginForm input, div.VerifyForm input, div.RegistForm input {
+  width: 100%;
+  height: auto
+  position: relative;
+  box-sizing: border-box;
+  margin: 10px 10px;
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.1);
+  border-top:0;
+  border-left:0;
+  border-right:0;
+  border-bottom: 3px solid rgba(255,255,255,0.1);
+  outline: none;
+  color: #eee;
+  font-family: "ubuntu-medium";
+  font-size: 16px;
+  border-radius: 3px;
+  transition: 0.1s all ease-in-out;
+}
+
+div.LoginForm input::placeholder, div.VerifyForm input::placeholder, div.RegistForm input::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+div.LoginForm input:focus, div.VerifyForm input:focus, div.RegistForm input:focus {
+  border-color: #FFE529;
+}
+
+
+
+div.LoginForm input.InputError, div.VerifyForm input.InputError, div.RegistForm input.InputError {
+  border-color: #f44336;
+}
+
+div.LoginForm button, div.VerifyForm button, div.RegistForm button {
+  width: auto;
+  height: auto
+  position: relative;
+  box-sizing: border-box;
+  margin: 10px 10px;
+  padding: 8px 20px;
+  outline: none;
+  color: #eee;
+  font-family: "ubuntu-medium";
+  font-size: 16px;
+  border-radius: 3px;
+  /* transition: 0.2s all ease-in-out; */
+}
+
+div.ButtonBox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+
+div.LoginForm button i, div.VerifyForm button i, div.RegistForm button i {
+  margin-left: 5px;
+}
+
+i.icon-spinner8{
+  -webkit-animation: spin 0.5s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+
+/* div.LoginForm button:active, div.VerifyForm button:active, div.RegistForm button:active {
+  transform: scale(0.98);
+} */
+
+/* div.LoginForm button:hover i, div.VerifyForm button:hover i, div.RegistForm button:hover i {
+  margin-left: 15px;
+} */
+
+div.LoginForm button:hover, div.VerifyForm button:hover, div.RegistForm button:hover {
+  cursor: pointer;
+}
+
+div.LoginForm button {
+  background: rgba(20, 193, 89,0.3);
+  border: 3px solid rgba(20, 193, 89,1);
+}
+
+div.VerifyForm button, div.RegistForm button {
+  background: rgba(18, 115, 235,0.3);
+  border: 3px solid rgba(18, 115, 235,1);
+}
+
+div.LoginForm p.massage, div.VerifyForm p.massage, div.RegistForm p.massage {
+  width: 100%;
+  height: auto;
+  position: relative;
+  box-sizing: border-box;
+  /* margin: 10px 10px;
+  padding: 8px 20px; */
+  color: #f44336;
+  font-family: "ubuntu-bold";
+  font-size: 14px;
+  text-align: left;
+  /* transition: 0.2s all ease-in-out; */
+
+}
+
+
+div.LoginForm p.info_massage, div.VerifyForm p.info_massage, div.RegistForm p.info_massage {
+  width: 100%;
+  height: auto;
+  position: relative;
+  box-sizing: border-box;
+  color: rgba(255,255,255,0.5);
+  font-family: "ubuntu-bold";
+  font-size: 14px;
+  text-align: left;
+  line-height: 1.5;
+  margin: 5px 0px;
+}
+
+div.LoginForm p.go_to, div.VerifyForm p.go_to, div.RegistForm p.go_to {
+  width: 100%;
+  height: auto;
+  position: relative;
+  box-sizing: border-box;
+  color: rgba(255,255,255,0.5);
+  font-family: "ubuntu-bold";
+  font-size: 14px;
+  text-align: left;
+  line-height: 1.5;
+  margin: 5px 5px;
+}
+
+div.LoginForm p span.highlight, div.VerifyForm p span.highlight, div.RegistForm p span.highlight {
+
+  color: rgba(255,255,255,0.8);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  position: relative;
+  padding-left: 35px;
+  margin: 10px 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: "ubuntu-bold";
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  align-items: center;
+  justify-content: flex-start;
+  border: 2px solid transparent;
+
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  transition: 0.1s all ease-in-out;
+}
+
+/* .container:hover input ~ .checkmark {
+  background-color: #ccc;
+} */
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: rgba(20, 193, 89, 0.2);
+  border-color: rgb(20, 193, 89);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+  /* transition: 0.1s all ease-in-out; */
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  box-sizing: border-box;
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid #eee;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.icon-spinner8{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 20px;
+  transition: 0.1s all ease-in-out;
+
+}
+
+
+.loaderAKTIV{
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Main styles */
+.text {
+  fill: #333;
+  /* fill: none; */
+  stroke-linejoin: round;
+  /* stroke-width: 1; */
+  stroke-dasharray: 70 330;
+  stroke-dashoffset: 0;
+  -webkit-animation: stroke 6s infinite linear;
+  animation: stroke 6s infinite linear;
+  text-transform: none;
+  font-family: 'arklifenet';
+  font-size: 40px;
+}
+/* .text:nth-child(5n+1) {
+  stroke: #eee;
+  -webkit-animation-delay: -1.2s;
+  animation-delay: -1.2s;
+} */
+.text:nth-child(5n+1) {
+  stroke-width: 2;
+  -webkit-animation-delay: -0s;
+  animation-delay: -0s;
+}
+.text:nth-child(5n+2) {
+  stroke-width: 1;
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+/* .text:nth-child(5n+3) {
+  -webkit-animation-delay: -6s;
+  animation-delay: -6s;
+} */
+/* .text:nth-child(5n+4) {
+  -webkit-animation-delay: -9s;
+  animation-delay: -9s;
+} */
+
+@-webkit-keyframes stroke {
+  100% {
+    stroke-dashoffset: -400;
+  }
+}
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: -400;
+  }
+}
+
+svg {
+  position: relative;
+  stroke-dasharray: 300;
+  width: 100%;
+  height: 100%;
+}

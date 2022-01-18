@@ -76,6 +76,7 @@
             ?>
 
 
+            <div class="map_frame">
               <div class="map" id="map">
               <?php
                 if (isset($map)) {
@@ -116,6 +117,8 @@
               ?>
               </div>
 
+            </div>
+
 
             <div class="map_settings">
 
@@ -143,12 +146,12 @@
 
               Icon
               <select class="" name="" id="pinSelect">
-                <option value="home" selected>Farbige Basemarkierung</option>
-                <option value="location_pin">Ortsmarkierung</option>
-                <option value="person_pin_circle">Öffentlich</option>
-                <option value="not_listed_location">Fragezeichen</option>
-                <option value="security">Admin Areal</option>
-                <option value="onbuild">Baustelle</option>
+                <option value="home" selected>&#xf29c; Farbige Basemarkierung</option>
+                <option value="location_pin">&#xebd7; Ortsmarkierung</option>
+                <option value="person_pin_circle">&#xefef; Öffentlich</option>
+                <option value="not_listed_location">&#xf29c; Fragezeichen</option>
+                <option value="close">&#xecdb; Admin Areal</option>
+                <option value="onbuild">&#xe918; Baustelle</option>
               </select>
 
 
@@ -163,7 +166,7 @@
 
 
 
-            
+
               <button type="button" name="button" onclick="saveMap()">Auf Karte Speichern</button>
 
             </div>
