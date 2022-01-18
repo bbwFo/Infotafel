@@ -170,7 +170,25 @@ body{
 
 
 
+.map_app {
 
+  width: auto;
+  height: auto;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 8px;
+
+  /* border: 2px solid rgba(255,255,255,0.2); */
+  background: rgba(17, 17, 17,1);
+  display: grid;
+  grid-template-columns: min-content 300px;
+  grid-template-rows: min-content;
+  gap: 0px 10px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "map map_settings";
+}
 
 
 
@@ -179,38 +197,179 @@ body{
 
 
 .map {
-  --mapSize: 400px;
-  --mapGrid: 10;
+  --mapSize: 700px;
+  --mapGrid: 50;
 
   width: var(--mapSize);
   height: var(--mapSize);
-  /* border: 2px solid rgba(255,255,255,0.2); */
+  /* border: 2px solid #333; */
   display: grid;
   grid-template-columns: repeat(var(--mapGrid), 1fr);
   grid-template-rows: repeat(var(--mapGrid), 1fr);
-  gap: 5px 5px;
+  gap: 0px 0px;
   grid-auto-flow: row;
   box-sizing: border-box;
+  grid-area: map;
+  /* overflow: hidden; */
+  /* border-radius: 4px; */
+
+  background: url("../../resources/img/textures/map.jpg");
+  background-position: center;
+  background-size: 700px;
+  background-repeat: no-repeat;
+
 }
 
 .map_mark {
-
-  border: 2px solid rgba(18, 115, 235,0.5);
-  background: rgba(18, 115, 235,0.3);
+  /* border: 2px solid rgba(18, 115, 235,0.5); */
+  background: rgba(17, 17, 17,0.5);
+  /* backdrop-filter: blur(1px); LAG*/
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-
-.map_mark:hover {
-  background: rgba(18, 115, 235,0.8);
+  position: relative;
 }
 
 
 
 
+.map_mark .pin_text {
+
+  background: rgba(255, 255, 255,0.1);
+  border: 1px solid rgba(255, 255, 255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 2px;
+  box-sizing: border-box;
+  padding: 1px 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  position: absolute;
+  top: -35px;
+  font-family: "ubuntu-regular";
+  color: #eeeeee;
+}
+
+.map_mark i {
+
+  /* left: 3px; */
+  bottom: 4px;
+  position: absolute;
+  /* color: rgba(255, 0, 0,1.6); */
+
+  pointer-events: none;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #111111;
+  z-index: 100;
+
+  font-size: 25px;
+  transition: 0.1s all ease-in-out;
+}
+
+
+
+.map_mark:hover::before{
+  position: absolute;
+   content: '';
+   display: flex;
+   width: 100%;
+   height: 100%;
+   margin: 20%;
+   box-sizing: border-box;
+   border-radius: 50%;
+   background-color: transparent;
+   border: 2px solid #eeeeee;
+}
+.map_mark:hover i {
+  bottom: 6px;
+}
+
+/* .map_mark:hover {
+  background: rgba(255, 0, 0,1.6);
+} */
+
+
+/* .map_mark:hover:not(.map_mark_AKTIV) {
+  background: rgba(255, 255, 255,0.4);
+} */
+
+
+
+
+
+
+.map_TEST {
+  background: rgba(244, 67, 54,0.4);
+  background-image: url("data:image/svg+xml,%3Csvg width='auto' height='auto' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='rgba(244, 67, 54,1)' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+
+}
+
+.map_CUNSTRUCTION {
+  background: rgba(255, 229, 41,0.4);
+  background-image: url("data:image/svg+xml,%3Csvg width='auto' height='auto' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='rgba(255, 229, 41,1)' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+
+}
+
+
+
+
+
+.map_RED {
+  background: rgba(244, 67, 54,0.5);
+}
+.map_RED_pin {
+  color: rgba(244, 67, 54,1);
+}
+
+.map_BLUE {
+  background: rgba(18, 115, 235,0.5);
+}
+.map_BLUE_pin  {
+  color: rgba(18, 115, 235,1);
+}
+
+.map_GREEN {
+  background: rgba(20, 193, 89,0.5);
+}
+.map_GREEN_pin {
+  color: rgba(20, 193, 89,1);
+}
+
+
+
+
+.map_settings {
+  position: relative;
+  display: flex;
+  padding: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  grid-area: map_settings;
+  border: 2px solid #333;
+  /* background: rgba(255, 255, 255,0.1); */
+}
+
+.map_settings select {
+  width: 100%;
+  padding: 5px 5px;
+  font-family: "ubuntu-medium";
+  color: #eeeeee;
+  font-size: 14px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: none;
+
+  grid-area: map_settings;
+  /* border: 1px solid rgba(255,255,255,0.2); */
+  background: rgba(255, 255, 255,0.4);
+}
 
 
 
@@ -218,6 +377,25 @@ body{
 
 
 
+.colorPiker{
+  width: 20px;
+  height: 20px;
+  /* border-radius: 50%; */
+  border: 2px solid #333;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.colorPiker input{
+  width: 200%;
+  height: 200%;
+  outline: none;
+  border: none;
+  position: absolute;
+}
 
 
 
@@ -234,7 +412,7 @@ body{
   --colorGreen:                       #14c159;
   --colorBlue:                        #1273EB;
   --colorDiamondBlue:                 #b9f2ff;
-  --colorYellow:                      #FFE529;
+  --colorYellow:                      rgb(255, 229, 41);
   --colorOrange:                      #FF851B;
   --colorRed:                         #f44336;
   --colorPurple:                      #B10DC9;

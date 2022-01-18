@@ -40,44 +40,141 @@
 
 
 
-          <div class="map">
+
+
+
+
+
+          <div class="map_app">
+
+
 
             <?php
 
-              $x1 = 1; $y1 = 1;
-              $x2 = 1; $y2 = 1;
 
-              $i = 1;
-              $counter = 1;
+              function db_select_all_from($TABELLE){
 
-              do
+                include ('resources/php/db.php');
+
+                $zeile = $db -> prepare("SELECT * FROM $TABELLE");
+                $zeile -> execute();
+                $result = $zeile -> fetchAll();
+
+                return $result;
+              }
+
+
+
+              foreach (db_select_all_from("map") as $wert)
               {
-                do {
+                $map = utf8_encode($wert["map_save"]);
+              }
 
-                  ?>
-                    <div class="map_mark" style="grid-area: <?php echo $x1 ?>/<?php echo $x2 ?>/<?php echo $y1 ?>/<?php echo $y2 ?>;">
-                      <!-- <?php echo $counter ?> -->
+              $x1 = 1; $y1 = 1; $x2 = 1; $y2 = 1; $i = 1; $counter = 1; $lar = 50;
 
-                      <i class="icon-voicemail1"></i>
-                    </div>
-                  <?php
 
-                  $x2++; $y2++;
-
-                  $i++;
-                  $counter++;
-
-                } while ($i <= 10);
-
-                $x1++; $y1++;
-                $x2 = 1; $y2 = 1;
-
-                $i = 1;
-
-              } while ($counter <= 100);
             ?>
 
+
+              <div class="map" id="map">
+              <?php
+                if (isset($map)) {
+
+                  foreach (db_select_all_from("map") as $wert)
+                  {
+                    $map = utf8_encode($wert["map_save"]);
+                    echo $map;
+                  }
+
+                }
+                else {
+
+
+                  do {
+                    do {
+
+
+
+                      ?>
+                        <div class="map_mark" data-map="<?php echo $counter ?>" style="grid-area: <?php echo $x1 ?>/<?php echo $x2 ?>/<?php echo $y1 ?>/<?php echo $y2 ?>;">
+
+                        </div>
+                      <?php
+
+                      $counter++;
+
+                      $x2++; $y2++; $i++;
+
+                    } while ($i <= $lar);
+
+                    $x1++; $y1++; $x2 = 1; $y2 = 1; $i = 1;
+
+                  } while ($counter <= ($lar * $lar));
+
+
+                }
+              ?>
+              </div>
+
+
+            <div class="map_settings">
+
+              Farbe
+
+              <select class="" name="" id="colorSelect">
+                <option value="map_BLUE" selected>Blau</option>
+                <option value="map_RED">Rot</option>
+                <option value="map_GREEN">Grün</option>
+                <option value="map_TEST">ADMIN</option>
+                <option value="map_CUNSTRUCTION">ONBUILD</option>
+              </select>
+
+              <br>
+
+              Textur
+
+              <select class="" name="" id="textureSelect">
+                <option value="map_BLUE" selected>Keine</option>
+                <option value="map_RED">Liniert</option>
+
+              </select>
+
+              <br>
+
+              Icon
+              <select class="" name="" id="pinSelect">
+                <option value="home" selected>Farbige Basemarkierung</option>
+                <option value="location_pin">Ortsmarkierung</option>
+                <option value="person_pin_circle">Öffentlich</option>
+                <option value="not_listed_location">Fragezeichen</option>
+                <option value="security">Admin Areal</option>
+                <option value="onbuild">Baustelle</option>
+              </select>
+
+
+              <br>
+
+              <div class="colorPiker">
+                <input type="color" name="" value="">
+              </div>
+
+
+              <br>
+
+
+
+            
+              <button type="button" name="button" onclick="saveMap()">Auf Karte Speichern</button>
+
+            </div>
           </div>
+
+
+
+
+
+
+
 
 
 
