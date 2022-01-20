@@ -404,7 +404,9 @@ body{
 }
 
 
-
+#pinSelect{
+  font-size: 25px;
+}
 
 
 
@@ -428,6 +430,100 @@ body{
   border: none;
   position: absolute;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.map_settings_radios{
+  width: 100%;
+  position: relative;
+  /* border-radius: 50%; */
+  border: 2px solid #333;
+  box-sizing: border-box;
+  display: grid;
+
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  gap: 10px 10px;
+  /* padding: 10px; */
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . . . . . . . .";
+
+/*
+
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+  position: relative;
+  gap: 10px 10px; */
+}
+
+
+
+.radio {
+  /* margin: 5px; */
+}
+.radio input[type=radio] {
+  position: absolute;
+  opacity: 0;
+}
+.radio input[type=radio] + .radio-label:before {
+  content: "";
+  background: #333;
+  border-radius: 3px;
+  border: 2px solid transparent;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  /* top: -0.2em; */
+  margin-right: 1em;
+  vertical-align: top;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.1s all ease-in-out;
+  box-sizing: border-box;
+}
+.radio input[type=radio]:checked + .radio-label:before {
+  /* background-color: #eee; */
+  border-color: #3197EE;
+
+}
+.radio input[type=radio]:focus + .radio-label:before {
+  outline: none;
+  /* border-color: #3197EE; */
+}
+.radio input[type=radio]:disabled + .radio-label:before {
+  border-color: #b4b4b4;
+  background: #b4b4b4;
+}
+.radio input[type=radio] + .radio-label:empty:before {
+  margin-right: 0;
+}
+
+
+
+
+
 
 
 

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="resources/css/style.css">
   </head>
   <body>
-    <?php include("resources/php/db.php"); ?>
+
 
 
 
@@ -52,23 +52,23 @@
             <?php
 
 
-              function db_select_all_from($TABELLE){
+              // function db_select_all_from($TABELLE){
+              //
+              //   include ('resources/php/db.php');
+              //
+              //   $zeile = $db -> prepare("SELECT * FROM $TABELLE");
+              //   $zeile -> execute();
+              //   $result = $zeile -> fetchAll();
+              //
+              //   return $result;
+              // }
 
-                include ('resources/php/db.php');
-
-                $zeile = $db -> prepare("SELECT * FROM $TABELLE");
-                $zeile -> execute();
-                $result = $zeile -> fetchAll();
-
-                return $result;
-              }
 
 
-
-              foreach (db_select_all_from("map") as $wert)
-              {
-                $map = utf8_encode($wert["map_save"]);
-              }
+              // foreach (db_select_all_from("map") as $wert)
+              // {
+              //   $map = utf8_encode($wert["map_save"]);
+              // }
 
               $x1 = 1; $y1 = 1; $x2 = 1; $y2 = 1; $i = 1; $counter = 1; $lar = 50;
 
@@ -79,16 +79,16 @@
             <div class="map_frame">
               <div class="map" id="map">
               <?php
-                if (isset($map)) {
-
-                  foreach (db_select_all_from("map") as $wert)
-                  {
-                    $map = utf8_encode($wert["map_save"]);
-                    echo $map;
-                  }
-
-                }
-                else {
+                // if (isset($map)) {
+                //
+                //   foreach (db_select_all_from("map") as $wert)
+                //   {
+                //     $map = utf8_encode($wert["map_save"]);
+                //     echo $map;
+                //   }
+                //
+                // }
+                // else {
 
 
                   do {
@@ -113,7 +113,7 @@
                   } while ($counter <= ($lar * $lar));
 
 
-                }
+                // }
               ?>
               </div>
 
@@ -121,6 +121,214 @@
 
 
             <div class="map_settings">
+
+
+              Karte Auswählen
+
+              <select class="" name="" id="colorSelect">
+                <option value="map_BLUE" selected>Valguero</option>
+                <option value="map_RED">map2</option>
+              </select>
+
+              <br>
+
+
+
+
+              Farbe
+              <br>
+              <div class="map_settings_radios">
+                <div class="radio">
+                  <input id="radio-1" name="radio" type="radio" checked>
+                  <label for="radio-1" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-2" name="radio" type="radio">
+                  <label  for="radio-2" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-3" name="radio" type="radio">
+                  <label  for="radio-3" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-4" name="radio" type="radio">
+                  <label  for="radio-4" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+
+              </div>
+
+
+              <br>
+
+
+
+              Farbe
+              <br>
+              <div class="map_settings_radios">
+                <div class="radio">
+                  <input id="radio-1" name="radio" type="radio" checked>
+                  <label for="radio-1" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-2" name="radio" type="radio">
+                  <label  for="radio-2" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-3" name="radio" type="radio">
+                  <label  for="radio-3" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-4" name="radio" type="radio">
+                  <label  for="radio-4" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+
+              </div>
+
+
+
+              <br>
+
+
+
+              Farbe
+              <br>
+              <div class="map_settings_radios">
+                <div class="radio">
+                  <input id="radio-1" name="radio" type="radio" checked>
+                  <label for="radio-1" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-2" name="radio" type="radio">
+                  <label  for="radio-2" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-3" name="radio" type="radio">
+                  <label  for="radio-3" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-4" name="radio" type="radio">
+                  <label  for="radio-4" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+                <div class="radio">
+                  <input id="radio-5" name="radio" type="radio">
+                  <label  for="radio-5" class="radio-label"></label>
+                </div>
+
+
+              </div>
+
 
               Farbe
 
@@ -146,12 +354,12 @@
 
               Icon
               <select class="" name="" id="pinSelect">
-                <option value="home" selected>&#xf29c; Farbige Basemarkierung</option>
-                <option value="location_pin">&#xebd7; Ortsmarkierung</option>
-                <option value="person_pin_circle">&#xefef; Öffentlich</option>
-                <option value="not_listed_location">&#xf29c; Fragezeichen</option>
-                <option value="close">&#xecdb; Admin Areal</option>
-                <option value="onbuild">&#xe918; Baustelle</option>
+                <option value="home" selected>&#xf29c;</option>
+                <option value="location_pin">&#xebd7;</option>
+                <option value="person_pin_circle">&#xefef;</option>
+                <option value="not_listed_location">&#xf29c;</option>
+                <option value="close">&#xecdb;</option>
+                <option value="onbuild">&#xe918;</option>
               </select>
 
 
