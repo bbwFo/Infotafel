@@ -8,311 +8,206 @@
   </head>
   <body>
 
+    <?php include 'resources/php/db.php' ?>
+    <?php include 'resources/php/script.php' ?>
+
+    <?php
+
+      $DEFAULT_IMAGE = 'resources/img/test.svg';
+
+      $COUNTER = 0;
+
+    ?>
+
+    <div class="Overlay">
+      <div class="OverlayNav">
+        <i class="icon-arrow-left2 overlayCloser"></i>
+      </div>
+      <div class="OverlayContent">
+        <p id="showOverlayID">ID</p>
+      </div>
+    </div>
+
+
     <div class="Main">
+
+
       <div class="Navigation">
-        <p>Testmodus </p>
         <p id="dateandtime"></p>
 
       </div>
 
-      <?php
 
-        $color = 'var(--blue)';
-        $borderType = '1';
-        $bgImage = 'resources/img/test.svg';
-        $titel = 'Titel - 02.10.22';
-        $text = 'Lorem ipsum dolor sit amet, rmod tempor invidunt ut labore et dolore mwshefbewzeduzeb wqwewefzb wefb zwebfuzwefn uowe fzewb ecubnw uecwu ecuiowec ws uzwb efzwbe ufzbw eufbw uefb wueagna aliquyam';
-
-
-
-      ?>
-
+      <!----------------------------------------------------------------------->
 
       <div class="Section-1 Slider" data-size="1">
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
+        <?php
+          $zeile = $db -> prepare("SELECT * FROM cards WHERE row = '1'");
+          $zeile -> execute();
+          $db_result = $zeile -> fetchAll();
+
+          foreach ($db_result as $spalte) {
+            $TITEL = $spalte["titel"];
+            $TEXT = $spalte["text"];
+            $STYLE = $spalte["style"];
+            $COLOR = $spalte["color"];
+            $IMAGE = $spalte["image"];
+            $ICON = $spalte["icon"];
+            $DATE = $spalte["date"];
+
+            $MONTH = getCalendarDate($DATE)['MONTH'];
+            $DAY = getCalendarDate($DATE)['DAY'];
+
+            if (empty($IMAGE)) { $IMAGE = $DEFAULT_IMAGE; }
+            ?>
+
+            <div class="Item" data-card_id="<?php echo $COUNTER++ ?>">
+              <div class="ItemInner" style="border-color:<?php echo $COLOR ?>; --border-color:<?php echo $COLOR ?>; background-image:url(<?php echo $IMAGE ?>);" data-icon="<?php echo $ICON ?>" data-date_month="<?php echo $MONTH ?>" data-date_day="<?php echo $DAY ?>" data-style="<?php echo $STYLE ?>">
+                <div class="ItemInnerBox">
+                  <div class="IconBox" data-icon="<?php echo $ICON ?>"></div>
+                  <div class="TextBox">
+                    <div class="Titel">
+                      <p><?php echo $TITEL ?></p>
+                    </div>
+                    <div class="Text">
+                      <p><?php echo $TEXT ?></p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+        <?php } ?>
       </div>
 
-
-
-
+      <!----------------------------------------------------------------------->
 
       <div class="Section-2 Slider" data-size="2">
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
+        <?php
+          $zeile = $db -> prepare("SELECT * FROM cards WHERE row = '2'");
+          $zeile -> execute();
+          $db_result = $zeile -> fetchAll();
+
+          foreach ($db_result as $spalte) {
+            $TITEL = $spalte["titel"];
+            $TEXT = $spalte["text"];
+            $STYLE = $spalte["style"];
+            $COLOR = $spalte["color"];
+            $IMAGE = $spalte["image"];
+            $ICON = $spalte["icon"];
+            $DATE = $spalte["date"];
+
+            $MONTH = getCalendarDate($DATE)['MONTH'];
+            $DAY = getCalendarDate($DATE)['DAY'];
+
+            if (empty($IMAGE)) { $IMAGE = $DEFAULT_IMAGE; }
+            ?>
+
+            <div class="Item" data-card_id="<?php echo $COUNTER++ ?>">
+              <div class="ItemInner" style="border-color:<?php echo $COLOR ?>; --border-color:<?php echo $COLOR ?>; background-image:url(<?php echo $IMAGE ?>);" data-icon="<?php echo $ICON ?>" data-date_month="<?php echo $MONTH ?>" data-date_day="<?php echo $DAY ?>" data-style="<?php echo $STYLE ?>">
+                <div class="ItemInnerBox">
+                  <div class="IconBox" data-icon="<?php echo $ICON ?>"></div>
+                  <div class="TextBox">
+                    <div class="Titel">
+                      <p><?php echo $TITEL ?></p>
+                    </div>
+                    <div class="Text">
+                      <p><?php echo $TEXT ?></p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+        <?php } ?>
       </div>
+
+      <!----------------------------------------------------------------------->
+
       <div class="Section-3 Slider" data-size="3">
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
+        <?php
+          $zeile = $db -> prepare("SELECT * FROM cards WHERE row = '3'");
+          $zeile -> execute();
+          $db_result = $zeile -> fetchAll();
+
+          foreach ($db_result as $spalte) {
+            $TITEL = $spalte["titel"];
+            $TEXT = $spalte["text"];
+            $STYLE = $spalte["style"];
+            $COLOR = $spalte["color"];
+            $IMAGE = $spalte["image"];
+            $ICON = $spalte["icon"];
+            $DATE = $spalte["date"];
+
+            $MONTH = getCalendarDate($DATE)['MONTH'];
+            $DAY = getCalendarDate($DATE)['DAY'];
+
+            if (empty($IMAGE)) { $IMAGE = $DEFAULT_IMAGE; }
+            ?>
+
+            <div class="Item" data-card_id="<?php echo $COUNTER++ ?>">
+              <div class="ItemInner" style="border-color:<?php echo $COLOR ?>; --border-color:<?php echo $COLOR ?>; background-image:url(<?php echo $IMAGE ?>);" data-icon="<?php echo $ICON ?>" data-date_month="<?php echo $MONTH ?>" data-date_day="<?php echo $DAY ?>" data-style="<?php echo $STYLE ?>">
+                <div class="ItemInnerBox">
+                  <div class="IconBox" data-icon="<?php echo $ICON ?>"></div>
+                  <div class="TextBox">
+                    <div class="Titel">
+                      <p><?php echo $TITEL ?></p>
+                    </div>
+                    <div class="Text">
+                      <p><?php echo $TEXT ?></p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+        <?php } ?>
       </div>
+
+      <!----------------------------------------------------------------------->
+
       <div class="Section-4 Slider" data-size="2">
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
+        <?php
+          $zeile = $db -> prepare("SELECT * FROM cards WHERE row = '4'");
+          $zeile -> execute();
+          $db_result = $zeile -> fetchAll();
+
+          foreach ($db_result as $spalte) {
+            $TITEL = $spalte["titel"];
+            $TEXT = $spalte["text"];
+            $STYLE = $spalte["style"];
+            $COLOR = $spalte["color"];
+            $IMAGE = $spalte["image"];
+            $ICON = $spalte["icon"];
+            $DATE = $spalte["date"];
+
+            $MONTH = getCalendarDate($DATE)['MONTH'];
+            $DAY = getCalendarDate($DATE)['DAY'];
+
+            if (empty($IMAGE)) { $IMAGE = $DEFAULT_IMAGE; }
+            ?>
+
+            <div class="Item" data-card_id="<?php echo $COUNTER++ ?>">
+              <div class="ItemInner" style="border-color:<?php echo $COLOR ?>; --border-color:<?php echo $COLOR ?>; background-image:url(<?php echo $IMAGE ?>);" data-icon="<?php echo $ICON ?>" data-date_month="<?php echo $MONTH ?>" data-date_day="<?php echo $DAY ?>" data-style="<?php echo $STYLE ?>">
+                <div class="ItemInnerBox">
+                  <div class="IconBox" data-icon="<?php echo $ICON ?>"></div>
+                  <div class="TextBox">
+                    <div class="Titel">
+                      <p><?php echo $TITEL ?></p>
+                    </div>
+                    <div class="Text">
+                      <p><?php echo $TEXT ?></p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="Item">
-          <div class="ItemInner" style="border-color:<?php echo $color ?>; --border-color:<?php echo $color ?>; background-image:url(<?php echo $bgImage ?>);" data-border="<?php echo $borderType ?>">
-            <div class="ItemInnerBox">
-              <div class="IconBox">
-                <i class="icon-new_releases"></i>
-              </div>
-              <div class="TextBox">
-                <div class="Titel">
-                  <p><?php echo $titel ?></p>
-                </div>
-                <div class="Text">
-                  <p><?php echo $text ?></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+        <?php } ?>
       </div>
+
+      <!----------------------------------------------------------------------->
+
     </div>
 
     <!-- SCRIPTGEDÖNS -->

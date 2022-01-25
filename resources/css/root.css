@@ -79,6 +79,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  /* border-bottom: 2px solid red;
+  border-image: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(255,59,32,1) 70%) 1; */
 }
 
 .Section-1 {
@@ -123,6 +126,29 @@ body {
 }
 
 
+
+
+
+.Slider .Item .ItemDisable {
+
+
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s all ease-in-out;
+}
+
+.Slider .Item .ItemScale {
+
+  position: absolute;
+  /* bottom: 300px */
+  transform: scale(0.5);
+  transition: 0.2s all ease-in-out;
+}
+
+
+
+
+
 .Slider .Item .ItemInner {
   position: absolute;
   width: calc(100% - 20px);
@@ -137,97 +163,13 @@ body {
   overflow: hidden;
 }
 
-/* border typ 1 */
 
-.Slider .Item .ItemInner[data-border="1"] {
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 6px solid transparent;
+
+@keyframes border-puls {
+    0%   { border-color: var(--white) }
+    50%  { border-color: var(--border-color) }
+    100% { border-color: var(--white) }
 }
-
-/* border typ 2 */
-
-.Slider .Item .ItemInner[data-border="2"] {
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 6px solid transparent;
-}
-.Slider .Item .ItemInner[data-border="2"]:before {
-  z-index: 100;
-  content: "";
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 0px;
-  border-radius: 5px 0px 0px 0px;
-  border-top: 30px solid  var(--border-color);
-  border-left: 30px solid var(--border-color);
-  border-right: 30px solid transparent;
-  border-bottom: 30px solid transparent;
-}
-.Slider .Item .ItemInner[data-border="2"]:after {
-  z-index: 101;
-  font-family: "iconfont";
-  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-  content: "\edce";
-  font-size: 25px;
-  position: absolute;
-  top: 6px;
-  left: 6px;
-}
-
-/* border typ 3 */
-
-.Slider .Item .ItemInner[data-border="3"] {
-  border-top: 6px solid transparent;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  animation: border-pulsate 2s infinite
-}
-
-.Slider .Item .ItemInner[data-border="3"] i {
-  animation: border-pulsate 2s infinite
-}
-
-@keyframes border-pulsate {
-    0%   { color: var(--white) }
-    50%  { color: var(--red) }
-    100% { color: var(--white) }
-}
-
-
-.Slider .Item .ItemInner[data-border="3"]:before {
-  z-index: 100;
-  content: "";
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 0px;
-  border-top: 24px solid  var(--border-color);
-  border-left: 24px solid var(--border-color);
-  border-right: 24px solid transparent;
-  border-bottom: 24px solid transparent;
-}
-.Slider .Item .ItemInner[data-border="3"]:after {
-  z-index: 101;
-  font-family: "iconfont";
-  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-  content: "\edce";
-  font-size: 25px;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-}
-
-
-
-
-
-
-
 
 
 
@@ -250,13 +192,13 @@ body {
     "IconBox TextBox";
 }
 
-.Slider .Item .ItemInner[data-border="2"] .ItemInnerBox,
-.Slider .Item .ItemInner[data-border="3"] .ItemInnerBox {
+.Slider .Item .ItemInner[data-style="2"] .ItemInnerBox,
+.Slider .Item .ItemInner[data-style="3"] .ItemInnerBox {
   gap: 0px 0px;
 }
 
-.Slider .Item .ItemInner[data-border="2"] .IconBox,
-.Slider .Item .ItemInner[data-border="3"] .IconBox {
+.Slider .Item .ItemInner[data-style="2"] .IconBox,
+.Slider .Item .ItemInner[data-style="3"] .IconBox {
   display: none;
 }
 
@@ -264,14 +206,29 @@ body {
   grid-area: IconBox;
   border-right: 2px solid var(--lightgrey);
 }
-.IconBox i {
-  font-size: 30px;
-  margin-right: 10px;
+
+
+
+
+.IconBox:after {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-right: 10px;
+  box-sizing: border-box;
+  font-family: "iconfont";
   text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  content: attr(data-icon);
+  font-size: 30px;
+  color: var(--white);
+  position: relative;
+  /* border: 1px solid red; */
+  width: 100%;
+  height: 100%;
 }
 
-.TextBox {
 
+.TextBox {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: min-content min-content;
@@ -281,6 +238,10 @@ body {
     "Titel"
     "Text";
   grid-area: TextBox;
+}
+
+.Slider[data-size="1"] .TextBox {
+  max-width: 60%;
 }
 
 .Titel {
@@ -311,4 +272,67 @@ body {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Overlay {
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* border: 2px solid red; */
+  background: var(--black);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: var(--navHeight) 1fr;
+  gap: 10px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "OverlayNav"
+    "OverlayContent";
+
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s all ease-in-out;
+}
+
+.Overlay_AKTIV {
+  opacity: 1;
+  visibility: visible;
+}
+
+.OverlayNav {
+  grid-area: OverlayNav;
+  /* border: 2px solid red; */
+  padding: 5px;
+}
+.OverlayNav i {
+  font-size: 20px;
+}
+
+.OverlayContent {
+  grid-area: OverlayContent;
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "ubuntu-bold";
+  font-size: 30px;
 }

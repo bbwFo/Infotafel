@@ -23,11 +23,12 @@
     position: relative;
 
     display: block;
-    overflow: hidden;
+    overflow-y: auto;
 
     margin: 0;
     padding: 0;
 }
+
 .slick-list:focus
 {
     outline: none;
