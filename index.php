@@ -24,7 +24,48 @@
         <i class="icon-arrow-left2 overlayCloser"></i>
       </div>
       <div class="OverlayContent">
-        <p id="showOverlayID">ID</p>
+        <!-- <p id="showOverlayID">ID</p> -->
+
+
+
+          <input type="text" name="" value="">
+
+            <form method="post" action="" enctype="multipart/form-data">
+              <p id="test">-</p>
+              <input type="file" id="file" name="file" />
+              <button type="button"id="but_upload">Upload</button>
+            </form>
+
+
+<!--
+        <script type="text/javascript">
+
+          $('#sendbut').click(function() {
+
+            var file = $('#fileinput').val();
+
+            $.ajax({
+              type: "POST",
+              url: "resources/php/file_upload.php",
+              data: { UPLOAD_FILE : file },
+              success: function(data) {
+                console.log(data);
+              }
+            })
+
+          });
+
+        </script> -->
+
+
+
+
+
+
+
+
+
+
       </div>
     </div>
 

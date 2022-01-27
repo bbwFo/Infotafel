@@ -307,8 +307,8 @@ body {
     "OverlayNav"
     "OverlayContent";
 
-  opacity: 0;
-  visibility: hidden;
+  /* opacity: 0; */
+  /* visibility: hidden; */
   transition: 0.2s all ease-in-out;
 }
 

@@ -24,3 +24,10 @@
   font-family: "ubuntu-regular";
   src: url(../fonts/ubuntu-regular.ttf);
 }
+
+
+
+form{
+  display: flex;
+  flex-direction: column;
+}
