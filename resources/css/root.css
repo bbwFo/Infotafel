@@ -161,6 +161,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
+
+  background-image: url('resources/img/test.svg');
 }
 
 
@@ -184,7 +186,7 @@ body {
   padding: 20px;
   display: grid;
   grid-template-columns: min-content 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr min-content;
   gap: 0px 10px;
   grid-auto-flow: row;
   grid-template-areas:
@@ -307,8 +309,8 @@ body {
     "OverlayNav"
     "OverlayContent";
 
-  /* opacity: 0; */
-  /* visibility: hidden; */
+  opacity: 0;
+  visibility: hidden;
   transition: 0.2s all ease-in-out;
 }
 
@@ -332,7 +334,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 
   font-family: "ubuntu-bold";
-  font-size: 30px;
+  font-size: 16px;
 }

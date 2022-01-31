@@ -6,7 +6,7 @@ if(isset($_FILES['file']['name'])){
    $filename = $_FILES['file']['name'];
 
    /* Location */
-   $location = "../../resources/uploads/".$filename;
+   $location = "../../resources/uploads/img/".$filename;
    $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
    $imageFileType = strtolower($imageFileType);
 
@@ -22,12 +22,20 @@ if(isset($_FILES['file']['name'])){
       }
    }
 
-   echo $response; exit;
+
+   echo $filename; exit;
+
 }
-else
-{
-  echo 0;
-}
+
+
+// function cutPath($path) {
+//   $search = '../../' ;
+//   $trimmed = str_replace($search, '', $path) ;
+//   return $trimmed ;
+// }
+
+
+
 
 
 ?>
