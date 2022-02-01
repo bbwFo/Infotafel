@@ -51,9 +51,9 @@ $(document).ready(function(){
   setInterval(function(){
 
     setTimeout(function(){ $('.Section-1').slick("slickNext"); }, 0);
-    setTimeout(function(){ $('.Section-2').slick("slickPrev"); }, 1800);
+    setTimeout(function(){ $('.Section-2').slick("slickNext"); }, 1800);
     setTimeout(function(){ $('.Section-3').slick("slickNext"); }, 1800 * 2);
-    setTimeout(function(){ $('.Section-4').slick("slickPrev"); }, 1800 * 3);
+    setTimeout(function(){ $('.Section-4').slick("slickNext"); }, 1800 * 3);
 
   }, autoDelay);
 });

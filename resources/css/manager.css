@@ -1,0 +1,253 @@
+@import "../fonts/iconfont-v1.0/style.css";
+
+
+@font-face {
+  font-family: "iconfont";
+  src: url(../fonts/iconfont-v1.0/fonts/iconfont.ttf);
+}
+@font-face {
+  font-family: "ubuntu-bold";
+  src: url(../fonts/ubuntu-bold.ttf);
+}
+@font-face {
+  font-family: "ubuntu-lightitalic";
+  src: url(../fonts/ubuntu-lightitalic.ttf);
+}
+@font-face {
+  font-family: "ubuntu-medium";
+  src: url(../fonts/ubuntu-medium.ttf);
+}
+@font-face {
+  font-family: "ubuntu-regular";
+  src: url(../fonts/ubuntu-regular.ttf);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -ms-user-select: None;
+  -moz-user-select: None;
+  -webkit-user-select: None;
+  user-select: None;
+  font-family: "ubuntu-regular";
+}
+
+
+:root {
+  --white:                       rgba(238, 238, 238, 1);
+  --green:                       rgba(20, 193, 89, 1);
+  --blue:                        rgba(18, 115, 235, 1);
+  --diamondblue:                 rgba(185, 242, 255, 1);
+  --yellow:                      rgba(255, 229, 41, 1);
+  --orange:                      rgba(255, 133, 27, 1);
+  --red:                         rgba(244, 67, 54, 1);
+  --purple:                      rgba(177, 13, 201, 1);
+  --lightgrey:                   rgba(153, 153, 153, 1);
+  --grey:                        rgba(96, 96, 96, 1);
+  --darkgrey:                    rgba(51, 51, 51, 1);
+  --black:                       rgba(17, 17, 17, 1);
+
+  --navHeight: 30px;
+
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--darkgrey);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--grey);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--lightgrey);
+}
+
+
+
+
+
+
+
+
+
+#login{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* border: 1px solid red; */
+
+}
+
+#login input[type="text"],
+#login input[type="password"]
+{
+  width: 200px;
+  height: auto;
+  padding: 5px 5px;
+  margin: 10px;
+  color: #eee;
+  font-size: 16px;
+  font-family: "ubuntu-medium", "iconfont";
+  outline: none;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#login input[type="submit"]
+{
+  width: 200px;
+  height: auto;
+  padding: 5px 5px;
+  margin: 10px;
+  color: #eee;
+  font-size: 16px;
+  font-family: "ubuntu-medium", "iconfont";
+  outline: none;
+  border: none;
+  /* border-bottom: 2px solid var(--white); */
+  background: var(--blue);
+}
+
+
+
+
+
+form{
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid red; */
+
+}
+
+
+form input[type="text"],
+form input[type="password"],
+form input[type="date"],
+form select,
+form textarea
+{
+  width: 100%;
+  height: auto;
+  padding: 5px 5px;
+  color: #eee;
+  font-size: 16px;
+  font-family: "ubuntu-medium", "iconfont";
+  outline: none;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+form select option
+{
+  color: #111;
+}
+
+
+
+
+
+
+
+.Main
+{
+  position: absolute;
+  /* border: 1px solid red; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 20px;
+
+  background-position: center;
+
+  /* background-color: #111; */
+  background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.LogoutLink{
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 10px 20px;
+  margin: 20px;
+  border-left: 4px solid rgba(244, 67, 54, 1);
+  background: rgba(244, 67, 54, 0.5);
+  border-radius: 5px;
+  color: #eee;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: "ubuntu-medium";
+  backdrop-filter: blur(10px);
+}
+
+.Main .MainItem {
+  width: 200px;
+  height: 140px;
+  padding: 10px;
+  margin: 20px;
+  border: 4px solid #333;
+  background: #1d2125;
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+  transition: 0.1s all ease-in-out;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.Main .MainItem i {
+  color: #eee;
+  font-size: 30px;
+}
+.Main .MainItem p {
+  color: #eee;
+  font-size: 16px;
+  font-family: "ubuntu-medium";
+  margin-top: 10px;
+}
+
+.Main .MainItem[add] {
+  border-color: rgba(20, 193, 89, 1);
+  background: rgba(20, 193, 89, 0.3);
+}
+.Main .MainItem[edit] {
+  border-color: rgba(18, 115, 235, 1);
+  background: rgba(18, 115, 235, 0.3);
+}
+.Main .MainItem[show] {
+  border-color: rgba(255, 229, 41, 1);
+  background: rgba(255, 229, 41, 0.3);
+}
+.Main .MainItem[delete] {
+  border-color: rgba(244, 67, 54, 1);
+  background: rgba(244, 67, 54, 0.3);
+}

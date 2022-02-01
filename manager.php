@@ -4,13 +4,24 @@
     <meta charset="utf-8">
     <title>Manager</title>
     <link rel="icon" type="image/png" href="resources/img/favicon.png">
-    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/css/manager.css">
   </head>
   <body>
+    <?php
+      session_start();
+
+      if ($_SESSION["login"] == 0)
+      {
+        header("Location: manager_login.php");
+      }
+    ?>
 
     <?php include 'resources/php/db.php' ?>
 
-    <form method="post" action="" enctype="multipart/form-data">
+
+
+
+    <!-- <form method="post" action="" enctype="multipart/form-data">
 
       <p>Titel</p>
       <input id="input_titel" type="text" name="" value="">
@@ -70,7 +81,17 @@
       <br>
 
       <button type="button" id="upload">Eintrag anlegen</button>
-    </form>
+    </form> -->
+
+    <div class="Main">
+
+      <a class="LogoutLink" href="manager_logout.php"><i class="icon-logout"></i>Logout</a>
+      <div class="MainItem" add><i class="icon-add"></i><p>Hinzufügen</p></div>
+      <div class="MainItem" show><i class="icon-grid"></i><p>Alle anzeigen</p></div>
+      <div class="MainItem" edit><i class="icon-edit"></i><p>Bearbeiten</p></div>
+      <div class="MainItem" delete><i class="icon-delete"></i><p>Löschen</p></div>
+
+    </div>
 
 
 

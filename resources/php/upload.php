@@ -16,11 +16,6 @@ $INPUT_BACKGROUND   = $_POST["INPUT_BACKGROUND"];
 include ('db.php');
 
 
-
-
-
-
-
 $db_eintrag = "INSERT INTO
 cards(
   titel,
