@@ -85,7 +85,7 @@
 
     <div class="Main">
 
-      <a class="LogoutLink" href="manager_logout.php"><i class="icon-logout"></i>Logout</a>
+      <a class="LogoutLink" href="manager_logout.php"><i class="icon-logout"></i></a>
       <div class="MainItem" add><i class="icon-add"></i><p>Hinzufügen</p></div>
       <div class="MainItem" show><i class="icon-grid"></i><p>Alle anzeigen</p></div>
       <div class="MainItem" edit><i class="icon-edit"></i><p>Bearbeiten</p></div>

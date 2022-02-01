@@ -196,17 +196,18 @@ form select option
   position: absolute;
   top: 0px;
   left: 0px;
-  padding: 10px 20px;
+  padding: 5px 15px;
   margin: 20px;
   border-left: 4px solid rgba(244, 67, 54, 1);
-  background: rgba(244, 67, 54, 0.5);
+  background: rgba(244, 67, 54, 0.3);
   border-radius: 5px;
   color: #eee;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 25px;
   font-family: "ubuntu-medium";
   backdrop-filter: blur(10px);
 }
+
 
 .Main .MainItem {
   width: 200px;
