@@ -16,18 +16,13 @@
         $USERNAME = $_POST['username'];
         $PASSWORD = $_POST["password"];
 
-        $ZEILE = $db -> prepare("SELECT * FROM user WHERE username = '$USERNAME'");
-        $ZEILE -> execute();
-        $DB_RESULT = $ZEILE -> fetchAll();
-        $USER_EXIST = count($DB_RESULT);
 
-        if ($USER_EXIST)
+
+        if (db_count('user', 'username', $USERNAME))
         {
-          $zeile_2 = $db -> prepare("SELECT password FROM user WHERE username = '$USERNAME'");
-          $zeile_2 -> execute();
-          $db_result_2 = $zeile_2 -> fetchAll();
 
-          foreach ($db_result_2 as $spalte)
+
+          foreach (db_psw($USERNAME) as $spalte)
           {
             $DB_PASSWORD = $spalte["password"];
 
@@ -49,6 +44,32 @@
 
         }
       }
+
+
+
+      function db_count($TABLE, $ROW, $TARGET)
+      {
+        include 'resources/php/db.php';
+        $ZEILE = $db -> prepare("SELECT * FROM $TABLE WHERE $ROW = '$TARGET'");
+        $ZEILE -> execute();
+        $RESULT = $ZEILE -> fetchAll();
+        return count($RESULT);
+      }
+
+      function db_psw($USERNAME)
+      {
+        include 'resources/php/db.php';
+        $ZEILE = $db -> prepare("SELECT password FROM user WHERE username = '$USERNAME'");
+        $ZEILE -> execute();
+        return $RESULT = $ZEILE -> fetchAll();
+      }
+
+
+
+
+
+
+
     ?>
 
     <form id='login' method='post' accept-charset='UTF-8'>
