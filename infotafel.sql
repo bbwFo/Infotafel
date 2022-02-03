@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 01. Feb 2022 um 16:17
+-- Erstellungszeit: 03. Feb 2022 um 16:22
 -- Server-Version: 10.4.20-MariaDB
 -- PHP-Version: 8.0.8
 
@@ -139,6 +139,7 @@ CREATE TABLE `slider` (
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
+  `uuid` varchar(20) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -147,8 +148,9 @@ CREATE TABLE `user` (
 -- Daten für Tabelle `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`) VALUES
-(1, 'root', '1234');
+INSERT INTO `user` (`id`, `uuid`, `username`, `password`) VALUES
+(1, '00', 'root', '1234'),
+(25, '10', 'Askylan', '$2y$10$BfNbKOAzUhVmMov0ztXz1Opm8PA0VRKL.a6pemOFn5oo8g2XDmYra');
 
 --
 -- Indizes der exportierten Tabellen
@@ -204,7 +206,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
