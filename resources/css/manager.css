@@ -190,7 +190,7 @@ form select option
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
-.LogoutLink{
+.LogoutLink {
   width: auto;
   height: auto;
   position: absolute;
@@ -208,7 +208,6 @@ form select option
   backdrop-filter: blur(10px);
 }
 
-
 .Main .MainItem {
   width: 200px;
   height: 140px;
@@ -225,6 +224,7 @@ form select option
   justify-content: center;
   flex-direction: column;
 }
+
 .Main .MainItem i {
   color: #eee;
   font-size: 30px;

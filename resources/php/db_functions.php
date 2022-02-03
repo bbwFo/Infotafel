@@ -45,7 +45,34 @@ function gen_username()
 
 
 
+function get_lvl(string $UUID)
+{
+  $EXPERIENCE = get_db_value('user','xp','UUID');
 
+
+
+
+
+
+}
+
+
+
+function get_db_value(string $TABLE, string $VALUE, string $UUID)
+{
+  include 'db.php';
+
+  $ZEILE = $db -> prepare("SELECT $VALUE FROM $TABLE WHERE uuid = '$UUID'");
+  $ZEILE -> execute();
+  $DATABASE_RESULT = $ZEILE -> fetchAll();
+
+  foreach ($DATABASE_RESULT as $DATABASE_VALUE)
+  {
+    $RESULT = $DATABASE_VALUE["$VALUE"];
+  }
+
+  return $RESULT;
+}
 
 
 
