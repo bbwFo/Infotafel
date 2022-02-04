@@ -1,6 +1,7 @@
 <?php
 // ASKYLAN PHP FUNCTIONS-KIT
 
+
 // session_start();
 // session_destroy();
 
@@ -45,24 +46,24 @@ function gen_username()
 
 
 
-function get_lvl(string $UUID)
-{
-  $EXPERIENCE = get_db_value('user','xp','UUID');
+// function get_lvl(string $UUID)
+// {
+//   $EXPERIENCE = get_db_value('user','xp','UUID');
+//
+//
+//
+//
+//
+//
+// }
 
-
-
-
-
-
-}
-
-
+// echo get_db_value('user','username','10');
 
 function get_db_value(string $TABLE, string $VALUE, string $UUID)
 {
   include 'db.php';
 
-  $ZEILE = $db -> prepare("SELECT $VALUE FROM $TABLE WHERE uuid = '$UUID'");
+  $ZEILE = $db -> prepare("SELECT $VALUE FROM $TABLE WHERE uuid < 10");
   $ZEILE -> execute();
   $DATABASE_RESULT = $ZEILE -> fetchAll();
 
@@ -78,9 +79,56 @@ function get_db_value(string $TABLE, string $VALUE, string $UUID)
 
 
 
+// echo get_cookie('testcookie');
 
 
 // -----------------------------------------------------------------------------
+
+
+
+function gen_cookie(string $COOKIENAME, string $TIME, string $COOKIEDATA)
+{
+  if (isset($_COOKIE[$COOKIENAME]))
+  {
+    return 0;
+  }
+  else
+  {
+    setcookie($COOKIENAME, $COOKIEDATA, strtotime($TIME.' days'));
+  }
+  exit;
+}
+
+
+function del_cookie(string $COOKIENAME)
+{
+  if (isset($_COOKIE[$COOKIENAME]))
+  {
+    setcookie($COOKIENAME, '', strtotime('0 days'));
+  }
+  else
+  {
+    return 0;
+  }
+  exit;
+}
+
+
+
+function get_cookie(string $COOKIENAME)
+{
+  if (isset($_COOKIE[$COOKIENAME]))
+  {
+    return $_COOKIE[$COOKIENAME];
+  }
+  else
+  {
+    return 0;
+  }
+  exit;
+}
+
+
 
 // -----------------------------------------------------------------------------
 
@@ -157,21 +205,36 @@ function psw_very(string $PASSWORD, string $UUID)
 // SYNTAX: db_add('TABELLE', array('INDEX1' => 'VALUE1', $INDEX2 => $VALUE2));
 // ACHTUNG! NACH DER TABELLE MUSS IMMER EIN ARRAY STEHEN.
 
+
+// db_add('user', array('uuid' => gen_uuid(), 'username' => gen_username(), 'password' => psw_hash('1234')));
+
 function db_add(string $TABLE, array $DATA)
 {
   include 'db.php';
 
-  $INDEX = json_encode(array_keys($DATA));
-  $VALUES = json_encode(array_values($DATA));
+  $INDEX = '';
+  $VALUE = '';
 
-  $INDEX_STRING = str_replace(array('[',']','{','}',':','"'), '', $INDEX);
-  $VALUE_STRING = str_replace('"', "'", str_replace(array('[',']','{','}',':'), '', $VALUES));
+  foreach ($DATA as $INDEXES => $VALUES) {
 
-  $EXEC_DATA = "INSERT INTO $TABLE( $INDEX_STRING ) VALUES ( $VALUE_STRING )";
+    if ($VALUES == end($DATA))
+    {
+      $INDEX .= $INDEXES."";
+      $VALUE .= "'".$VALUES."'";
+    }
+    else
+    {
+      $INDEX .= $INDEXES.", ";
+      $VALUE .= "'".$VALUES."', ";
+    }
+  }
+
+  $EXEC_DATA = "INSERT INTO $TABLE( $INDEX ) VALUES ( $VALUE )";
   $db -> exec($EXEC_DATA);
 
   exit;
 }
+
 // -----------------------------------------------------------------------------
 
 
@@ -181,18 +244,33 @@ function db_add(string $TABLE, array $DATA)
 // SYNTAX: db_update('TABELLE', 'UUID', array('INDEX1' => 'VALUE1', $INDEX2 => $VALUE2));
 // ACHTUNG! NACH DER UUID MUSS IMMER EIN ARRAY STEHEN.
 
+// db_update('user','10', array('username' => gen_username(), 'password' => psw_hash('1234')));
+
+
 function db_update(string $TABLE,string $TARGET, array $DATA)
 {
   include 'db.php';
 
-  foreach($DATA as $INDEX => $VALUE)
-  {
-    $UPDATE = $db -> prepare("UPDATE $TABLE SET $INDEX = '$VALUE' WHERE uuid = $TARGET");
-    $UPDATE -> execute();
+  $VALUE = '';
+
+  foreach ($DATA as $INDEX => $VALUES) {
+
+    if ($VALUES == end($DATA))
+    {
+      $VALUE .= $INDEX."='".$VALUES."'";
+    }
+    else
+    {
+      $VALUE .= $INDEX."='".$VALUES."', ";
+    }
   }
+
+  $UPDATE = $db -> prepare("UPDATE $TABLE SET $VALUE WHERE uuid = $TARGET");
+  $UPDATE -> execute();
 
   exit;
 }
+
 // -----------------------------------------------------------------------------
 
 
@@ -213,10 +291,47 @@ function db_delete(string $TABLE, string $UUID)
 // -----------------------------------------------------------------------------
 
 
+
+// echo gen_very();
+
+function gen_very()
+{
+  include 'db.php';
+
+  do
+  {
+    $ZEICHEN = '0123456789'.'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $ZEICHEN_LENGTH = strlen($ZEICHEN);
+
+    $CODEBLOCK1 = '';
+    $CODEBLOCK2 = '';
+    $CODEBLOCK3 = '';
+
+    for ($i = 0; $i < 6; $i++) { $CODEBLOCK1 .= $ZEICHEN[rand(0, $ZEICHEN_LENGTH - 1)]; }
+    for ($i = 0; $i < 6; $i++) { $CODEBLOCK2 .= $ZEICHEN[rand(0, $ZEICHEN_LENGTH - 1)]; }
+    for ($i = 0; $i < 6; $i++) { $CODEBLOCK3 .= $ZEICHEN[rand(0, $ZEICHEN_LENGTH - 1)]; }
+
+    $VERYCODE = $CODEBLOCK1.'-'.$CODEBLOCK2.'-'.$CODEBLOCK3;
+
+    $ZEILE = $db -> prepare("SELECT * FROM user WHERE uuid = '$VERYCODE'");
+    $ZEILE -> execute();
+    $RESULT = $ZEILE -> fetchAll();
+    $EXSIST = count($RESULT);
+  }
+  while ($EXSIST);
+
+  return $VERYCODE;
+
+  exit;
+}
+
 // -----------------------------------------------------------------------------
 // gen_uuid()
-// GENERIERT EINE 20 STELLIGE USER-IDENTIFIKATIONSNUMMER DIE ES NUS EINMALIG IN DER DATENBANK GIBT.
+// GENERIERT EINE 20 STELLIGE USER-IDENTIFIKATIONSNUMMER DIE ES NUR EINMALIG IN DER DATENBANK GIBT.
 // RÜCKGABEWERT IST DER UUID-CODE.
+
+
+// echo gen_uuid();
 
 function gen_uuid()
 {
@@ -224,10 +339,11 @@ function gen_uuid()
 
   do
   {
-    $ZEICHEN = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $ZEICHEN = '0123456789'.'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.'abcdefghijklmnopqrstuvwxyz'.'#$?&:';
     $ZEICHEN_LENGTH = strlen($ZEICHEN);
     $UUID_CODE = '';
-    for ($i = 0; $i < 20; $i++)
+
+    for ($i = 0; $i < 30; $i++)
     {
       $UUID_CODE .= $ZEICHEN[rand(0, $ZEICHEN_LENGTH - 1)];
     }
@@ -251,7 +367,8 @@ function gen_uuid()
 // HASHT EIN PASSWORD WIE IN DER FUNKTION VORGEGEBEN UND GIBT ES GEHASHT ZURÜCK.
 // SYNTAX: psw_hash('1234');
 
-function psw_hash($PASSWORD){
+function psw_hash($PASSWORD)
+{
   $PASSWORD_HASH = password_hash($PASSWORD, PASSWORD_DEFAULT);
   return $PASSWORD_HASH;
   exit;
