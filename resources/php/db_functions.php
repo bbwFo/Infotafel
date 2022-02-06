@@ -59,20 +59,85 @@ function gen_username()
 
 // echo get_db_value('user','username','10');
 
-function get_db_value(string $TABLE, string $VALUE, string $UUID)
+// function get_db_value(string $TABLE, string $VALUE, string $UUID)
+// {
+//   include 'db.php';
+//
+//   $ZEILE = $db -> prepare("SELECT $VALUE FROM $TABLE WHERE uuid < 10");
+//   $ZEILE -> execute();
+//   $DATABASE_RESULT = $ZEILE -> fetchAll();
+//
+//   foreach ($DATABASE_RESULT as $DATABASE_VALUE)
+//   {
+//     $RESULT = $DATABASE_VALUE["$VALUE"];
+//   }
+//
+//   return $RESULT;
+// }
+
+
+
+$ttest = get_values('user','00', array('username', 'id', 'password'));
+
+echo $ttest['username'];
+
+
+// GET_VALUES()
+//
+// GIBT WERTE AUS DER DATENBANK ALS ASSOCIATUVES ARRAY ZURÜCK.
+// SYNTAX: get_values('TABELLE', 'UUID', array('WERT1', 'WERT2', 'WERT3'));
+// RÜCKGABE:  BEISPIEL: {"WERT1":"hallo","WERT2":"wie","WERT3":"gehts"}
+// ACHTUNG! NACH DER UUID MUSS IMMER EIN ARRAY STEHEN.
+
+
+
+function get_values(string $TABLE, string $UUID, array $DATA)
 {
   include 'db.php';
 
-  $ZEILE = $db -> prepare("SELECT $VALUE FROM $TABLE WHERE uuid < 10");
-  $ZEILE -> execute();
-  $DATABASE_RESULT = $ZEILE -> fetchAll();
+  $NEWDATA = '';
 
-  foreach ($DATABASE_RESULT as $DATABASE_VALUE)
+  foreach ($DATA as $VAR)
   {
-    $RESULT = $DATABASE_VALUE["$VALUE"];
+    if ($VAR == end($DATA)) { $NEWDATA .= $VAR; } else { $NEWDATA .= $VAR.", "; }
   }
 
-  return $RESULT;
+  $ZEILE = $db -> prepare("SELECT $NEWDATA FROM $TABLE WHERE uuid = '$UUID'");
+  $ZEILE -> execute();
+  $DB_RESULT = $ZEILE -> fetchAll();
+
+  $RETURN = array();
+
+  foreach ($DB_RESULT as $DB_VALUE)
+  {
+    foreach ($DATA as $DATA_INDEX)
+    {
+      $RETURN += array($DATA_INDEX => $DB_VALUE[$DATA_INDEX]);
+    }
+  }
+
+  return $RETURN;
+}
+
+
+
+
+echo get_value('user', '00', 'username');
+
+function get_value(string $TABLE, string $UUID, string $DATA)
+{
+  include 'db.php';
+
+  $ZEILE = $db -> prepare("SELECT $DATA FROM $TABLE WHERE uuid = '$UUID'");
+  $ZEILE -> execute();
+  $RESULT = $ZEILE -> fetchAll();
+
+  foreach ($RESULT as $VALUE)
+  {
+    $RETURN = $VALUE["username"];
+  }
+
+  return $RETURN;
 }
 
 
