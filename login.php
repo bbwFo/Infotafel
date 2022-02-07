@@ -37,7 +37,7 @@
             else
             {
               $_SESSION["login"] = 0;
-              header("Location: manager_login.php");
+              header("Location: login.php");
               exit;
             }
           }

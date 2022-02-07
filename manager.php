@@ -12,27 +12,47 @@
 
       if ($_SESSION["login"] == 0)
       {
-        header("Location: manager_login.php");
+        header("Location: login.php");
       }
     ?>
 
     <?php include 'resources/php/db.php' ?>
+    <?php include 'resources/php/db_functions.php' ?>
 
 
+    <?php
+      if (isset($_POST["titel"]) && isset($_POST["description"]) && isset($_POST["row"]) && isset($_POST["icon"]) && isset($_POST["color"]) && isset($_POST["style"]) && isset($_FILES['file']['name']))
+      {
+        $UUID = gen_uuid();
 
+        $FILENAME = file_save('resources/uploads/img/', $_FILES['file'], $UUID);
 
-    <!-- <form method="post" action="" enctype="multipart/form-data">
+        db_add('cards', array(
+          'uuid' => $UUID,
+          'titel' => $_POST["titel"],
+          'description' => $_POST["description"],
+          'row' => $_POST["row"],
+          'icon' => $_POST["icon"],
+          'color' => $_POST["color"],
+          'style' => $_POST["style"],
+          'termin' => $_POST["termin"],
+          'background' => $FILENAME
+        ));
+      }
+    ?>
+
+    <!-- <form method='post' accept-charset='UTF-8' enctype="multipart/form-data">
 
       <p>Titel</p>
-      <input id="input_titel" type="text" name="" value="">
+      <input id="input_titel" type="text" name="titel" value="">
       <br>
 
       <p>Beschreibung</p>
-      <textarea id="input_description" name="name" rows="4" cols="20"></textarea>
+      <textarea id="input_description" name="description" rows="4" cols="20"></textarea>
       <br>
 
       <p>Reihe</p>
-      <select id="input_row" class="" name="">
+      <select id="input_row" class="" name="row">
         <option value="1" selected>1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -41,13 +61,10 @@
       <br>
 
       <p>Icon</p>
-      <select id="input_icon" class="" name="">
+      <select id="input_icon" class="" name="icon">
         <?php
-          $zeile = $db -> prepare("SELECT * FROM icons");
-          $zeile -> execute();
-          $db_result = $zeile -> fetchAll();
-
-          foreach ($db_result as $spalte) {
+          foreach (get_all_values('icons') as $spalte)
+          {
             $ICON_NAME = $spalte["name"];
             $ICON_UNICODE = $spalte["unicode"]; ?>
 
@@ -58,11 +75,11 @@
       <br>
 
       <p>Farbe</p>
-      <input id="input_color" type="color" name="" value="#ffffff">
+      <input id="input_color" type="color" name="color" value="#ffffff">
       <br>
 
       Kachel-Typ (deaktiviert bei Termin)
-      <select id="input_style" class="" name="">
+      <select id="input_style" class="" name="style">
         <option value="1" selected>1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -71,7 +88,7 @@
       <br>
 
       <p>Termin festlegen</p>
-      <input id="input_termin" type="date" name="" value="">
+      <input id="input_termin" type="date" name="termin" value="">
       <br>
 
 
@@ -80,8 +97,82 @@
       <input id="input_background" type="file" name="file" />
       <br>
 
-      <button type="button" id="upload">Eintrag anlegen</button>
+      <button type="submit" id="upload">Eintrag anlegen</button>
     </form> -->
+
+
+
+    <!-- <div class="DatabaseTable">
+      <?php
+      foreach (get_all_values('cards') as $VALUE)
+      {
+
+        ?><div class="DatabaseTableRow">
+            <input type="text" name="" value="<?php echo $VALUE["titel"] ?>">
+            <input type="text" name="" value="<?php echo $VALUE["description"] ?>">
+            <select name="">
+              <?php
+              foreach (get_all_values('areas') as $DB_VALUE)
+              {
+                if ($DB_VALUE["row"] == $VALUE["row"])
+                {
+                  ?><option value="<?php echo $DB_VALUE["row"] ?>" selected><?php echo $DB_VALUE["row"] ?></option><?php
+                }
+                else
+                {
+                  ?><option value="<?php echo $DB_VALUE["row"] ?>"><?php echo $DB_VALUE["row"] ?></option><?php
+                }
+              }
+              ?>
+            </select>
+            <select name="">
+              <?php
+              foreach (get_all_values('icons') as $DB_VALUE)
+              {
+                if ($DB_VALUE["unicode"] == $VALUE["icon"])
+                {
+                  ?><option value="<?php echo $DB_VALUE["unicode"] ?>" selected><?php echo $DB_VALUE["unicode"] ?> <?php echo $DB_VALUE["name"] ?></option><?php
+                }
+                else
+                {
+                  ?><option value="<?php echo $DB_VALUE["unicode"] ?>"><?php echo $DB_VALUE["unicode"] ?> <?php echo $DB_VALUE["name"] ?></option><?php
+                }
+              }
+              ?>
+            </select>
+            <input type="color" name="" value="<?php echo $VALUE["color"] ?>">
+            <select name="">
+              <?php
+              foreach (get_all_values('style') as $DB_VALUE)
+              {
+                if ($DB_VALUE["style"] == $VALUE["style"])
+                {
+                  ?><option value="<?php echo $DB_VALUE["style"] ?>" selected><?php echo $DB_VALUE["style"] ?> <?php echo $DB_VALUE["name"] ?> (<?php echo $DB_VALUE["description"] ?>)</option><?php
+                }
+                else
+                {
+                  ?><option value="<?php echo $DB_VALUE["style"] ?>"><?php echo $DB_VALUE["style"] ?> <?php echo $DB_VALUE["name"] ?> (<?php echo $DB_VALUE["description"] ?>)</option><?php
+                }
+              }
+              ?>
+            </select>
+            <input type="date" name="" value="<?php echo $VALUE["termin"] ?>">
+
+            <input type="file" name="" value="">
+
+            <i class="icon-save"></i>
+            <i class="icon-delete"></i>
+
+          </div><?php
+      } ?>
+    </div> -->
+
+
+
+
+
+
+
 
     <div class="Main">
 

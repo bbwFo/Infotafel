@@ -17,7 +17,7 @@ $('.Item').dblclick(function() {
 
     $('.Overlay').addClass('Overlay_AKTIV');
 
-    $('#showOverlayID').html('Content-ID = ' + cardID);
+    $('#showOverlayID').html('UUID = ' + cardID);
 
     $('.Item .ItemInner:not(.Item[data-card_id=' + cardID + '] .ItemInner)').addClass('ItemDisable');
     $('.Item[data-card_id=' + cardID + '] .ItemInner').addClass('ItemScale');
