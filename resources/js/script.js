@@ -13,11 +13,10 @@ function myTimer() {
 
 $('.Item').dblclick(function() {
     cardID = $(this).data('card_id');
-    // console.log(cardID);
+
+    $('#OverlayContentIframe').attr('src', 'overlay.php?uuid=' + cardID);
 
     $('.Overlay').addClass('Overlay_AKTIV');
-
-    $('#showOverlayID').html('UUID = ' + cardID);
 
     $('.Item .ItemInner:not(.Item[data-card_id=' + cardID + '] .ItemInner)').addClass('ItemDisable');
     $('.Item[data-card_id=' + cardID + '] .ItemInner').addClass('ItemScale');
@@ -28,6 +27,8 @@ $('.Item').dblclick(function() {
 
 $('.overlayCloser').click(function() {
     $('.Overlay').removeClass('Overlay_AKTIV');
+
+    $('#OverlayContentIframe').attr('src', '');
 
     $('.Item .ItemInner:not(.Item[data-card_id=' + cardID + '] .ItemInner)').removeClass('ItemDisable');
     $('.Item[data-card_id=' + cardID + '] .ItemInner').removeClass('ItemScale');

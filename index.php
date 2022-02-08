@@ -11,6 +11,7 @@
     <?php
       include 'resources/php/db.php';
       include 'resources/php/script.php';
+      // include 'resources/php/db_functions.php';
 
       $DEFAULT_IMAGE = 'resources/img/test.svg';
       $IMAGE_UPLOAD_PATH = 'resources/uploads/img/';
@@ -21,11 +22,13 @@
 
     <div class="Overlay">
       <div class="OverlayNav">
-        <i class="icon-arrow-left2 overlayCloser"></i>
-      </div>
-      <div class="OverlayContent">
-        <p id="showOverlayID">ID</p>
 
+        <i class="icon-arrow-left2 overlayCloser"></i>
+
+      </div>
+      <div class="OverlayContent" id="OverlayContent">
+
+        <iframe id="OverlayContentIframe"></iframe>
 
       </div>
     </div>

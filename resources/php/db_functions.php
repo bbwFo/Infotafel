@@ -13,7 +13,35 @@
 
 
 
-function file_save(string $PATH, $FILE, $UUID)
+// function file_save(string $PATH, $FILE, $UUID)
+// {
+//   $FILENAME = $FILE['name'];
+//
+//   $PATHTOFILE = $PATH.$FILENAME;
+//
+//   $FILETYPE = pathinfo($PATHTOFILE, PATHINFO_EXTENSION);
+//   $FILETYPE = strtolower($FILETYPE);
+//
+//   $VALIDTYPES = array("jpg","jpeg","png","gif","pdf");
+//
+//   $RESPONDE = 0;
+//
+//   if(in_array(strtolower($FILETYPE), $VALIDTYPES))
+//   {
+//     $NEWFILE = rename($FILE['tmp_name'], $UUID.'.'.$FILETYPE);
+//
+//     if(move_uploaded_file($NEWFILE, $PATHTOFILE))
+//     {
+//       $RESPONDE = $PATHTOFILE;
+//
+//
+//
+//       return $UUID.'.'.$FILETYPE;
+//     }
+//   }
+// }
+
+function file_save(string $PATH, $FILE, string $UUID)
 {
   $FILENAME = $FILE['name'];
 
@@ -22,17 +50,15 @@ function file_save(string $PATH, $FILE, $UUID)
   $FILETYPE = pathinfo($PATHTOFILE, PATHINFO_EXTENSION);
   $FILETYPE = strtolower($FILETYPE);
 
-  $VALIDTYPES = array("jpg","jpeg","png","gif");
+  $VALIDTYPES = array("jpg","jpeg","png","gif","pdf");
 
   $RESPONDE = 0;
 
   if(in_array(strtolower($FILETYPE), $VALIDTYPES))
   {
-    if(move_uploaded_file($_FILES['file']['tmp_name'], $PATHTOFILE))
+    if(move_uploaded_file($FILE['tmp_name'], $PATH.$UUID.'.'.$FILETYPE))
     {
       $RESPONDE = $PATHTOFILE;
-
-      rename($PATHTOFILE, $PATH.$UUID.'.'.$FILETYPE);
 
       return $UUID.'.'.$FILETYPE;
     }
@@ -137,7 +163,7 @@ function get_value(string $TABLE, string $UUID, string $DATA)
 
   foreach ($RESULT as $VALUE)
   {
-    $RETURN = $VALUE["username"];
+    $RETURN = $VALUE[$DATA];
   }
 
   return $RETURN;
@@ -367,7 +393,7 @@ function gen_uuid()
       $UUID_CODE .= $ZEICHEN[rand(0, $ZEICHEN_LENGTH - 1)];
     }
 
-    $ZEILE = $db -> prepare("SELECT * FROM user WHERE uuid = '$UUID_CODE'");
+    $ZEILE = $db -> prepare("SELECT * FROM cards WHERE uuid = '$UUID_CODE'");
     $ZEILE -> execute();
     $RESULT = $ZEILE -> fetchAll();
     $EXSIST = count($RESULT);

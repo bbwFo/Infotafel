@@ -1,0 +1,89 @@
+@import "../fonts/iconfont-v1.0/style.css";
+
+
+@font-face {
+  font-family: "iconfont";
+  src: url(../fonts/iconfont-v1.0/fonts/iconfont.ttf);
+}
+@font-face {
+  font-family: "ubuntu-bold";
+  src: url(../fonts/ubuntu-bold.ttf);
+}
+@font-face {
+  font-family: "ubuntu-lightitalic";
+  src: url(../fonts/ubuntu-lightitalic.ttf);
+}
+@font-face {
+  font-family: "ubuntu-medium";
+  src: url(../fonts/ubuntu-medium.ttf);
+}
+@font-face {
+  font-family: "ubuntu-regular";
+  src: url(../fonts/ubuntu-regular.ttf);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -ms-user-select: None;
+  -moz-user-select: None;
+  -webkit-user-select: None;
+  user-select: None;
+  font-family: "ubuntu-regular";
+
+}
+
+body iframe {
+  outline: none;
+  border: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+
+:root {
+  --white:                       rgba(238, 238, 238, 1);
+  --green:                       rgba(20, 193, 89, 1);
+  --blue:                        rgba(18, 115, 235, 1);
+  --diamondblue:                 rgba(185, 242, 255, 1);
+  --yellow:                      rgba(255, 229, 41, 1);
+  --orange:                      rgba(255, 133, 27, 1);
+  --red:                         rgba(244, 67, 54, 1);
+  --purple:                      rgba(177, 13, 201, 1);
+  --lightgrey:                   rgba(153, 153, 153, 1);
+  --grey:                        rgba(96, 96, 96, 1);
+  --darkgrey:                    rgba(51, 51, 51, 1);
+  --black:                       rgba(17, 17, 17, 1);
+
+  --navHeight: 30px;
+
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--darkgrey);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--grey);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--lightgrey);
+}
