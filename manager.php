@@ -105,32 +105,7 @@
       <div class="MainItem" delete><i class="icon-delete"></i><p>Löschen</p></div> -->
 
 
-      <?php
-        // if (isset($_FILES['pdf']['name']))
-        // {
-        //   $UUID = gen_uuid();
-        //
-        //   echo file_save('resources/uploads/img/', $_FILES['pdf'], $UUID);
-        //
-        //   // db_add('content', array(
-        //   //   'uuid' => $UUID,
-        //   //   'pdf' => $PDF_NAME
-        //   // ));
-        //
-        // }
 
-
-
-
-
-
-      ?>
-
-      <!-- <form method='post' accept-charset='UTF-8' enctype="multipart/form-data">
-        <input type="file" name="pdf" />
-        <br>
-        <button type="submit" id="upload">Eintrag anlegen</button>
-      </form> -->
 
 
       <?php
@@ -158,7 +133,7 @@
             'uuid' => $UUID,
             'pdf' => $PDF_NAME,
             'url' => $_POST["url"],
-            'html' => $_POST["html"]
+            'html' => htmlentities($_POST["html"])
           ));
 
         }
@@ -179,52 +154,42 @@
 
           <div class="Modal_Content">
             <div class="Modal_Content_Menu">
-              <label class="container"onclick='window.location.assign("#Box1")'>
-                <input type="radio" checked="checked" name="radio">
-                <div class="checkmark"><p>Titel</p></div>
+              <label class="container" onclick='window.location.assign("#Box1")'>
+                <input type="radio" name="radio" checked>
+                <div class="checkmark"><p>Titel & Beschreibung</p></div>
               </label>
 
-              <label class="container"onclick='window.location.assign("#Box2")'>
-                <input type="radio" name="radio">
-                <div class="checkmark"><p>Beschreibung</p></div>
-              </label>
-
-              <label class="container"onclick='window.location.assign("#Box3")'>
+              <label class="container" onclick='window.location.assign("#Box2")'>
                 <input type="radio" name="radio">
                 <div class="checkmark"><p>Reihe</p></div>
               </label>
 
-              <label class="container"onclick='window.location.assign("#Box4")'>
+              <label class="container" onclick='window.location.assign("#Box3")'>
                 <input type="radio" name="radio">
-                <div class="checkmark"><p>Icon</p></div>
+                <div class="checkmark"><p>Icon & Farbe</p></div>
               </label>
 
-              <label class="container"onclick='window.location.assign("#Box5")'>
-                <input type="radio" name="radio">
-                <div class="checkmark"><p>Farbe</p></div>
-              </label>
-
-              <label class="container"onclick='window.location.assign("#Box6")'>
+              <label class="container" onclick='window.location.assign("#Box4")'>
                 <input type="radio" name="radio">
                 <div class="checkmark"><p>Termin (optional)</p></div>
               </label>
 
-              <label class="container"onclick='window.location.assign("#Box7")'>
+              <label class="container" onclick='window.location.assign("#Box5")'>
                 <input type="radio" name="radio">
-                <div class="checkmark"><p>Kacheltype</p></div>
+                <div class="checkmark"><p>Aussehen</p></div>
               </label>
 
-              <label class="container"onclick='window.location.assign("#Box8")'>
+              <label class="container" onclick='window.location.assign("#Box6")'>
                 <input type="radio" name="radio">
                 <div class="checkmark"><p>Hintergrungbild</p></div>
               </label>
 
-              <label class="container"onclick='window.location.assign("#Box9")'>
+              <label class="container" onclick='window.location.assign("#Box7")'>
                 <input type="radio" name="radio">
                 <div class="checkmark"><p>Content</p></div>
               </label>
 
-              <label class="container"onclick='window.location.assign("#Box10")'>
+              <label class="container" onclick='window.location.assign("#Box8")'>
                 <input type="radio" name="radio">
                 <div class="checkmark"><p>Fertigstellen</p></div>
               </label>
@@ -237,61 +202,82 @@
                 <div class="ModalContentBodyItem" id="Box1">
                   <p>Titel</p>
                   <input type="text" name="titel" value="">
-                </div>
-
-                <div class="ModalContentBodyItem" id="Box2">
                   <p>Beschreibung</p>
                   <textarea name="description" rows="4" cols="20"></textarea>
                 </div>
 
-                <div class="ModalContentBodyItem" id="Box3">
+                <div class="ModalContentBodyItem" id="Box2">
                   <p>Reihe</p>
+                  <p class="info">Lege hier den bereich fest in den die Kachel angezeigt werden soll.<br>Die 1 Reihe befindet sich ganz Oben.<br>Die Zahl der Items Zeigt wie viele Kacheln sich gleichzeitig in einer Reihe befinden.</p>
                   <select name="row"><?php foreach (get_all_values('areas') as $VAR) {?><option value="<?php echo $VAR["row"]; ?>"><?php echo $VAR["row"]; ?> Reihe (<?php echo $VAR["items"] ?> Items)</option><?php } ?></select>
                 </div>
 
-                <div class="ModalContentBodyItem" id="Box4">
+                <div class="ModalContentBodyItem" id="Box3">
                   <p>Icon</p>
                   <select name="icon"><?php foreach (get_all_values('icons') as $VAR) {?><option value="<?php echo $VAR["unicode"]; ?>"><?php echo $VAR["unicode"]; ?> <?php echo $VAR["name"] ?></option><?php } ?></select>
-                </div>
-
-                <div class="ModalContentBodyItem" id="Box5">
                   <p>Farbe</p>
                   <input type="color" name="color" value="#ffffff">
                 </div>
 
-                <div class="ModalContentBodyItem" id="Box6">
+
+                <div class="ModalContentBodyItem" id="Box4">
                   <p>Termin festlegen (optional)</p>
                   <p class="info">Es muss kein Termin angegeben werden. Das Datum ist auf der Kachel groß dargestellt.</p>
                   <input type="date" name="termin" value="">
                 </div>
 
-                <div class="ModalContentBodyItem" id="Box7">
-                  <p>Kachel-Typ (deaktiviert bei Termin)</p>
+                <div class="ModalContentBodyItem" id="Box5">
+                  <p>Aussehen (deaktiviert bei Termin)</p>
                   <p class="info">Ändert das Aussehen einer Kachel. (Wird deaktiviert wenn ein Termin festgelegt wurde)</p>
                   <select name="style"><?php foreach (get_all_values('style') as $VAR) { ?><option value="<?php echo $VAR['style'] ?>"><?php echo $VAR['style'] ?> <?php echo $VAR['name'] ?> (<?php echo $VAR['description'] ?>)</option><?php } ?></select>
                 </div>
 
+                <div class="ModalContentBodyItem" id="Box6">
+                  <p>Hintergrundbild (optional)</p>
+                  <p class="info">Lege ein Hintergrund bild für die Kachel fest.<br>(.JPG, .JPEG, .PNG und .GIF sind erlaubt!)</p>
+                  <input  id="BgInput" type="file" name="file" onchange="readURL(this);" />
+                  <div class="ImagePrevBox" id="ImagePrevBox">
+                    <label for="BgInput"></label>
+                    <img id="ImagePrev" src="#" />
+                  </div>
+                </div>
+
+
+                <div class="ModalContentBodyItem" id="Box7">
+
+                  <group>
+                    <div class="input-container">
+                      <input  onclick='window.location.assign("#ContentBox1")' type="radio" name="contentswitch" checked><label>PDF</label>
+                    </div>
+                    <div class="input-container">
+                      <input  onclick='window.location.assign("#ContentBox2")' type="radio" name="contentswitch"><label>URL</label>
+                    </div>
+                    <div class="input-container">
+                      <input  onclick='window.location.assign("#ContentBox3")' type="radio" name="contentswitch"><label>HTML</label>
+                    </div>
+                  </group>
+
+
+                  <div class="ContentTypeBox">
+                    <div class="ContentTypeBoxItem" id="ContentBox1">
+                      <p class="info">Es kann nur eine PDF-Datei hochgeladen werden die größe der Datei ist aber egal!</p>
+                      <input type="file" name="pdf" />
+                    </div>
+                    <div class="ContentTypeBoxItem" id="ContentBox2">
+                      <p class="info">Nicht alle Webseiten Akzeptieren eine verbindung über einen iframe!</p>
+                      <input type="url" name="url" value="" placeholder="https://open.mediadrake.net">
+                    </div>
+                    <div class="ContentTypeBoxItem" id="ContentBox3">
+                      <textarea name="html" rows="10" cols="20" placeholder="<h1>Hello World!<h1><br><p style='color:green;'>My Name is Askylan! aka. HeavyMountainMax<p>"></textarea>
+                    </div>
+                  </div>
+
+
+                </div>
+
                 <div class="ModalContentBodyItem" id="Box8">
-                  <p>Hintergrundbild</p>
-                  <p class="info">Lege ein Hintergrund bild für die Kachel fest (.jpg, .jpeg, .png, .gif)</p>
-                  <input type="file" name="file" />
-                </div>
-
-
-                <div class="ModalContentBodyItem" id="Box9">
-                  <p>PDF</p>
-                  <input type="file" name="pdf" />
-                  <p>URL</p>
-                  <input type="url" name="url" value="">
-                  <p>HTML</p>
-                  <textarea name="html" rows="4" cols="20"></textarea>
-                </div>
-
-                <div class="ModalContentBodyItem" id="Box10">
                   <button type="submit" id="upload">Eintrag anlegen</button>
                 </div>
-
-
 
               </form>
 
