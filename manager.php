@@ -169,25 +169,33 @@
                 <div class="checkmark"><p>Icon & Farbe</p></div>
               </label>
 
-              <label class="container" onclick='window.location.assign("#Box4")'>
-                <input type="radio" name="radio">
-                <div class="checkmark"><p>Termin (optional)</p></div>
-              </label>
+
 
               <label class="container" onclick='window.location.assign("#Box5")'>
                 <input type="radio" name="radio">
                 <div class="checkmark"><p>Aussehen</p></div>
               </label>
 
+              <label class="container" onclick='window.location.assign("#Box7")'>
+                <input type="radio" name="radio">
+                <div class="checkmark"><p>Content</p></div>
+              </label>
+
+              <hr>
+
               <label class="container" onclick='window.location.assign("#Box6")'>
                 <input type="radio" name="radio">
                 <div class="checkmark"><p>Hintergrungbild</p></div>
               </label>
 
-              <label class="container" onclick='window.location.assign("#Box7")'>
+              <label class="container" onclick='window.location.assign("#Box4")'>
                 <input type="radio" name="radio">
-                <div class="checkmark"><p>Content</p></div>
+                <div class="checkmark"><p>Termin</p></div>
               </label>
+
+
+
+              <hr>
 
               <label class="container" onclick='window.location.assign("#Box8")'>
                 <input type="radio" name="radio">
@@ -201,15 +209,15 @@
 
                 <div class="ModalContentBodyItem" id="Box1">
                   <p>Titel</p>
-                  <input type="text" name="titel" value="">
+                  <input type="text" name="titel" value="" autocomplete="off">
                   <p>Beschreibung</p>
                   <textarea name="description" rows="4" cols="20"></textarea>
                 </div>
 
                 <div class="ModalContentBodyItem" id="Box2">
                   <p>Reihe</p>
-                  <p class="info">Lege hier den bereich fest in den die Kachel angezeigt werden soll.<br>Die 1 Reihe befindet sich ganz Oben.<br>Die Zahl der Items Zeigt wie viele Kacheln sich gleichzeitig in einer Reihe befinden.</p>
-                  <select name="row"><?php foreach (get_all_values('areas') as $VAR) {?><option value="<?php echo $VAR["row"]; ?>"><?php echo $VAR["row"]; ?> Reihe (<?php echo $VAR["items"] ?> Items)</option><?php } ?></select>
+                  <p class="info">Lege hier den bereich fest in den die Kachel angezeigt werden soll.<br>Die Level 1 befindet sich ganz Oben.<br>Die Zahl der Items Zeigt wie viele Kacheln sich gleichzeitig in einer Reihe befinden.</p>
+                  <select name="row"><?php foreach (get_all_values('areas') as $VAR) {?><option value="<?php echo $VAR["row"]; ?>">Level <?php echo $VAR["row"]; ?> - <?php echo $VAR["items"] ?> Kacheln</option><?php } ?></select>
                 </div>
 
                 <div class="ModalContentBodyItem" id="Box3">
@@ -221,7 +229,7 @@
 
 
                 <div class="ModalContentBodyItem" id="Box4">
-                  <p>Termin festlegen (optional)</p>
+                  <p>Termin festlegen</p>
                   <p class="info">Es muss kein Termin angegeben werden. Das Datum ist auf der Kachel groß dargestellt.</p>
                   <input type="date" name="termin" value="">
                 </div>

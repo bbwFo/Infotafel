@@ -531,8 +531,8 @@ form p.info
 
 
 .Modal {
-  width: 600px;
-  height: 400px;
+  width: 700px;
+  height: 500px;
   position: relative;
   border-radius: 8px;
   overflow: hidden;
@@ -609,6 +609,16 @@ form p.info
   padding: 10px 0px;
   box-sizing: border-box;
 }
+.Modal_Content_Menu hr {
+  width: calc(100% - 25px);
+  height: 2px;
+  background: #333;
+  outline: none;
+  border: none;
+  margin: 10px 0px;
+
+}
+
 .ModalContentBody {
 
   height: 356px;
