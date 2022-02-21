@@ -40,6 +40,28 @@
 
 
 
+
+
+
+
+function gen_session($TABLE, string $UUID)
+{
+  session_start();
+
+  if (is_array($TABLE))
+  {
+    foreach ($TABLE as $TABELS) { $_SESSION[$TABELS] = db_all_values($TABELS, $UUID); }
+  }
+  else
+  {
+    $_SESSION[$TABLE] = db_all_values($TABLE, $UUID);
+  }
+
+
+}
+
+
+
 // function get_uuid(string $USERNAME, string $PASSWORD)
 // {
 //   $QUERY = $db -> prepare("SELECT username = '$USERNAME' FROM user");
@@ -85,7 +107,15 @@ function random_color(int $OPACITY)
 function gen_gradient()
 {
 
-  $COLORS = array("rgba(020, 193, 089, 0.6)","rgba(018, 115, 235, 0.6)","rgba(185, 242, 255, 0.6)","rgba(255, 229, 041, 0.6)","rgba(255, 133, 027, 0.6)","rgba(244, 067, 054, 0.6)","rgba(177, 013, 201, 0.6)");
+  $COLORS = array(
+    "rgba(020, 193, 089, 0.6)",
+    "rgba(018, 115, 235, 0.6)",
+    "rgba(185, 242, 255, 0.6)",
+    "rgba(255, 229, 041, 0.6)",
+    "rgba(255, 133, 027, 0.6)",
+    "rgba(244, 067, 054, 0.6)",
+    "rgba(177, 013, 201, 0.6)"
+  );
 
 
   $COLOR_ONE = $COLORS[array_rand($COLORS)];
@@ -364,22 +394,22 @@ function get_cookie(string $COOKIENAME)
 
 // -----------------------------------------------------------------------------
 
-function gen_session(string $TABLE, string $UUID ,array $ROWS)
-{
-  include 'db.php';
-
-  foreach ($ROWS as $WERT)
-  {
-    $ZEILE = $db -> prepare("SELECT $WERT FROM $TABLE WHERE uuid = '$UUID'");
-    $ZEILE -> execute();
-    $RESULT = $ZEILE -> fetchAll();
-
-    foreach ($RESULT as $SESSION_VALUE)
-    {
-      $_SESSION["$WERT"] = $SESSION_VALUE["$WERT"];
-    }
-  }
-}
+// function gen_session(string $TABLE, string $UUID ,array $ROWS)
+// {
+//   include 'db.php';
+//
+//   foreach ($ROWS as $WERT)
+//   {
+//     $ZEILE = $db -> prepare("SELECT $WERT FROM $TABLE WHERE uuid = '$UUID'");
+//     $ZEILE -> execute();
+//     $RESULT = $ZEILE -> fetchAll();
+//
+//     foreach ($RESULT as $SESSION_VALUE)
+//     {
+//       $_SESSION["$WERT"] = $SESSION_VALUE["$WERT"];
+//     }
+//   }
+// }
 
 // -----------------------------------------------------------------------------
 

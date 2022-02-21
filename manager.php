@@ -41,6 +41,8 @@
 
 
 
+
+
         // db_create_table('test', array(
         //   'id'        => 'INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY',
         //   'nachname'  => 'VARCHAR( 150 ) NOT NULL',
@@ -70,7 +72,7 @@
 
       ?>
 
-      
+
 
 
       <?php
