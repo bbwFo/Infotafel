@@ -33,11 +33,50 @@
 // psw_very()
 // psw_hash()
 
-
-
 // ____
 
 
+// get_uuid()
+
+
+
+// function get_uuid(string $USERNAME, string $PASSWORD)
+// {
+//   $QUERY = $db -> prepare("SELECT username = '$USERNAME' FROM user");
+//   $QUERY -> execute();
+//   $EXIST = $QUERY -> fetchAll();
+//
+//   if ($EXIST)
+//   {
+//     $ZEILE = $db -> prepare("SELECT password FROM user WHERE username = '$USERNAME'");
+//     $ZEILE -> execute();
+//     $RESULT = $ZEILE -> fetchAll();
+//
+//     foreach ($RESULT as $VALUE)
+//     {
+//       $HASHED_PASSWORD = $VALUE["password"];
+//     }
+//
+//     if (password_verify($PASSWORD, $HASHED_PASSWORD))
+//     {
+//       $ZEILE = $db -> prepare("SELECT uuid FROM user WHERE username = '$USERNAME'");
+//       $ZEILE -> execute();
+//       $RESULT = $ZEILE -> fetchAll();
+//
+//       foreach ($RESULT as $VALUE)
+//       {
+//         return $UUID = $VALUE["uuid"];
+//       }
+//     }
+//
+//
+//   }
+// }
+
+function random_color(int $OPACITY)
+{
+  return 'rgba('.rand(0,255).','.rand(0,255).','.rand(0,255).','.$OPACITY.')';
+}
 
 
 
