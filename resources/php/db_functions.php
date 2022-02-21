@@ -2,8 +2,40 @@
 // ASKYLAN PHP FUNCTIONS-KIT
 
 
-// session_start();
-// session_destroy();
+
+// save_file()
+
+// db_create_table() - ok
+// db_add() - ok
+// db_update() - ok
+// db_delete() - ok
+// db_all_values() - ok
+
+// db_count()
+
+// get_values()
+// get_value()
+// get_all_values()
+
+
+// gen_session()
+// gen_username()
+// gen_very()
+// gen_uuid()
+// gen_gradient()
+
+// set_cookie() - ok
+// del_cookie() - ok
+// get_cookie() - ok
+
+
+
+// psw_very()
+// psw_hash()
+
+
+
+// ____
 
 
 
@@ -11,37 +43,28 @@
 
 
 
+function gen_gradient()
+{
+
+  $COLORS = array("rgba(020, 193, 089, 0.6)","rgba(018, 115, 235, 0.6)","rgba(185, 242, 255, 0.6)","rgba(255, 229, 041, 0.6)","rgba(255, 133, 027, 0.6)","rgba(244, 067, 054, 0.6)","rgba(177, 013, 201, 0.6)");
 
 
-// function file_save(string $PATH, $FILE, $UUID)
-// {
-//   $FILENAME = $FILE['name'];
-//
-//   $PATHTOFILE = $PATH.$FILENAME;
-//
-//   $FILETYPE = pathinfo($PATHTOFILE, PATHINFO_EXTENSION);
-//   $FILETYPE = strtolower($FILETYPE);
-//
-//   $VALIDTYPES = array("jpg","jpeg","png","gif","pdf");
-//
-//   $RESPONDE = 0;
-//
-//   if(in_array(strtolower($FILETYPE), $VALIDTYPES))
-//   {
-//     $NEWFILE = rename($FILE['tmp_name'], $UUID.'.'.$FILETYPE);
-//
-//     if(move_uploaded_file($NEWFILE, $PATHTOFILE))
-//     {
-//       $RESPONDE = $PATHTOFILE;
-//
-//
-//
-//       return $UUID.'.'.$FILETYPE;
-//     }
-//   }
-// }
+  $COLOR_ONE = $COLORS[array_rand($COLORS)];
 
-function file_save(string $PATH, $FILE, string $UUID)
+  do
+  {
+    $COLOR_TWO = $COLORS[array_rand($COLORS)];
+  }
+  while ($COLOR_ONE == $COLOR_TWO);
+
+  return "style='background: linear-gradient(".rand(0,360)."deg, ".$COLOR_ONE." 0%, ".$COLOR_TWO." 100%)'";
+}
+
+
+
+
+
+function save_file(string $PATH, $FILE, string $UUID)
 {
   $FILENAME = $FILE['name'];
 
@@ -66,6 +89,81 @@ function file_save(string $PATH, $FILE, string $UUID)
 }
 
 
+
+
+
+
+
+// create_db_table('test', array(
+//   'id'        => 'INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY',
+//   'nachname'  => 'VARCHAR( 150 ) NOT NULL',
+//   'vorname'   => 'VARCHAR( 150 ) NOT NULL',
+//   'akuerzel'  => 'VARCHAR( 2 ) NOT NULL',
+//   'strasse'   => 'VARCHAR( 150 ) NULL',
+//   'plz'       => 'INT( 5 ) NOT NULL',
+//   'telefon'   => 'VARCHAR( 20 ) NULL'
+// ));
+
+function db_create_table(string $TABLE, array $OPTIONS)
+{
+  include 'db.php';
+
+  $STRING = '';
+
+  foreach ($OPTIONS as $INDEX => $VALUE) {
+
+    if ($VALUE == end($OPTIONS))
+    {
+      $STRING .= "`".$INDEX."` ".$VALUE."";
+    }
+    else
+    {
+      $STRING .= "`".$INDEX."` ".$VALUE.", ";
+    }
+
+  }
+
+  $NEW_TABLE = $db -> prepare("CREATE TABLE IF NOT EXISTS `$TABLE` ( $STRING )");
+
+  $NEW_TABLE -> execute();
+
+}
+
+
+
+
+
+
+
+
+
+function db_all_values(string $TABLE, string $UUID)
+{
+  include 'db.php';
+
+  $ARRAY = array();
+
+  // ROW NAMES
+  $QUERY1 = $db -> prepare("DESCRIBE $TABLE");
+  $QUERY1 -> execute();
+  $RESULT1 = $QUERY1 -> fetchAll(PDO::FETCH_COLUMN);
+
+  // ROW DATA
+  $QUERY2 = $db -> prepare("SELECT * FROM $TABLE WHERE uuid = '$UUID'");
+  $QUERY2 -> execute();
+  $RESULT2 = $QUERY2 -> fetchAll();
+
+
+  foreach ($RESULT1 as $INDEX)
+  {
+    foreach (array_values($RESULT2) as $VALUE)
+    {
+      $ARRAY += array($INDEX => $VALUE[$INDEX]);
+    }
+  }
+
+  return $ARRAY;
+}
 
 
 
@@ -186,7 +284,7 @@ function get_all_values(string $TABLE)
 
 // -----------------------------------------------------------------------------
 
-function gen_cookie(string $COOKIENAME, int $DAYS, string $COOKIEDATA)
+function set_cookie(string $COOKIENAME, int $DAYS, string $COOKIEDATA)
 {
   if (isset($_COOKIE[$COOKIENAME]))
   {

@@ -10,10 +10,7 @@
     <?php
       session_start();
 
-      if ($_SESSION["login"] == 0)
-      {
-        header("Location: login.php");
-      }
+      if ($_SESSION["login"] == 0) { header("Location: login.php"); }
     ?>
 
     <?php include 'resources/php/db.php' ?>
@@ -23,71 +20,6 @@
 
 
 
-
-    <!-- <div class="DatabaseTable">
-      <?php
-      foreach (get_all_values('cards') as $VALUE)
-      {
-
-        ?><div class="DatabaseTableRow">
-            <input type="text" name="" value="<?php echo $VALUE["titel"] ?>">
-            <input type="text" name="" value="<?php echo $VALUE["description"] ?>">
-            <select name="">
-              <?php
-              foreach (get_all_values('areas') as $DB_VALUE)
-              {
-                if ($DB_VALUE["row"] == $VALUE["row"])
-                {
-                  ?><option value="<?php echo $DB_VALUE["row"] ?>" selected><?php echo $DB_VALUE["row"] ?></option><?php
-                }
-                else
-                {
-                  ?><option value="<?php echo $DB_VALUE["row"] ?>"><?php echo $DB_VALUE["row"] ?></option><?php
-                }
-              }
-              ?>
-            </select>
-            <select name="">
-              <?php
-              foreach (get_all_values('icons') as $DB_VALUE)
-              {
-                if ($DB_VALUE["unicode"] == $VALUE["icon"])
-                {
-                  ?><option value="<?php echo $DB_VALUE["unicode"] ?>" selected><?php echo $DB_VALUE["unicode"] ?> <?php echo $DB_VALUE["name"] ?></option><?php
-                }
-                else
-                {
-                  ?><option value="<?php echo $DB_VALUE["unicode"] ?>"><?php echo $DB_VALUE["unicode"] ?> <?php echo $DB_VALUE["name"] ?></option><?php
-                }
-              }
-              ?>
-            </select>
-            <input type="color" name="" value="<?php echo $VALUE["color"] ?>">
-            <select name="">
-              <?php
-              foreach (get_all_values('style') as $DB_VALUE)
-              {
-                if ($DB_VALUE["style"] == $VALUE["style"])
-                {
-                  ?><option value="<?php echo $DB_VALUE["style"] ?>" selected><?php echo $DB_VALUE["style"] ?> <?php echo $DB_VALUE["name"] ?> (<?php echo $DB_VALUE["description"] ?>)</option><?php
-                }
-                else
-                {
-                  ?><option value="<?php echo $DB_VALUE["style"] ?>"><?php echo $DB_VALUE["style"] ?> <?php echo $DB_VALUE["name"] ?> (<?php echo $DB_VALUE["description"] ?>)</option><?php
-                }
-              }
-              ?>
-            </select>
-            <input type="date" name="" value="<?php echo $VALUE["termin"] ?>">
-
-            <input type="file" name="" value="">
-
-            <i class="icon-save"></i>
-            <i class="icon-delete"></i>
-
-          </div><?php
-      } ?>
-    </div> -->
 
 
 
@@ -105,15 +37,46 @@
       <div class="MainItem" delete><i class="icon-delete"></i><p>Löschen</p></div> -->
 
 
+      <?php
 
+
+
+        // db_create_table('test', array(
+        //   'id'        => 'INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY',
+        //   'nachname'  => 'VARCHAR( 150 ) NOT NULL',
+        //   'vorname'   => 'VARCHAR( 150 ) NOT NULL',
+        //   'akuerzel'  => 'VARCHAR( 2 ) NOT NULL',
+        //   'strasse'   => 'VARCHAR( 150 ) NULL',
+        //   'plz'       => 'INT( 5 ) NOT NULL',
+        //   'telefon'   => 'VARCHAR( 20 ) NULL'
+        // ));
+
+        // db_add('test', array(
+        //   'id'        => '',
+        //   'nachname'  => 'ergerg',
+        //   'vorname'   => 'adfvfgsffc',
+        //   'akuerzel'  => 'rr',
+        //   'strasse'   => 'adthathaeth',
+        //   'plz'       => '23444',
+        //   'telefon'   => '5472345134'
+        // ));
+
+
+
+        // $CARD = db_all_values('cards', 'V6aqlTcjngYKvsnl2PZsA4Qee7eU4Q');
+        //
+        // echo $CARD['background'];
+
+
+      ?>
+
+      
 
 
       <?php
-        if (isset($_POST["titel"]) && isset($_POST["description"]) && isset($_POST["row"]) && isset($_POST["icon"]) && isset($_POST["color"]) && isset($_POST["style"]) && isset($_FILES['file']['name']))
+        if (isset($_POST["titel"]) && isset($_POST["description"]) && isset($_POST["row"]) && isset($_POST["icon"]) && isset($_POST["color"]) && isset($_POST["style"]) && isset($_FILES['background']['name']) && isset($_POST['url']) && isset($_POST['html']))
         {
           $UUID = gen_uuid();
-
-          $BACKGROUND_NAME = file_save('resources/uploads/img/', $_FILES['file'], $UUID);
 
           db_add('cards', array(
             'uuid' => $UUID,
@@ -124,14 +87,12 @@
             'color' => $_POST["color"],
             'style' => $_POST["style"],
             'termin' => $_POST["termin"],
-            'background' => $BACKGROUND_NAME
+            'background' => save_file('resources/uploads/img/', $_FILES['background'], $UUID)
           ));
-
-          $PDF_NAME = file_save('resources/uploads/pdf/', $_FILES['pdf'], $UUID);
 
           db_add('content', array(
             'uuid' => $UUID,
-            'pdf' => $PDF_NAME,
+            'pdf' => save_file('resources/uploads/pdf/', $_FILES['pdf'], $UUID),
             'url' => $_POST["url"],
             'html' => htmlentities($_POST["html"])
           ));
@@ -193,8 +154,6 @@
                 <div class="checkmark"><p>Termin</p></div>
               </label>
 
-
-
               <hr>
 
               <label class="container" onclick='window.location.assign("#Box8")'>
@@ -216,7 +175,7 @@
 
                 <div class="ModalContentBodyItem" id="Box2">
                   <p>Reihe</p>
-                  <p class="info">Lege hier den bereich fest in den die Kachel angezeigt werden soll.<br>Die Level 1 befindet sich ganz Oben.<br>Die Zahl der Items Zeigt wie viele Kacheln sich gleichzeitig in einer Reihe befinden.</p>
+                  <p class="info">Lege hier den bereich fest in den die Kachel angezeigt wird.<br>Das 1. Level befindet sich ganz Oben auf dem Bildschirm.<br>Die Zahl der Kacheln in den optionen zeigt an wie viele Kacheln sich in den Level auf einer Seite im Sichtbereich gleichzeitig befinden.</p>
                   <select name="row"><?php foreach (get_all_values('areas') as $VAR) {?><option value="<?php echo $VAR["row"]; ?>">Level <?php echo $VAR["row"]; ?> - <?php echo $VAR["items"] ?> Kacheln</option><?php } ?></select>
                 </div>
 
@@ -229,7 +188,7 @@
 
 
                 <div class="ModalContentBodyItem" id="Box4">
-                  <p>Termin festlegen</p>
+                  <p>Termin festlegen (optional)</p>
                   <p class="info">Es muss kein Termin angegeben werden. Das Datum ist auf der Kachel groß dargestellt.</p>
                   <input type="date" name="termin" value="">
                 </div>
@@ -242,7 +201,7 @@
 
                 <div class="ModalContentBodyItem" id="Box6">
                   <p>Hintergrundbild (optional)</p>
-                  <p class="info">Lege ein Hintergrund bild für die Kachel fest.<br>(.JPG, .JPEG, .PNG und .GIF sind erlaubt!)</p>
+                  <p class="info">Klicke auf den Kasten und lege ein Hintergrund bild für die gesamte Kachel fest.<br>(Nur .jpg, .jpeg, .png und .gif sind erlaubt!)</p>
                   <input  id="BgInput" type="file" name="file" onchange="readURL(this);" />
                   <div class="ImagePrevBox" id="ImagePrevBox">
                     <label for="BgInput"></label>
