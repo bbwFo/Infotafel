@@ -70,13 +70,26 @@
         // echo $CARD['background'];
 
 
+        // echo gen_uuid_by('content','20','default');
+
       ?>
 
 
 
 
       <?php
-        if (isset($_POST["titel"]) && isset($_POST["description"]) && isset($_POST["row"]) && isset($_POST["icon"]) && isset($_POST["color"]) && isset($_POST["style"]) && isset($_FILES['background']['name']) && isset($_POST['url']) && isset($_POST['html']))
+        if (
+          isset($_POST["titel"]) &&
+          isset($_POST["description"]) &&
+          isset($_POST["row"]) &&
+          isset($_POST["icon"]) &&
+          isset($_POST["color"]) &&
+          isset($_POST["style"]) &&
+          isset($_FILES['background']['name']) &&
+          isset($_FILES['pdf']['name']) && 
+          isset($_POST['url']) &&
+          isset($_POST['html'])
+          )
         {
           $UUID = gen_uuid();
 

@@ -3,15 +3,14 @@
 
 
 
-// save_file()
+// save_file() - ok
 
 // db_create_table() - ok
 // db_add() - ok
 // db_update() - ok
 // db_delete() - ok
 // db_all_values() - ok
-
-// db_count()
+// db_count() - ok
 
 // get_values()
 // get_value()
@@ -22,6 +21,7 @@
 // gen_username()
 // gen_very()
 // gen_uuid()
+// gen_uuid_by()
 // gen_gradient()
 
 // set_cookie() - ok
@@ -37,6 +37,43 @@
 
 
 // get_uuid()
+// format()
+
+// math_procent()
+
+
+
+
+
+
+function gen_uuid_by(string $TABLE, int $LENGHT, string $ZEICHENSATZ)
+{
+  if ($ZEICHENSATZ != 'default')
+  {
+    $ZEICHEN = $ZEICHENSATZ;
+  }
+  else
+  {
+    $ZEICHEN = '0123456789'.'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.'abcdefghijklmnopqrstuvwxyz';
+  }
+
+  do
+  {
+    $ZEICHEN_LENGTH = strlen($ZEICHEN);
+    $UUID_CODE = '';
+
+    for ($i = 0; $i < $LENGHT; $i++)
+    {
+      $UUID_CODE .= $ZEICHEN[rand(0, $ZEICHEN_LENGTH - 1)];
+    }
+  }
+  while (db_count('content', 'uuid', htmlentities($UUID_CODE)));
+
+  return $UUID_CODE;
+}
+
+
+
 
 
 
@@ -243,9 +280,6 @@ function db_all_values(string $TABLE, string $UUID)
 
 
 
-
-
-
 function db_count(string $TABLE, string $ROW, string $TARGET)
 {
   include 'db.php';
@@ -255,8 +289,10 @@ function db_count(string $TABLE, string $ROW, string $TARGET)
   $RESULT = $ZEILE -> fetchAll();
   return count($RESULT);
 
-
 }
+
+
+
 
 
 
