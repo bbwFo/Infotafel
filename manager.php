@@ -17,18 +17,20 @@
     <?php include 'resources/php/db_functions.php' ?>
 
 
-
-
-
-
-
-
-
-
-
-
-
     <div class="Main">
+
+
+
+      <?php echo json_encode(db_get_values('cards', 'V6aqlTcjngYKvsnl2PZsA4Qee7eU4Q', array('id','color','row'))) ?>
+
+      <br><br>
+
+      <?php echo db_count('cards','id','all') ?>
+
+      <br><br>
+
+
+
 
       <a class="LogoutLink" href="manager_logout.php"><i class="icon-logout"></i></a>
       <!-- <div class="MainItem" add><i class="icon-add"></i><p>Hinzufügen</p></div>
@@ -37,47 +39,11 @@
       <div class="MainItem" delete><i class="icon-delete"></i><p>Löschen</p></div> -->
 
 
-      <?php
-
-
-
-
-
-        // db_create_table('test', array(
-        //   'id'        => 'INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY',
-        //   'nachname'  => 'VARCHAR( 150 ) NOT NULL',
-        //   'vorname'   => 'VARCHAR( 150 ) NOT NULL',
-        //   'akuerzel'  => 'VARCHAR( 2 ) NOT NULL',
-        //   'strasse'   => 'VARCHAR( 150 ) NULL',
-        //   'plz'       => 'INT( 5 ) NOT NULL',
-        //   'telefon'   => 'VARCHAR( 20 ) NULL'
-        // ));
-
-        // db_add('test', array(
-        //   'id'        => '',
-        //   'nachname'  => 'ergerg',
-        //   'vorname'   => 'adfvfgsffc',
-        //   'akuerzel'  => 'rr',
-        //   'strasse'   => 'adthathaeth',
-        //   'plz'       => '23444',
-        //   'telefon'   => '5472345134'
-        // ));
-
-
-
-        // $CARD = db_all_values('cards', 'V6aqlTcjngYKvsnl2PZsA4Qee7eU4Q');
-        //
-        // echo $CARD['background'];
-
-
-        // echo gen_uuid_by('content','20','default');
-
-      ?>
-
-
-
 
       <?php
+
+
+
         if (
           isset($_POST["titel"]) &&
           isset($_POST["description"]) &&
@@ -86,7 +52,7 @@
           isset($_POST["color"]) &&
           isset($_POST["style"]) &&
           isset($_FILES['background']['name']) &&
-          isset($_FILES['pdf']['name']) && 
+          isset($_FILES['pdf']['name']) &&
           isset($_POST['url']) &&
           isset($_POST['html'])
           )
@@ -191,12 +157,12 @@
                 <div class="ModalContentBodyItem" id="Box2">
                   <p>Reihe</p>
                   <p class="info">Lege hier den bereich fest in den die Kachel angezeigt wird.<br>Das 1. Level befindet sich ganz Oben auf dem Bildschirm.<br>Die Zahl der Kacheln in den optionen zeigt an wie viele Kacheln sich in den Level auf einer Seite im Sichtbereich gleichzeitig befinden.</p>
-                  <select name="row"><?php foreach (get_all_values('areas') as $VAR) {?><option value="<?php echo $VAR["row"]; ?>">Level <?php echo $VAR["row"]; ?> - <?php echo $VAR["items"] ?> Kacheln</option><?php } ?></select>
+                  <select name="row"><?php foreach (db_foreach_values('areas') as $VAR) {?><option value="<?php echo $VAR["row"]; ?>">Level <?php echo $VAR["row"]; ?> - <?php echo $VAR["items"] ?> Kacheln</option><?php } ?></select>
                 </div>
 
                 <div class="ModalContentBodyItem" id="Box3">
                   <p>Icon</p>
-                  <select name="icon"><?php foreach (get_all_values('icons') as $VAR) {?><option value="<?php echo $VAR["unicode"]; ?>"><?php echo $VAR["unicode"]; ?> <?php echo $VAR["name"] ?></option><?php } ?></select>
+                  <select name="icon"><?php foreach (db_foreach_values('icons') as $VAR) {?><option value="<?php echo $VAR["unicode"]; ?>"><?php echo $VAR["unicode"]; ?> <?php echo $VAR["name"] ?></option><?php } ?></select>
                   <p>Farbe</p>
                   <input type="color" name="color" value="#ffffff">
                 </div>
@@ -211,13 +177,13 @@
                 <div class="ModalContentBodyItem" id="Box5">
                   <p>Aussehen (deaktiviert bei Termin)</p>
                   <p class="info">Ändert das Aussehen einer Kachel. (Wird deaktiviert wenn ein Termin festgelegt wurde)</p>
-                  <select name="style"><?php foreach (get_all_values('style') as $VAR) { ?><option value="<?php echo $VAR['style'] ?>"><?php echo $VAR['style'] ?> <?php echo $VAR['name'] ?> (<?php echo $VAR['description'] ?>)</option><?php } ?></select>
+                  <select name="style"><?php foreach (db_foreach_values('style') as $VAR) { ?><option value="<?php echo $VAR['style'] ?>"><?php echo $VAR['style'] ?> <?php echo $VAR['name'] ?> (<?php echo $VAR['description'] ?>)</option><?php } ?></select>
                 </div>
 
                 <div class="ModalContentBodyItem" id="Box6">
                   <p>Hintergrundbild (optional)</p>
                   <p class="info">Klicke auf den Kasten und lege ein Hintergrund bild für die gesamte Kachel fest.<br>(Nur .jpg, .jpeg, .png und .gif sind erlaubt!)</p>
-                  <input  id="BgInput" type="file" name="file" onchange="readURL(this);" />
+                  <input  id="BgInput" type="file" name="background" onchange="readURL(this);" />
                   <div class="ImagePrevBox" id="ImagePrevBox">
                     <label for="BgInput"></label>
                     <img id="ImagePrev" src="#" />
@@ -276,62 +242,6 @@
 
 
 
-
-
-      <!-- <form method='post' accept-charset='UTF-8' enctype="multipart/form-data">
-
-        <p>Titel</p>
-        <input type="text" name="titel" value="">
-        <br>
-
-        <p>Beschreibung</p>
-        <textarea name="description" rows="4" cols="20"></textarea>
-        <br>
-
-        <p>Reihe</p>
-        <select name="row"><?php foreach (get_all_values('areas') as $VAR) {?><option value="<?php echo $VAR["row"]; ?>"><?php echo $VAR["row"]; ?> Reihe (<?php echo $VAR["items"] ?> Items)</option><?php } ?></select>
-        <br>
-
-        <p>Icon</p>
-        <select name="icon"><?php foreach (get_all_values('icons') as $VAR) {?><option value="<?php echo $VAR["unicode"]; ?>"><?php echo $VAR["unicode"]; ?> <?php echo $VAR["name"] ?></option><?php } ?></select>
-        <br>
-
-        <p>Farbe</p>
-        <input type="color" name="color" value="#ffffff">
-        <br>
-
-        Kachel-Typ (deaktiviert bei Termin)
-        <select name="style"><?php foreach (get_all_values('style') as $VAR) { ?><option value="<?php echo $VAR['style'] ?>"><?php echo $VAR['style'] ?> <?php echo $VAR['name'] ?> (<?php echo $VAR['description'] ?>)</option><?php } ?></select>
-        <br>
-
-        <p>Termin festlegen (optional)</p>
-        <input type="date" name="termin" value="">
-        <br>
-
-        <p>Hintergrundbild</p>
-        <input type="file" name="file" />
-        <br>
-
-        <hr>
-        <br>
-
-        <p>PDF</p>
-        <input type="file" name="pdf" />
-        <br>
-
-        <p>URL</p>
-        <input type="url" name="url" value="">
-        <br>
-
-        <p>HTML</p>
-        <textarea name="html" rows="4" cols="20"></textarea>
-        <br>
-
-        <hr>
-        <br>
-
-        <button type="submit" id="upload">Eintrag anlegen</button>
-      </form> -->
 
 
 
