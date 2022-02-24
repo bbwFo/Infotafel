@@ -107,12 +107,10 @@ function db_get_values(string $TABLE, string $UUID, $DATA)
   {
     $ARRAY = array();
 
-    // ROW NAMES
     $QUERY1 = $db -> prepare("DESCRIBE $TABLE");
     $QUERY1 -> execute();
     $RESULT1 = $QUERY1 -> fetchAll(PDO::FETCH_COLUMN);
 
-    // ROW DATA
     $QUERY2 = $db -> prepare("SELECT * FROM $TABLE WHERE uuid = '$UUID'");
     $QUERY2 -> execute();
     $RESULT2 = $QUERY2 -> fetchAll();
@@ -131,69 +129,42 @@ function db_update(string $TABLE,string $UUID, array $DATA)
 
   $VALUE = '';
 
-  foreach ($DATA as $INDEX => $VALUES) {
-
-    if ($VALUES == end($DATA))
-    {
-      $VALUE .= $INDEX."='".$VALUES."'";
-    }
-    else
-    {
-      $VALUE .= $INDEX."='".$VALUES."', ";
-    }
-  }
+  foreach ($DATA as $INDEX => $VALUES) { if ($VALUES == end($DATA)) { $VALUE .= $INDEX."='".$VALUES."'"; } else { $VALUE .= $INDEX."='".$VALUES."', "; } }
 
   $UPDATE = $db -> prepare("UPDATE $TABLE SET $VALUE WHERE uuid = $UUID");
   $UPDATE -> execute();
 }
 
-// ############################################################################# DEL_COOKIE()
-
-function del_cookie(string $COOKIENAME)
-{
-  if (isset($_COOKIE[$COOKIENAME]))
-  {
-    setcookie($COOKIENAME, '', strtotime('0 days'));
-  }
-  else
-  {
-    return 0;
-  }
-}
-
 // ############################################################################# GEN_SESSION()
 
-function gen_session($TABLE, string $UUID)
+function gen_session(string $UUID, $TABLE)
 {
-  session_start();
+  if (session_status() != PHP_SESSION_ACTIVE) { session_start(); }
 
-  if (is_array($TABLE))
-  {
-    foreach ($TABLE as $TABELS) { $_SESSION[$TABELS] = db_get_values($TABELS, $UUID, 'all'); }
-  }
-  else
-  {
-    $_SESSION[$TABLE] = db_get_values($TABLE, $UUID, 'all');
-  }
+  foreach ($TABLE as $INDEX => $VALUE) { $_SESSION[$INDEX] = db_get_values($INDEX, $UUID, $VALUE); }
 }
 
 // ############################################################################# GEN_USERNAME()
 
 function gen_username()
 {
-  $firstname = array('Drake','Johnathon','Anthony','Erasmo','Raleigh','Nancie','Tama','Camellia','Augustine','Christeen','Luz','Diego','Lyndia','Thomas','Georgianna','Leigha','Alejandro','Marquis','Joan','Stephania','Elroy','Zonia','Buffy','Sharie','Blythe','Gaylene','Elida','Randy','Margarete','Margarett','Dion','Tomi','Arden','Clora','Laine','Becki','Margherita','Bong','Jeanice','Qiana','Lawanda','Rebecka','Maribel','Tami','Yuri','Michele','Rubi','Larisa','Lloyd','Tyisha','Samatha');
-  $lastname = array('Dragon','Mischke','Serna','Pingree','Mcnaught','Pepper','Schildgen','Mongold','Wrona','Geddes','Lanz','Fetzer','Schroeder','Block','Mayoral','Fleishman','Roberie','Latson','Lupo','Motsinger','Drews','Coby','Redner','Culton','Howe','Stoval','Michaud','Mote','Menjivar','Wiers','Paris','Grisby','Noren','Damron','Kazmierczak','Haslett','Guillemette','Buresh','Center','Kucera','Catt','Badon','Grumbles','Antes','Byron','Volkman','Klemp','Pekar','Pecora','Schewe','Ramage');
+  $VORNAME = array(
+    'Prince','Lord','Tobi','Drake','Johnathon','Anthony','Erasmo','Raleigh','Nancie','Tama','Camellia','Augustine','Christeen','Luz','Diego','Lyndia','Thomas','Georgianna','Leigha','Alejandro','Marquis','Joan','Stephania','Elroy','Zonia','Buffy','Sharie','Blythe','Gaylene','Elida','Randy','Margarete','Margarett','Dion','Tomi','Arden','Clora','Laine','Becki','Margherita','Bong','Jeanice','Qiana','Lawanda','Rebecka','Maribel','Tami','Yuri','Michele','Rubi','Larisa','Lloyd','Tyisha','Samatha'
+  );
+  $NACHNAME = array(
+    'Dragon','Mischke','Serna','Pingree','Mcnaught','Pepper','Schildgen','Mongold','Kadachi','Wrona','Geddes','Lanz','Fetzer','Schroeder','Block','Mayoral','Fleishman','Roberie','Latson','Lupo','Motsinger','Drews','Coby','Redner','Culton','Howe','Stoval','Michaud','Mote','Menjivar','Wiers','Paris','Grisby','Noren','Damron','Kazmierczak','Haslett','Guillemette','Buresh','Center','Kucera','Catt','Badon','Grumbles','Antes','Byron','Volkman','Klemp','Pekar','Pecora','Schewe','Ramage'
+  );
 
-  $name = $firstname[rand ( 0 , count($firstname) -1)];
-  $name .= ' ';
-  $name .= $lastname[rand ( 0 , count($lastname) -1)];
+  $USERNAME = $VORNAME[rand ( 0 , count($VORNAME) -1)];
+  $USERNAME .= ' ';
+  $USERNAME .= $NACHNAME[rand ( 0 , count($NACHNAME) -1)];
 
-  return $name;
+  return $USERNAME;
 }
 
 // ############################################################################# GEN_UUID_BY()
 
-function gen_uuid_by(string $TABLE, int $LENGHT, string $ZEICHENSATZ)
+function gen_uuid(string $TABLE, int $LENGHT, string $ZEICHENSATZ)
 {
   if ($ZEICHENSATZ != 'default') { $ZEICHEN = $ZEICHENSATZ; }
   else { $ZEICHEN = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'; }
@@ -210,20 +181,6 @@ function gen_uuid_by(string $TABLE, int $LENGHT, string $ZEICHENSATZ)
   return $UUID_CODE;
 }
 
-// ############################################################################# GET_COOKIE()
-
-function get_cookie(string $COOKIENAME)
-{
-  if (isset($_COOKIE[$COOKIENAME]))
-  {
-    return $_COOKIE[$COOKIENAME];
-  }
-  else
-  {
-    return 0;
-  }
-}
-
 // ############################################################################# SAVE_FILE()
 
 function save_file(string $PATH, $FILE, string $UUID)
@@ -237,14 +194,10 @@ function save_file(string $PATH, $FILE, string $UUID)
 
   $VALIDTYPES = array("jpg","jpeg","png","gif","pdf");
 
-  $RESPONDE = 0;
-
   if(in_array(strtolower($FILETYPE), $VALIDTYPES))
   {
     if(move_uploaded_file($FILE['tmp_name'], $PATH.$UUID.'.'.$FILETYPE))
     {
-      $RESPONDE = $PATHTOFILE;
-
       return $UUID.'.'.$FILETYPE;
     }
   }
@@ -252,23 +205,24 @@ function save_file(string $PATH, $FILE, string $UUID)
 
 // ############################################################################# SET_COOKIE()
 
-function set_cookie(string $COOKIENAME, int $DAYS, string $COOKIEDATA)
+function set_cookie(string $COOKIENAME, int $DAYS, string $DATA)
 {
-  if (isset($_COOKIE[$COOKIENAME]))
-  {
-    return 0;
-  }
-  else
-  {
-    setcookie($COOKIENAME, $COOKIEDATA, strtotime($DAYS.' days'));
-  }
+  if (isset($_COOKIE[$COOKIENAME])) { return 0; } else { setcookie($COOKIENAME, $DATA, strtotime($DAYS.' days')); }
 }
 
-// ############################################################################# DB_BACKUP()
+// ############################################################################# GET_COOKIE()
 
-function db_backup()
+function get_cookie(string $COOKIENAME)
 {
-
+  if (isset($_COOKIE[$COOKIENAME])) { return $_COOKIE[$COOKIENAME]; } else { return 0; }
 }
+
+// ############################################################################# DEL_COOKIE()
+
+function del_cookie(string $COOKIENAME)
+{
+  if (isset($_COOKIE[$COOKIENAME])) { setcookie($COOKIENAME, '', strtotime('0 days')); } else { return 0; }
+}
+
 
 ?>

@@ -69,45 +69,38 @@ include 'functions.php';
 
 
 
-
-
-
-
-
-
-
 function get_uuid(string $USERNAME, string $PASSWORD)
 {
-  $QUERY = $db -> prepare("SELECT username = '$USERNAME' FROM user");
-  $QUERY -> execute();
-  $EXIST = $QUERY -> fetchAll();
+  include 'db.php';
 
-  if ($EXIST)
+  if (db_count('user','username', $USERNAME))
   {
-    $ZEILE = $db -> prepare("SELECT password FROM user WHERE username = '$USERNAME'");
-    $ZEILE -> execute();
-    $RESULT = $ZEILE -> fetchAll();
+    $QWERY1 = $db -> prepare("SELECT password FROM user WHERE username = '$USERNAME'");
+    $QWERY1 -> execute();
+    $RESULT1 = $QWERY1 -> fetchAll();
 
-    foreach ($RESULT as $VALUE)
-    {
-      $HASHED_PASSWORD = $VALUE["password"];
-    }
+    foreach ($RESULT1 as $VALUE) { $HASHED_PASSWORD = $VALUE["password"]; }
 
     if (password_verify($PASSWORD, $HASHED_PASSWORD))
     {
-      $ZEILE = $db -> prepare("SELECT uuid FROM user WHERE username = '$USERNAME'");
-      $ZEILE -> execute();
-      $RESULT = $ZEILE -> fetchAll();
+      $QWERY2 = $db -> prepare("SELECT uuid FROM user WHERE username = '$USERNAME'");
+      $QWERY2 -> execute();
+      $RESULT2 = $QWERY2 -> fetchAll();
 
-      foreach ($RESULT as $VALUE)
-      {
-        return $UUID = $VALUE["uuid"];
-      }
+      foreach ($RESULT2 as $VALUE) { $UUID = $VALUE["uuid"]; }
+
+      return $UUID;
     }
-
-
   }
 }
+
+
+
+
+
+
+
+
 
 function random_color(int $OPACITY)
 {
@@ -118,7 +111,7 @@ function random_color(int $OPACITY)
 
 
 
-function gen_gradient()
+function gen_gradient($TYPE)
 {
 
   $COLORS = array(
@@ -132,15 +125,12 @@ function gen_gradient()
   );
 
 
-  $COLOR_ONE = $COLORS[array_rand($COLORS)];
+       $COLOR_ONE = $COLORS[array_rand($COLORS)];
+  do { $COLOR_TWO = $COLORS[array_rand($COLORS)]; }
 
-  do
-  {
-    $COLOR_TWO = $COLORS[array_rand($COLORS)];
-  }
   while ($COLOR_ONE == $COLOR_TWO);
 
-  return "style='background: linear-gradient(".rand(0,360)."deg, ".$COLOR_ONE." 0%, ".$COLOR_TWO." 100%)'";
+  return "background: ".$TYPE."-gradient(".rand(0,360)."deg, ".$COLOR_ONE." 0%, ".$COLOR_TWO." 100%)";
 }
 
 
@@ -149,6 +139,19 @@ function gen_gradient()
 
 
 
+
+
+
+function start_session(string $USERNAME, string $PASSWORD)
+{
+  $UUID = get_uuid();
+
+
+  gen_session('F5VpkT1ZKMAzGtEdsJzeBU0YTwTlNl', array(
+    'cards' => 'all',
+    'content' => array('pdf','html')
+  ));
+}
 
 
 
@@ -269,12 +272,61 @@ function get_value(string $TABLE, string $UUID, string $DATA)
 
 // -----------------------------------------------------------------------------
 
+function db_create_default_user_table()
+{
+  db_create_table('user', array(
+   'id'          => 'INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY',
+   'uuid'        => 'VARCHAR( 150 ) NOT NULL',
+   'username'    => 'VARCHAR( 150 ) NOT NULL',
+   'password'    => 'VARCHAR( 2 ) NOT NULL',
+   'email'       => 'VARCHAR( 150 ) NOT NULL',
+   'steamid'     => 'VARCHAR( 150 ) NOT NULL',
+   'update_date' => 'TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP',
+   'create_date' => 'TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP'
+ ));
+
+ db_add('user', array(
+   'uuid'        => gen_uuid(),
+   'username'    => 'root',
+   'password'    => psw_hash('1234'),
+   'email'       => '',
+   'steamid'     => '00000000',
+ ));
+
+}
 
 
 
 
 
 
+
+
+
+
+
+
+
+function db_backup()
+{
+  include 'db.php';
+
+  $date = date("Y-m-d");
+  $path = 'resources/uploads/';
+
+  $CMD = "mysqldump --routines -h {$host} -u {$username} -p{$password} {$database} > " . $path . "{$date}_{$database}.sql";
+
+  exec($CMD);
+}
+
+
+function db_restore()
+{
+  $restore_file  = "/home/abdul/20140306_world_copy.sql";
+
+  $cmd = "mysql -h {$host} -u {$username} -p{$password} {$database} < $restore_file";
+  exec($cmd);
+}
 
 
 
@@ -378,30 +430,30 @@ function get_value(string $TABLE, string $UUID, string $DATA)
 // GENERIERT EINE 20 STELLIGE USER-IDENTIFIKATIONSNUMMER DIE ES NUR EINMALIG IN DER DATENBANK GIBT.
 // RÜCKGABEWERT IST DER UUID-CODE.
 
-function gen_uuid()
-{
-  include 'db.php';
-
-  do
-  {
-    $ZEICHEN = '0123456789'.'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.'abcdefghijklmnopqrstuvwxyz';
-    $ZEICHEN_LENGTH = strlen($ZEICHEN);
-    $UUID_CODE = '';
-
-    for ($i = 0; $i < 30; $i++)
-    {
-      $UUID_CODE .= $ZEICHEN[rand(0, $ZEICHEN_LENGTH - 1)];
-    }
-
-    $ZEILE = $db -> prepare("SELECT * FROM cards WHERE uuid = '$UUID_CODE'");
-    $ZEILE -> execute();
-    $RESULT = $ZEILE -> fetchAll();
-    $EXSIST = count($RESULT);
-  }
-  while ($EXSIST);
-
-  return $UUID_CODE;
-}
+// function gen_uuid()
+// {
+//   include 'db.php';
+//
+//   do
+//   {
+//     $ZEICHEN = '0123456789'.'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.'abcdefghijklmnopqrstuvwxyz';
+//     $ZEICHEN_LENGTH = strlen($ZEICHEN);
+//     $UUID_CODE = '';
+//
+//     for ($i = 0; $i < 30; $i++)
+//     {
+//       $UUID_CODE .= $ZEICHEN[rand(0, $ZEICHEN_LENGTH - 1)];
+//     }
+//
+//     $ZEILE = $db -> prepare("SELECT * FROM cards WHERE uuid = '$UUID_CODE'");
+//     $ZEILE -> execute();
+//     $RESULT = $ZEILE -> fetchAll();
+//     $EXSIST = count($RESULT);
+//   }
+//   while ($EXSIST);
+//
+//   return $UUID_CODE;
+// }
 
 // -----------------------------------------------------------------------------
 

@@ -24,43 +24,49 @@ Füge diesen Snippet in deine ```index.php``` oder auch alle anderen dateien ein
 # Übersicht aller Funktionen
 Drücke auf die jeweilige Funktion
 
-| Funktionen                                | Beschreibung  | Status |
-| :---                                      | :---          | :---   |
-| [```db_create_table()```](#db_all_values) |               | :heavy_check_mark:     |
-| [```db_add()```](#db_add)                 | Fügt werte der Datenbank hinzu              | :heavy_check_mark: Fertig    |
-| [```db_update()```](#db_update)           | Aktualisiert werte der Datenbank              | :heavy_check_mark: Fertig    |
-| [```db_delete()```](#db_delete)           | Löscht werte aus der Datenbank              | :heavy_check_mark: Fertig    |
-| [```db_all_values()```](#db_all_values)   | Liest alle Datensätze der Unified-User-ID aus und gibt sie als Asociatives Array zurück.              | :heavy_check_mark: Fertig    |
-| [```db_count()```](#db_count)             |               | :x:       |
-| [```get_values()```](#get_values)         |               | :zap: Bugs      |
-| [```get_value()```](#get_value)           |               | :zap: Bugs      |
-| [```get_all_values()```](#get_all_values) |               | :x:       |
-| [```save_file()```](#save_file)           | Speichert eine Datei im angegebenen Pfad und ändert den Dateinamen wie angegeben.             | ok     |
-| [```copy_file()```](#copy_file)           |               |        |  
-| [```delete_file()```](#delete_file)       |               |        |  
-| [```rename_file()```](#rename_file)       |               |        |  
-| [```gen_session()```](#gen_session)       | generiert eine PHP-Session mit ```session_start()``` die mit der Function ```db_all_values()``` die angegebene Tabelle oder mehreren Tabellen als Associatives Array in einer ```$_SESSION``` variable speichert die den Namen der angegebenen Tabelle trägt              | ok     |
-| [```gen_username()```](#gen_username)     |               |        |
-| [```gen_very()```](#gen_very)             |               |        |
-| [```gen_uuid()```](#gen_uuid)             |               |        |
-| [```gen_uuid_by()```](#gen_uuid_by)       |               | ok     |
-| [```gen_gradient()```](#gen_gradient)     |               |        |
-| [```set_cookie()```](#set_cookie)         | erstellt einen Cookie              | ok     |
-| [```del_cookie()```](#del_cookie)         | löscht einen Cookie              | ok     |
-| [```get_cookie()```](#get_cookie)         | gibt einen cookie zurück              | ok     |
-| [```psw_very()```](#psw_very)             |               |        |
-| [```psw_hash()```](#psw_hash)             |               |        |
-| [```get_uuid()```](#get_uuid)             |               |        |
-| [```math_procent()```](#math_procent)     |               |        |
-| [```format()```](#format)                 |               |        |
-
----
+| Funktionen                                      | Beschreibung  | Status |
+| :---                                            | :---          | :---   |
+| [```db_create_table()```](#db_create_table)     |               | :heavy_check_mark:     |
+| [```db_add()```](#db_add)                       | Fügt werte der Datenbank hinzu              | :heavy_check_mark: Fertig    |
+| [```db_update()```](#db_update)                 | Aktualisiert werte der Datenbank              | :heavy_check_mark: Fertig    |
+| [```db_delete()```](#db_delete)                 | Löscht werte aus der Datenbank              | :heavy_check_mark: Fertig    |
+| [```db_get_values()```](#db_get_values)         | Liest alle Datensätze der Unified-User-ID aus und gibt sie als Asociatives Array zurück.              | :heavy_check_mark: Fertig    |
+| [```db_foreach_values()```](#db_foreach_values) |               | :x:       |
+| [```db_count()```](#db_count)                   |               | :x:       |
+| [```save_file()```](#save_file)                 | Speichert eine Datei im angegebenen Pfad und ändert den Dateinamen wie angegeben.             | ok     |
+| [```gen_session()```](#gen_session)             | generiert eine PHP-Session mit ```session_start()``` die mit der Function ```db_all_values()``` die angegebene Tabelle oder mehreren Tabellen als Associatives Array in einer ```$_SESSION``` variable speichert die den Namen der angegebenen Tabelle trägt              | ok     |
+| [```gen_uuid()```](#gen_uuid)                   |               |        |
+| [```gen_uuid_by()```](#gen_uuid_by)             |               | ok     |
+| [```set_cookie()```](#set_cookie)               | erstellt einen Cookie              | ok     |
+| [```del_cookie()```](#del_cookie)               | löscht einen Cookie              | ok     |
+| [```get_cookie()```](#get_cookie)               | gibt einen cookie zurück              | ok     |
 
 
 
 
 ---
-<!-- #################### -->
+<!-- ################################################################################ db_create_table() -->
+
+### ``` db_create_table() ```
+
+Die Funktion ``` db_create_table() ``` .
+
+Code-Beispiel:
+```php
+<?php
+  db_create_table('test', array(
+   'id'        => 'INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY',
+   'nachname'  => 'VARCHAR( 150 ) NOT NULL',
+   'vorname'   => 'VARCHAR( 150 ) NOT NULL',
+   'akuerzel'  => 'VARCHAR( 2 ) NOT NULL',
+   'strasse'   => 'VARCHAR( 150 ) NULL',
+   'plz'       => 'INT( 5 ) NOT NULL',
+   'telefon'   => 'VARCHAR( 20 ) NULL'
+ ));
+?>
+```
+---
+<!-- ################################################################################ db_add() -->
 
 ### ``` db_add() ```
 
@@ -78,7 +84,7 @@ Code-Beispiel:
 ?>
 ```
 ---
-<!-- #################### -->
+<!-- ################################################################################ db_update() -->
 
 ### ``` db_update() ```
 
@@ -92,7 +98,7 @@ Code-Beispiele:
 ```
 
 ---
-<!-- #################### -->
+<!-- ################################################################################ db_delete() -->
 
 ### ``` db_delete() ```
 
@@ -104,20 +110,66 @@ Code-Beispiel:
 ```
 
 ---
-<!-- #################### -->
+<!-- ################################################################################ db_get_values() -->
 
-### ``` db_all_values() ```
+### ``` db_get_values() ```
 
-Die Funktion ``` db_all_values() ``` Liest alle Datensätze der Unified-User-ID aus und gibt sie als Asociatives Array zurück.
+Die Funktion ``` db_get_values() ``` Liest alle Datensätze der zeile mit einer bestimmten ```$UUID``` aus und gibt sie als Associatives Array zurück.
 
-Code-Beispiel:
+Code-Beispiel für nur bestimmte werte:
 ```php
-<?php $USERDATA = db_all_values('user', $UUID); ?>
-<?php echo $USERDATA['username'] ?>
+<?php $USERDATA = db_get_values('user', $UUID, array('username', 'email', 'steamid')) ?>
+```
+Code-Beispiel für alle werte:
+```php
+<?php $USERDATA = db_get_values('user', $UUID, 'all') ?>
 ```
 
 ---
-<!-- #################### -->
+<!-- ################################################################################ db_foreach_values() -->
+
+### ``` db_foreach_values() ```
+
+Die Funktion ``` db_foreach_values() ``` wird in einer ```foreach``` schleife verwendet um mehrere HTML-Elemente mit jeweils einer neuen Zeile in der Datenbank zu füllen.
+
+Code-Beispiel für nur bestimmte werte:
+```php
+<?php foreach (db_foreach_values('user') as $VALUE) { ?>
+  <p>Ich bin <?php echo $VALUE['username'] ?> und spiele gerne <?php echo $VALUE['game'] ?>.</p>
+<?php } ?>
+
+// Ich bin Askylan und spiele gerne Lost Ark.
+// Ich bin Josie und spiele gerne Warframe.
+// Ich bin RedDrake und spiele gerne GTAV.
+// ...
+```
+
+
+
+---
+<!-- ################################################################################ db_count() -->
+
+### ``` db_count() ```
+Die Funktion ``` db_count() ```
+
+Code-Beispiel mit Datenbank "user":
+
+| uuid | username | rang   |
+| :--- | :---     | :---   |
+| 100  | Askylan  | owner  |
+| 101  | Josie    | member |
+| 102  | RedDrake | member |
+
+```php
+<?php echo db_count('user','uuid','all') ?> // Ausgabe = 3
+
+<?php echo db_count('user','uuid','100') ?> // Ausgabe = 1
+
+<?php echo db_count('user','rang','member') ?> // Ausgabe = 2
+```
+
+---
+<!-- ################################################################################ gen_uuid_by() -->
 
    ### ``` gen_uuid_by() ```
 
@@ -136,7 +188,7 @@ Beispiel mit Eigenen Zeichensatz:
 ```
 
 ---
-<!-- #################### -->
+<!-- ################################################################################ gen_session() -->
 
 ### ``` gen_session() ```
 
@@ -170,7 +222,7 @@ Syntax - ```gen_session(array($TABLE, $TABLE, ...), $UUID)```
 ```
 
 ---
-<!-- #################### -->
+<!-- ################################################################################ set_cookie() -->
 
 ### ``` set_cookie() ```
 
@@ -184,7 +236,7 @@ Syntax - ```set_cookie('NAME', 'TAGE', NUTZDATEN);```
 ```
      
 ---
-<!-- #################### -->
+<!-- ################################################################################ del_cookie() -->
 
 ### ``` del_cookie() ```
 
@@ -196,7 +248,7 @@ Beispiel:
 ```
      
 ---
-<!-- #################### -->
+<!-- ################################################################################ get_cookie() -->
 
 ### ``` get_cookie() ```
 
@@ -208,7 +260,7 @@ Beispiel:
 ```
 
 ---
-<!-- #################### -->
+<!-- ################################################################################ save_file() -->
 
 ### ``` save_file() ```
 

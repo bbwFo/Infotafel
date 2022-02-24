@@ -21,18 +21,15 @@
 
 
 
-      <?php echo json_encode(db_get_values('cards', 'V6aqlTcjngYKvsnl2PZsA4Qee7eU4Q', array('id','color','row'))) ?>
 
-      <br><br>
-
-      <?php echo db_count('cards','id','all') ?>
 
       <br><br>
 
 
 
 
-      <a class="LogoutLink" href="manager_logout.php"><i class="icon-logout"></i></a>
+
+      <a class="LogoutLink" href="logout.php"><i class="icon-logout"></i></a>
       <!-- <div class="MainItem" add><i class="icon-add"></i><p>Hinzufügen</p></div>
       <div class="MainItem" show><i class="icon-grid"></i><p>Alle anzeigen</p></div>
       <div class="MainItem" edit><i class="icon-edit"></i><p>Bearbeiten</p></div>
@@ -44,20 +41,119 @@
 
 
 
-        if (
-          isset($_POST["titel"]) &&
-          isset($_POST["description"]) &&
-          isset($_POST["row"]) &&
-          isset($_POST["icon"]) &&
-          isset($_POST["color"]) &&
-          isset($_POST["style"]) &&
-          isset($_FILES['background']['name']) &&
-          isset($_FILES['pdf']['name']) &&
-          isset($_POST['url']) &&
-          isset($_POST['html'])
-          )
+        // $key = '';
+        // $steam_api = 'https://api.steampowered.com';
+
+
+
+function steam_api()
+{
+  $xml = simplexml_load_file("http://steamcommunity.com/profiles/$STEAM64ID/?xml=1");
+
+  if(!empty($xml)) {
+
+    $USER_ARRAY = array(
+
+      'steamID64' => $xml -> steamID64,
+      'steamID' => $xml -> steamID,
+      'onlineState' => $xml -> onlineState,
+      'stateMessage' => $xml -> stateMessage,
+      'privacyState' => $xml -> privacyState,
+      'visibilityState' => $xml -> visibilityState,
+      'avatarIcon' => $xml -> avatarIcon,
+      'avatarMedium' => $xml -> avatarMedium,
+      'avatarFull' => $xml -> avatarFull,
+      'vacBanned' => $xml -> vacBanned,
+      'tradeBanState' => $xml -> tradeBanState,
+      'isLimitedAccount' => $xml -> isLimitedAccount,
+      'customURL' => $xml -> customURL,
+      'inGameServerIP' => $xml -> inGameServerIP,
+
+      'inGameInfo' => array(
+        'gameName' => $xml -> inGameInfo -> gameName,
+        'gameLink' => $xml -> inGameInfo -> gameLink,
+        'gameIcon' => $xml -> inGameInfo -> gameIcon,
+        'gameLogo' => $xml -> inGameInfo -> gameLogo,
+        'gameLogoSmall' => $xml -> inGameInfo -> gameLogoSmall
+      ),
+
+      'memberSince' => $xml -> memberSince,
+      'steamRating' => $xml -> steamRating,
+      'hoursPlayed2Wk' => $xml -> hoursPlayed2Wk,
+      'headline' => $xml -> headline,
+      'location' => $xml -> location,
+      'realname' => $xml -> realname,
+      'summary' => $xml -> summary,
+
+      'mostPlayedGames' => array(
+        'game1' => array(
+          'gameName' => $xml -> mostPlayedGames -> mostPlayedGame[0] -> gameName,
+          'gameLink' => $xml -> mostPlayedGames -> mostPlayedGame[0] -> gameLink,
+          'gameIcon' => $xml -> mostPlayedGames -> mostPlayedGame[0] -> gameIcon,
+          'gameLogo' => $xml -> mostPlayedGames -> mostPlayedGame[0] -> gameLogo,
+          'gameLogoSmall' => $xml -> mostPlayedGames -> mostPlayedGame[0] -> gameLogoSmall,
+          'hoursPlayed' => $xml -> mostPlayedGames -> mostPlayedGame[0] -> hoursPlayed,
+          'hoursOnRecord' => $xml -> mostPlayedGames -> mostPlayedGame[0] -> hoursOnRecord
+        ),
+        'game2' => array(
+          'gameName' => $xml -> mostPlayedGames -> mostPlayedGame[1] -> gameName,
+          'gameLink' => $xml -> mostPlayedGames -> mostPlayedGame[1] -> gameLink,
+          'gameIcon' => $xml -> mostPlayedGames -> mostPlayedGame[1] -> gameIcon,
+          'gameLogo' => $xml -> mostPlayedGames -> mostPlayedGame[1] -> gameLogo,
+          'gameLogoSmall' => $xml -> mostPlayedGames -> mostPlayedGame[1] -> gameLogoSmall,
+          'hoursPlayed' => $xml -> mostPlayedGames -> mostPlayedGame[1] -> hoursPlayed,
+          'hoursOnRecord' => $xml -> mostPlayedGames -> mostPlayedGame[1] -> hoursOnRecord
+        ),
+        'game3' => array(
+          'gameName' => $xml -> mostPlayedGames -> mostPlayedGame[2] -> gameName,
+          'gameLink' => $xml -> mostPlayedGames -> mostPlayedGame[2] -> gameLink,
+          'gameIcon' => $xml -> mostPlayedGames -> mostPlayedGame[2] -> gameIcon,
+          'gameLogo' => $xml -> mostPlayedGames -> mostPlayedGame[2] -> gameLogo,
+          'gameLogoSmall' => $xml -> mostPlayedGames -> mostPlayedGame[2] -> gameLogoSmall,
+          'hoursPlayed' => $xml -> mostPlayedGames -> mostPlayedGame[2] -> hoursPlayed,
+          'hoursOnRecord' => $xml -> mostPlayedGames -> mostPlayedGame[2] -> hoursOnRecord
+        )
+      )
+    );
+  }
+
+  return $USER_ARRAY;
+}
+
+        // // GetNewsForApp (v0002)
+        // "{$steam_api}/ISteamNews/GetNewsForApp/v0002/?appid=346110&count=3&maxlength=300&format=json"
+        //
+        // // GetGlobalAchievementPercentagesForApp (v0002)
+        // "{$steam_api}/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid=440&format=json"
+        //
+        // // GetPlayerSummaries (v0002)
+        // "{$steam_api}/ISteamUser/GetPlayerSummaries/v0002/?key={$KEY}&steamids=76561197960435530"
+        //
+        // // GetFriendList (v0001)
+        // "{$steam_api}/ISteamUser/GetFriendList/v0001/?key={$KEY}&steamid=76561197960435530&relationship=friend"
+        //
+        // // GetPlayerAchievements (v0001)
+        // "{$steam_api}/ISteamUserStats/GetPlayerAchievements/v0001/?appid={$appid}&key={$key}&steamid={$steamid}"
+        //
+        // // GetUserStatsForGame (v0002)
+        // "{$steam_api}/ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key={$key}&steamid={$steamid}"
+        //
+        // // GetOwnedGames (v0001)
+        // "{$steam_api}/IPlayerService/GetOwnedGames/v0001/?key={$key}&steamid={$steamid}&format=json"
+        //
+        // // GetRecentlyPlayedGames (v0001)
+        // "{$steam_api}/IPlayerService/GetRecentlyPlayedGames/v0001/?key={$key}&steamid={$steamid}&format=json"
+
+        //
+
+
+
+
+
+
+        if (isset($_POST["titel"]) && isset($_POST["description"]) && isset($_POST["row"]) && isset($_POST["icon"]) && isset($_POST["color"]) && isset($_POST["style"]) && isset($_FILES['background']['name']) && isset($_FILES['pdf']['name']) && isset($_POST['url']) && isset($_POST['html']))
         {
-          $UUID = gen_uuid();
+          $UUID = gen_uuid('cards', '20', 'default');
 
           db_add('cards', array(
             'uuid' => $UUID,
