@@ -39,86 +39,40 @@
 
       <?php
 
+      // $KEY = 'F82B8DBA24F9C2233F85424272AF2BD9';
+      // $ID = '76561198936641063'; 76561198033123285
+
+   // echo steam_api('F82B8DBA24F9C2233F85424272AF2BD9', array(
+   //        'user' => array('76561198936641063' => 'all')
+   //      ));
 
 
-        // $key = '';
-        // $steam_api = 'https://api.steampowered.com';
+        // $steam = steam_api();
+        //
+        // echo $steam['personaname'];
+        //
+        //
+        // function steam_api()
+        // {
+        //
+        //
+        //   $FILE = file_get_contents('https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=F82B8DBA24F9C2233F85424272AF2BD9&steamids=76561198936641063&format=json');
+        //
+        //   $DATA = json_decode(json_encode($FILE));
+        //
+        //   // $ARRAY = array();
+        //   //
+        //   // foreach ($DATA as $INDEX => $VALUE)
+        //   // {
+        //   //   $ARRAY += array($INDEX => $VALUE);
+        //   // }
+        //
+        //
+        //   return $DATA ;
+        // }
 
 
 
-function steam_api()
-{
-  $xml = simplexml_load_file("http://steamcommunity.com/profiles/$STEAM64ID/?xml=1");
-
-  if(!empty($xml)) {
-
-    $USER_ARRAY = array(
-
-      'steamID64' => $xml -> steamID64,
-      'steamID' => $xml -> steamID,
-      'onlineState' => $xml -> onlineState,
-      'stateMessage' => $xml -> stateMessage,
-      'privacyState' => $xml -> privacyState,
-      'visibilityState' => $xml -> visibilityState,
-      'avatarIcon' => $xml -> avatarIcon,
-      'avatarMedium' => $xml -> avatarMedium,
-      'avatarFull' => $xml -> avatarFull,
-      'vacBanned' => $xml -> vacBanned,
-      'tradeBanState' => $xml -> tradeBanState,
-      'isLimitedAccount' => $xml -> isLimitedAccount,
-      'customURL' => $xml -> customURL,
-      'inGameServerIP' => $xml -> inGameServerIP,
-
-      'inGameInfo' => array(
-        'gameName' => $xml -> inGameInfo -> gameName,
-        'gameLink' => $xml -> inGameInfo -> gameLink,
-        'gameIcon' => $xml -> inGameInfo -> gameIcon,
-        'gameLogo' => $xml -> inGameInfo -> gameLogo,
-        'gameLogoSmall' => $xml -> inGameInfo -> gameLogoSmall
-      ),
-
-      'memberSince' => $xml -> memberSince,
-      'steamRating' => $xml -> steamRating,
-      'hoursPlayed2Wk' => $xml -> hoursPlayed2Wk,
-      'headline' => $xml -> headline,
-      'location' => $xml -> location,
-      'realname' => $xml -> realname,
-      'summary' => $xml -> summary,
-
-      'mostPlayedGames' => array(
-        'game1' => array(
-          'gameName' => $xml -> mostPlayedGames -> mostPlayedGame[0] -> gameName,
-          'gameLink' => $xml -> mostPlayedGames -> mostPlayedGame[0] -> gameLink,
-          'gameIcon' => $xml -> mostPlayedGames -> mostPlayedGame[0] -> gameIcon,
-          'gameLogo' => $xml -> mostPlayedGames -> mostPlayedGame[0] -> gameLogo,
-          'gameLogoSmall' => $xml -> mostPlayedGames -> mostPlayedGame[0] -> gameLogoSmall,
-          'hoursPlayed' => $xml -> mostPlayedGames -> mostPlayedGame[0] -> hoursPlayed,
-          'hoursOnRecord' => $xml -> mostPlayedGames -> mostPlayedGame[0] -> hoursOnRecord
-        ),
-        'game2' => array(
-          'gameName' => $xml -> mostPlayedGames -> mostPlayedGame[1] -> gameName,
-          'gameLink' => $xml -> mostPlayedGames -> mostPlayedGame[1] -> gameLink,
-          'gameIcon' => $xml -> mostPlayedGames -> mostPlayedGame[1] -> gameIcon,
-          'gameLogo' => $xml -> mostPlayedGames -> mostPlayedGame[1] -> gameLogo,
-          'gameLogoSmall' => $xml -> mostPlayedGames -> mostPlayedGame[1] -> gameLogoSmall,
-          'hoursPlayed' => $xml -> mostPlayedGames -> mostPlayedGame[1] -> hoursPlayed,
-          'hoursOnRecord' => $xml -> mostPlayedGames -> mostPlayedGame[1] -> hoursOnRecord
-        ),
-        'game3' => array(
-          'gameName' => $xml -> mostPlayedGames -> mostPlayedGame[2] -> gameName,
-          'gameLink' => $xml -> mostPlayedGames -> mostPlayedGame[2] -> gameLink,
-          'gameIcon' => $xml -> mostPlayedGames -> mostPlayedGame[2] -> gameIcon,
-          'gameLogo' => $xml -> mostPlayedGames -> mostPlayedGame[2] -> gameLogo,
-          'gameLogoSmall' => $xml -> mostPlayedGames -> mostPlayedGame[2] -> gameLogoSmall,
-          'hoursPlayed' => $xml -> mostPlayedGames -> mostPlayedGame[2] -> hoursPlayed,
-          'hoursOnRecord' => $xml -> mostPlayedGames -> mostPlayedGame[2] -> hoursOnRecord
-        )
-      )
-    );
-  }
-
-  return $USER_ARRAY;
-}
 
         // // GetNewsForApp (v0002)
         // "{$steam_api}/ISteamNews/GetNewsForApp/v0002/?appid=346110&count=3&maxlength=300&format=json"

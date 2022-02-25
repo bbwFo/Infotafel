@@ -24,7 +24,6 @@ function db_add(string $TABLE, array $DATA)
 
   $EXEC_DATA = "INSERT INTO $TABLE( $INDEX ) VALUES ( $VALUE )";
   $db -> exec($EXEC_DATA);
-
 }
 
 // ############################################################################# DB_COUNT()
