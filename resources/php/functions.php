@@ -130,7 +130,7 @@ function db_update(string $TABLE,string $UUID, array $DATA)
 
   foreach ($DATA as $INDEX => $VALUES) { if ($VALUES == end($DATA)) { $VALUE .= $INDEX."='".$VALUES."'"; } else { $VALUE .= $INDEX."='".$VALUES."', "; } }
 
-  $UPDATE = $db -> prepare("UPDATE $TABLE SET $VALUE WHERE uuid = $UUID");
+  $UPDATE = $db -> prepare("UPDATE $TABLE SET $VALUE WHERE uuid = '$UUID'");
   $UPDATE -> execute();
 }
 

@@ -392,7 +392,33 @@ form p.info
 
 
 
+ol
+{
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  overflow-y: auto;
+  border: 2px solid #333;
+  box-sizing: border-box;
+}
 
+ol li
+{
+  width: 100%;
+  height: 30px;
+  position: relative;
+  overflow-y: auto;
+  /* border: 2px solid #333; */
+  box-sizing: border-box;
+  background: rgba(255,255,255,0.1);0
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+ol li:nth-child(2n+0)
+{
+  background: rgba(255,255,255,0.2)
+}
 
 
 
@@ -447,7 +473,7 @@ form p.info
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(2px);
 
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
