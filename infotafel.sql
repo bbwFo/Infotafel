@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 25. Feb 2022 um 11:38
+-- Erstellungszeit: 15. Mrz 2022 um 09:07
 -- Server-Version: 10.4.20-MariaDB
 -- PHP-Version: 8.0.8
 
@@ -69,61 +69,12 @@ CREATE TABLE `cards` (
 --
 
 INSERT INTO `cards` (`id`, `uuid`, `titel`, `description`, `style`, `color`, `icon`, `row`, `background`, `update_date`, `create_date`, `termin`) VALUES
-(277, 'V6aqlTcjngYKvsnl2PZsA4Qee7eU4Q', 'Neue Kachel 1337', 'egjkernkögerknerjfnejkrfkerferf', 2, '#ff6600', '', 2, 'V6aqlTcjngYKvsnl2PZsA4Qee7eU4Q.jpg', '2022-02-10 09:15:48', '2022-02-10 09:15:48', ''),
-(278, '55KahPpFLlheKnWdrlTH140CD1IBJA', 'Neue Kachel', 'Geile Tafel!', 2, '#ffffff', '', 1, '55KahPpFLlheKnWdrlTH140CD1IBJA.jpg', '2022-02-21 07:51:16', '2022-02-21 07:51:16', '2022-02-26'),
-(288, 'm1BWPyFuijS0ho0nUWzg7Tj1BHNrk4', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'm1BWPyFuijS0ho0nUWzg7Tj1BHNrk4.jpg', '2022-02-23 10:40:46', '2022-02-23 10:40:46', '2022-02-27'),
-(289, 'ynV8wplIFPzzr33ugFh8kEYO7yQpss', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'ynV8wplIFPzzr33ugFh8kEYO7yQpss.jpg', '2022-02-23 10:53:24', '2022-02-23 10:53:24', '2022-02-27'),
-(290, 'mtQ9QcLxOjuSndQ70MA8TdLQwH8T0C', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'mtQ9QcLxOjuSndQ70MA8TdLQwH8T0C.jpg', '2022-02-23 10:56:18', '2022-02-23 10:56:18', '2022-02-27'),
-(291, '2EitzHrsQfPih4x2SB0CJifUGqv3gN', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, '2EitzHrsQfPih4x2SB0CJifUGqv3gN.jpg', '2022-02-23 10:57:54', '2022-02-23 10:57:54', '2022-02-27'),
-(292, 'IiGeFdb4N55lnfp1xeVD7Sjm0aYnuV', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'IiGeFdb4N55lnfp1xeVD7Sjm0aYnuV.jpg', '2022-02-23 10:58:22', '2022-02-23 10:58:22', '2022-02-27'),
-(293, 'wswbTDEWNdrPl50PsfqSsvhY2ahitk', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'wswbTDEWNdrPl50PsfqSsvhY2ahitk.jpg', '2022-02-23 10:58:51', '2022-02-23 10:58:51', '2022-02-27'),
-(294, 'NpxfeZySznAB8Bgih4WccnYRnrR2Ls', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'NpxfeZySznAB8Bgih4WccnYRnrR2Ls.jpg', '2022-02-23 10:58:56', '2022-02-23 10:58:56', '2022-02-27'),
-(295, 'e2chSIEgQuXz7l0mgMMRqpQYtnoPDE', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'e2chSIEgQuXz7l0mgMMRqpQYtnoPDE.jpg', '2022-02-23 10:59:18', '2022-02-23 10:59:18', '2022-02-27'),
-(296, 'W2RNvu79zT8J4ljp0ae0EAgDOVOIg4', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'W2RNvu79zT8J4ljp0ae0EAgDOVOIg4.jpg', '2022-02-23 10:59:37', '2022-02-23 10:59:37', '2022-02-27'),
-(297, 'pInx8SQVR0FrNU5TDXDR4kT6f1hJHf', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'pInx8SQVR0FrNU5TDXDR4kT6f1hJHf.jpg', '2022-02-23 10:59:52', '2022-02-23 10:59:52', '2022-02-27'),
-(298, 'u5utqqdQYLXDbbAFKeLV82ZJXG7al2', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'u5utqqdQYLXDbbAFKeLV82ZJXG7al2.jpg', '2022-02-23 11:00:03', '2022-02-23 11:00:03', '2022-02-27'),
-(299, 'CcmmnjAKtaDuvu46jfsL1kPeOLzaW4', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'CcmmnjAKtaDuvu46jfsL1kPeOLzaW4.jpg', '2022-02-23 11:02:28', '2022-02-23 11:02:28', '2022-02-27'),
-(300, 'mGWgmOc4jyoohhQikNoHVbk1sByMTa', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'mGWgmOc4jyoohhQikNoHVbk1sByMTa.jpg', '2022-02-23 11:02:33', '2022-02-23 11:02:33', '2022-02-27'),
-(301, 'RZBTZ5mSfLLkMJyD15fzvIMomf7P7w', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'RZBTZ5mSfLLkMJyD15fzvIMomf7P7w.jpg', '2022-02-23 11:02:53', '2022-02-23 11:02:53', '2022-02-27'),
-(302, 'dVAZT5Fi87eIn5R5FSK9zMajqORSsh', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'dVAZT5Fi87eIn5R5FSK9zMajqORSsh.jpg', '2022-02-23 11:07:29', '2022-02-23 11:07:29', '2022-02-27'),
-(303, '14Mu0pfi6nUscU5F6XucD764AS4SYT', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, '14Mu0pfi6nUscU5F6XucD764AS4SYT.jpg', '2022-02-23 11:07:39', '2022-02-23 11:07:39', '2022-02-27'),
-(304, 'PsoqSzbIngBNM2fdG2lIJxaS9rIKHL', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'PsoqSzbIngBNM2fdG2lIJxaS9rIKHL.jpg', '2022-02-23 11:07:55', '2022-02-23 11:07:55', '2022-02-27'),
-(305, 'wmtZZ3vcyWYAT7Gp5OP9jdPo5sEVez', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'wmtZZ3vcyWYAT7Gp5OP9jdPo5sEVez.jpg', '2022-02-23 11:08:07', '2022-02-23 11:08:07', '2022-02-27'),
-(306, 'KtSUPFnb5gDnES3VGqO1lcwM6MfdzJ', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'KtSUPFnb5gDnES3VGqO1lcwM6MfdzJ.jpg', '2022-02-23 12:04:56', '2022-02-23 12:04:56', '2022-02-27'),
-(307, 'r8SeWIPr2HMMbvH9CKhWwiWcak0gY4', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'r8SeWIPr2HMMbvH9CKhWwiWcak0gY4.jpg', '2022-02-23 12:16:28', '2022-02-23 12:16:28', '2022-02-27'),
-(308, 'FjGRYdOgjNtyhRHV1ZWDt5Qk833akk', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'FjGRYdOgjNtyhRHV1ZWDt5Qk833akk.jpg', '2022-02-23 12:16:30', '2022-02-23 12:16:30', '2022-02-27'),
-(309, 'gvvPEuCPy0tZq8UqZhJ64egrfHoECm', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'gvvPEuCPy0tZq8UqZhJ64egrfHoECm.jpg', '2022-02-23 12:16:50', '2022-02-23 12:16:50', '2022-02-27'),
-(310, 'RW3nUn662cQSQhkKeI8DH991Nfyr46', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'RW3nUn662cQSQhkKeI8DH991Nfyr46.jpg', '2022-02-23 12:18:02', '2022-02-23 12:18:02', '2022-02-27'),
-(311, 'yf1rhesSpNVvBlGstTsD0x6AtRinnp', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'yf1rhesSpNVvBlGstTsD0x6AtRinnp.jpg', '2022-02-23 12:18:09', '2022-02-23 12:18:09', '2022-02-27'),
-(312, 'F5VpkT1ZKMAzGtEdsJzeBU0YTwTlNl', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'F5VpkT1ZKMAzGtEdsJzeBU0YTwTlNl.jpg', '2022-02-23 12:18:49', '2022-02-23 12:18:49', '2022-02-27'),
-(313, 'VjmnsIgzQpx38r4Ao1bQ2B0Ci83wlp', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'VjmnsIgzQpx38r4Ao1bQ2B0Ci83wlp.jpg', '2022-02-23 12:19:14', '2022-02-23 12:19:14', '2022-02-27'),
-(314, 'DR2XL3M5ayWyipFBybJqUKR4sHHrMA', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'DR2XL3M5ayWyipFBybJqUKR4sHHrMA.jpg', '2022-02-23 12:19:29', '2022-02-23 12:19:29', '2022-02-27'),
-(315, 'oJOyKtuskhAbrgpYfT5N6i8UpHKZAJ', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'oJOyKtuskhAbrgpYfT5N6i8UpHKZAJ.jpg', '2022-02-23 12:20:19', '2022-02-23 12:20:19', '2022-02-27'),
-(316, 'vQCSap4XciqF0DuQYdbgxYwg1ebXSf', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'vQCSap4XciqF0DuQYdbgxYwg1ebXSf.jpg', '2022-02-23 12:20:26', '2022-02-23 12:20:26', '2022-02-27'),
-(317, 'ZtA9Sz5irFCkF8Ms67ZuEgPSUsw3vj', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'ZtA9Sz5irFCkF8Ms67ZuEgPSUsw3vj.jpg', '2022-02-23 12:22:22', '2022-02-23 12:22:22', '2022-02-27'),
-(318, 'eMpJn4uszKyrWgn2pPEFbtb5V8Qqs3', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'eMpJn4uszKyrWgn2pPEFbtb5V8Qqs3.jpg', '2022-02-23 12:22:39', '2022-02-23 12:22:39', '2022-02-27'),
-(319, 'TVY093wMakKeOOqazwZDTih3roFaHt', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'TVY093wMakKeOOqazwZDTih3roFaHt.jpg', '2022-02-23 12:24:25', '2022-02-23 12:24:25', '2022-02-27'),
-(320, 'L5reYa9BnF6Ep6kI4Q54txum7lnJtH', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'L5reYa9BnF6Ep6kI4Q54txum7lnJtH.jpg', '2022-02-23 12:24:31', '2022-02-23 12:24:31', '2022-02-27'),
-(321, 'zXV1gM6oKgWK4DAfDt79neSoToma4Z', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'zXV1gM6oKgWK4DAfDt79neSoToma4Z.jpg', '2022-02-23 12:25:04', '2022-02-23 12:25:04', '2022-02-27'),
-(322, 'XPSw50KCp7Znc1doKYys0Z3iv1xnXv', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'XPSw50KCp7Znc1doKYys0Z3iv1xnXv.jpg', '2022-02-23 12:25:10', '2022-02-23 12:25:10', '2022-02-27'),
-(323, 'yJCUAXbrFXEvTTlSS3dWh8y59Ilh8v', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'yJCUAXbrFXEvTTlSS3dWh8y59Ilh8v.jpg', '2022-02-23 13:07:30', '2022-02-23 13:07:30', '2022-02-27'),
-(324, 'rLe1sfDXiA6W6T6hNIUBg9PRHurl1N', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'rLe1sfDXiA6W6T6hNIUBg9PRHurl1N.jpg', '2022-02-23 14:19:30', '2022-02-23 14:19:30', '2022-02-27'),
-(325, 'QZngToshLZcHg2wiNhJX76WG66DUxv', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'QZngToshLZcHg2wiNhJX76WG66DUxv.jpg', '2022-02-23 14:22:04', '2022-02-23 14:22:04', '2022-02-27'),
-(326, 'TdpV2icL5U7x1GOOWTZzoRGw3uQHy3', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'TdpV2icL5U7x1GOOWTZzoRGw3uQHy3.jpg', '2022-02-23 14:26:14', '2022-02-23 14:26:14', '2022-02-27'),
-(327, 'XJviJkDvJYk34jqdB9OjsAlnFUyw17', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'XJviJkDvJYk34jqdB9OjsAlnFUyw17.jpg', '2022-02-23 14:33:54', '2022-02-23 14:33:54', '2022-02-27'),
-(328, 'paKs6fEWnXqOEhEGSKL7P9ReNW2zdF', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'paKs6fEWnXqOEhEGSKL7P9ReNW2zdF.jpg', '2022-02-23 14:34:16', '2022-02-23 14:34:16', '2022-02-27'),
-(329, 'Fm0AZNDjdyCLodEvsw283aEYgiZzu9', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'Fm0AZNDjdyCLodEvsw283aEYgiZzu9.jpg', '2022-02-23 14:35:23', '2022-02-23 14:35:23', '2022-02-27'),
-(330, 'qgNDmmX4XCMWokU8QVSQOEMJjtviMl', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'qgNDmmX4XCMWokU8QVSQOEMJjtviMl.jpg', '2022-02-23 14:35:25', '2022-02-23 14:35:25', '2022-02-27'),
-(331, 'aK31fpSslosTlfX65dt2KJrwyRRkmT', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'aK31fpSslosTlfX65dt2KJrwyRRkmT.jpg', '2022-02-23 14:35:27', '2022-02-23 14:35:27', '2022-02-27'),
-(332, 'RkdQAmE4zoUOnMLENz7X2KF10w9qiu', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'RkdQAmE4zoUOnMLENz7X2KF10w9qiu.jpg', '2022-02-23 14:35:49', '2022-02-23 14:35:49', '2022-02-27'),
-(333, '34oN371ADFJhxyDsIrpUhX8qkUGokP', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, '34oN371ADFJhxyDsIrpUhX8qkUGokP.jpg', '2022-02-23 14:51:59', '2022-02-23 14:51:59', '2022-02-27'),
-(334, 'RTi9NJ10FkvNAWdWQhBXf8iwX3gYGb', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'RTi9NJ10FkvNAWdWQhBXf8iwX3gYGb.jpg', '2022-02-23 15:02:04', '2022-02-23 15:02:04', '2022-02-27'),
-(335, 'VCZxZXzLXDVuEcGQuHPYiHLjsn48Xc', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'VCZxZXzLXDVuEcGQuHPYiHLjsn48Xc.jpg', '2022-02-23 15:08:57', '2022-02-23 15:08:57', '2022-02-27'),
-(336, 'ECJK2TEviXLGKLdhRpKoz60nXU10cF', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, 'ECJK2TEviXLGKLdhRpKoz60nXU10cF.jpg', '2022-02-23 15:10:36', '2022-02-23 15:10:36', '2022-02-27'),
-(337, '11cSkR2UO5OIv0YCIZxoi93wlcU0tZ', 'Nice Scheiß!', 'trhwrjhwrtjhwrh', 3, '#6e6e6e', '', 2, '11cSkR2UO5OIv0YCIZxoi93wlcU0tZ.jpg', '2022-02-24 06:28:14', '2022-02-24 06:28:14', '2022-02-27'),
-(338, 'fOadjDkAUJBetilA9GaOJk98r6CWeT', 'Hallo', 'edbhrfgererfg', 2, '#21c700', '', 3, 'fOadjDkAUJBetilA9GaOJk98r6CWeT.jpg', '2022-02-24 06:40:53', '2022-02-24 06:40:53', '2022-02-26'),
-(339, 'g8Ctu8Up3ue2EduiysiEpjFR4KsiSG', 'Hallo', 'edbhrfgererfg', 2, '#21c700', '', 3, 'g8Ctu8Up3ue2EduiysiEpjFR4KsiSG.jpg', '2022-02-24 06:43:09', '2022-02-24 06:43:09', '2022-02-26'),
-(340, 'xZ9uspGs4KFp07l2dVezNdLaZjRDgt', 'Hallo', 'edbhrfgererfg', 2, '#21c700', '', 3, 'xZ9uspGs4KFp07l2dVezNdLaZjRDgt.jpg', '2022-02-24 07:13:53', '2022-02-24 07:13:53', '2022-02-26');
+(352, 'x4EaQXfIYNK4PCM3wQmp', 'hhallo', 'qwdqwd', 4, '#ff0000', '', 1, 'x4EaQXfIYNK4PCM3wQmp.jpg', '2022-03-15 07:51:12', '2022-03-14 13:40:11', ''),
+(353, 'h42YwB6kL7DBmaCEPvjB', 'werfwer', 'fwefwefwe', 3, '#42b2d7', '', 2, 'h42YwB6kL7DBmaCEPvjB.jpg', '2022-03-14 13:53:10', '2022-03-14 13:53:10', ''),
+(357, 'wy4MlZAo61jIzw8vv9qL', 'wrfwrw3', 'adawdawd', 1, '#ffffff', '', 2, 'wy4MlZAo61jIzw8vv9qL.jpg', '2022-03-14 13:56:52', '2022-03-14 13:56:52', '2022-03-17'),
+(359, 'waB4yrCyH3wrPg2cSnkz', 'aqwdqawd', 'qwdqwd', 2, '#e60a0a', '', 3, 'waB4yrCyH3wrPg2cSnkz.jpg', '2022-03-14 14:01:06', '2022-03-14 14:01:06', '2022-03-30'),
+(360, 'SDS5XQIIMB3lxSqaNu6F', 'awdawdawdawd', 'qwdqwd', 3, '#009dff', '', 3, 'SDS5XQIIMB3lxSqaNu6F.jpg', '2022-03-14 14:05:44', '2022-03-14 14:01:12', '2022-03-30'),
+(361, '89LBJcMm3gnTYXzxGdaH', 'qe5zwe5zdtghrthr', 'qwdqwdzuioltzl', 2, '#e60a0a', '', 3, '89LBJcMm3gnTYXzxGdaH.jpg', '2022-03-14 14:16:48', '2022-03-14 14:01:21', '2022-03-30');
 
 -- --------------------------------------------------------
 
@@ -134,9 +85,9 @@ INSERT INTO `cards` (`id`, `uuid`, `titel`, `description`, `style`, `color`, `ic
 CREATE TABLE `content` (
   `id` int(11) NOT NULL,
   `uuid` varchar(255) NOT NULL,
-  `pdf` varchar(255) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `html` longtext NOT NULL
+  `pdf` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `html` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -144,7 +95,7 @@ CREATE TABLE `content` (
 --
 
 INSERT INTO `content` (`id`, `uuid`, `pdf`, `url`, `html`) VALUES
-(1, 'rmDtOKf7WPJfpXuJ9NU8TZW088TBHg', 'rmDtOKf7WPJfpXuJ9NU8TZW088TBHg.pdf', '', ''),
+(1, 'rmDtOKf7WPJfpXuJ9NU8TZW088TBHg', 'rmDtOKf7WPJfpXuJ9NU8TZW088TBHg.pdf', NULL, ''),
 (2, 'x2qtS8BhXAn1vXmJTcg5v2Vwlq1hM3', '', '', ''),
 (3, 'CCTczzNiu2wbuTJhgpOrCqARVMziMy', '', '', ''),
 (4, 'Sxgefa5TyptsFaofcVvit4w2US6CCL', 'Sxgefa5TyptsFaofcVvit4w2US6CCL.pdf', '', ''),
@@ -301,59 +252,11 @@ INSERT INTO `content` (`id`, `uuid`, `pdf`, `url`, `html`) VALUES
 (155, 'fQE5GN5JrJEpfpUhkA3yHDArzrEXJ9', 'fQE5GN5JrJEpfpUhkA3yHDArzrEXJ9.pdf', 'http://localhost/Infotafel/manager.php', 'erthrthrthrthr4th'),
 (156, 'VELvlLn9OLTxN3vT4Ef2DLzAjOjoF2', 'VELvlLn9OLTxN3vT4Ef2DLzAjOjoF2.pdf', 'http://localhost/Infotafel/manager.php', 'erthrthrthrthr4th'),
 (157, 'P6gN57mky8Gaf3gAo6PKp6zFIcmssm', 'P6gN57mky8Gaf3gAo6PKp6zFIcmssm.pdf', 'http://localhost/Infotafel/manager.php', 'ergergergerg'),
-(158, 'm1BWPyFuijS0ho0nUWzg7Tj1BHNrk4', 'm1BWPyFuijS0ho0nUWzg7Tj1BHNrk4.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(159, 'ynV8wplIFPzzr33ugFh8kEYO7yQpss', 'ynV8wplIFPzzr33ugFh8kEYO7yQpss.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(160, 'mtQ9QcLxOjuSndQ70MA8TdLQwH8T0C', 'mtQ9QcLxOjuSndQ70MA8TdLQwH8T0C.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(161, '2EitzHrsQfPih4x2SB0CJifUGqv3gN', '2EitzHrsQfPih4x2SB0CJifUGqv3gN.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(162, 'IiGeFdb4N55lnfp1xeVD7Sjm0aYnuV', 'IiGeFdb4N55lnfp1xeVD7Sjm0aYnuV.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(163, 'wswbTDEWNdrPl50PsfqSsvhY2ahitk', 'wswbTDEWNdrPl50PsfqSsvhY2ahitk.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(164, 'NpxfeZySznAB8Bgih4WccnYRnrR2Ls', 'NpxfeZySznAB8Bgih4WccnYRnrR2Ls.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(165, 'e2chSIEgQuXz7l0mgMMRqpQYtnoPDE', 'e2chSIEgQuXz7l0mgMMRqpQYtnoPDE.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(166, 'W2RNvu79zT8J4ljp0ae0EAgDOVOIg4', 'W2RNvu79zT8J4ljp0ae0EAgDOVOIg4.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(167, 'pInx8SQVR0FrNU5TDXDR4kT6f1hJHf', 'pInx8SQVR0FrNU5TDXDR4kT6f1hJHf.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(168, 'u5utqqdQYLXDbbAFKeLV82ZJXG7al2', 'u5utqqdQYLXDbbAFKeLV82ZJXG7al2.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(169, 'CcmmnjAKtaDuvu46jfsL1kPeOLzaW4', 'CcmmnjAKtaDuvu46jfsL1kPeOLzaW4.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(170, 'mGWgmOc4jyoohhQikNoHVbk1sByMTa', 'mGWgmOc4jyoohhQikNoHVbk1sByMTa.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(171, 'RZBTZ5mSfLLkMJyD15fzvIMomf7P7w', 'RZBTZ5mSfLLkMJyD15fzvIMomf7P7w.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(172, 'dVAZT5Fi87eIn5R5FSK9zMajqORSsh', 'dVAZT5Fi87eIn5R5FSK9zMajqORSsh.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(173, '14Mu0pfi6nUscU5F6XucD764AS4SYT', '14Mu0pfi6nUscU5F6XucD764AS4SYT.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(174, 'PsoqSzbIngBNM2fdG2lIJxaS9rIKHL', 'PsoqSzbIngBNM2fdG2lIJxaS9rIKHL.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(175, 'wmtZZ3vcyWYAT7Gp5OP9jdPo5sEVez', 'wmtZZ3vcyWYAT7Gp5OP9jdPo5sEVez.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(176, 'KtSUPFnb5gDnES3VGqO1lcwM6MfdzJ', 'KtSUPFnb5gDnES3VGqO1lcwM6MfdzJ.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(177, 'r8SeWIPr2HMMbvH9CKhWwiWcak0gY4', 'r8SeWIPr2HMMbvH9CKhWwiWcak0gY4.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(178, 'FjGRYdOgjNtyhRHV1ZWDt5Qk833akk', 'FjGRYdOgjNtyhRHV1ZWDt5Qk833akk.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(179, 'gvvPEuCPy0tZq8UqZhJ64egrfHoECm', 'gvvPEuCPy0tZq8UqZhJ64egrfHoECm.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(180, 'RW3nUn662cQSQhkKeI8DH991Nfyr46', 'RW3nUn662cQSQhkKeI8DH991Nfyr46.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(181, 'yf1rhesSpNVvBlGstTsD0x6AtRinnp', 'yf1rhesSpNVvBlGstTsD0x6AtRinnp.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(182, 'F5VpkT1ZKMAzGtEdsJzeBU0YTwTlNl', 'F5VpkT1ZKMAzGtEdsJzeBU0YTwTlNl.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(183, 'VjmnsIgzQpx38r4Ao1bQ2B0Ci83wlp', 'VjmnsIgzQpx38r4Ao1bQ2B0Ci83wlp.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(184, 'DR2XL3M5ayWyipFBybJqUKR4sHHrMA', 'DR2XL3M5ayWyipFBybJqUKR4sHHrMA.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(185, 'oJOyKtuskhAbrgpYfT5N6i8UpHKZAJ', 'oJOyKtuskhAbrgpYfT5N6i8UpHKZAJ.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(186, 'vQCSap4XciqF0DuQYdbgxYwg1ebXSf', 'vQCSap4XciqF0DuQYdbgxYwg1ebXSf.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(187, 'ZtA9Sz5irFCkF8Ms67ZuEgPSUsw3vj', 'ZtA9Sz5irFCkF8Ms67ZuEgPSUsw3vj.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(188, 'eMpJn4uszKyrWgn2pPEFbtb5V8Qqs3', 'eMpJn4uszKyrWgn2pPEFbtb5V8Qqs3.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(189, 'TVY093wMakKeOOqazwZDTih3roFaHt', 'TVY093wMakKeOOqazwZDTih3roFaHt.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(190, 'L5reYa9BnF6Ep6kI4Q54txum7lnJtH', 'L5reYa9BnF6Ep6kI4Q54txum7lnJtH.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(191, 'zXV1gM6oKgWK4DAfDt79neSoToma4Z', 'zXV1gM6oKgWK4DAfDt79neSoToma4Z.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(192, 'XPSw50KCp7Znc1doKYys0Z3iv1xnXv', 'XPSw50KCp7Znc1doKYys0Z3iv1xnXv.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(193, 'yJCUAXbrFXEvTTlSS3dWh8y59Ilh8v', 'yJCUAXbrFXEvTTlSS3dWh8y59Ilh8v.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(194, 'rLe1sfDXiA6W6T6hNIUBg9PRHurl1N', 'rLe1sfDXiA6W6T6hNIUBg9PRHurl1N.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(195, 'QZngToshLZcHg2wiNhJX76WG66DUxv', 'QZngToshLZcHg2wiNhJX76WG66DUxv.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(196, 'TdpV2icL5U7x1GOOWTZzoRGw3uQHy3', 'TdpV2icL5U7x1GOOWTZzoRGw3uQHy3.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(197, 'XJviJkDvJYk34jqdB9OjsAlnFUyw17', 'XJviJkDvJYk34jqdB9OjsAlnFUyw17.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(198, 'paKs6fEWnXqOEhEGSKL7P9ReNW2zdF', 'paKs6fEWnXqOEhEGSKL7P9ReNW2zdF.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(199, 'Fm0AZNDjdyCLodEvsw283aEYgiZzu9', 'Fm0AZNDjdyCLodEvsw283aEYgiZzu9.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(200, 'qgNDmmX4XCMWokU8QVSQOEMJjtviMl', 'qgNDmmX4XCMWokU8QVSQOEMJjtviMl.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(201, 'aK31fpSslosTlfX65dt2KJrwyRRkmT', 'aK31fpSslosTlfX65dt2KJrwyRRkmT.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(202, 'RkdQAmE4zoUOnMLENz7X2KF10w9qiu', 'RkdQAmE4zoUOnMLENz7X2KF10w9qiu.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(203, '34oN371ADFJhxyDsIrpUhX8qkUGokP', '34oN371ADFJhxyDsIrpUhX8qkUGokP.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(204, 'RTi9NJ10FkvNAWdWQhBXf8iwX3gYGb', 'RTi9NJ10FkvNAWdWQhBXf8iwX3gYGb.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(205, 'VCZxZXzLXDVuEcGQuHPYiHLjsn48Xc', 'VCZxZXzLXDVuEcGQuHPYiHLjsn48Xc.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(206, 'ECJK2TEviXLGKLdhRpKoz60nXU10cF', 'ECJK2TEviXLGKLdhRpKoz60nXU10cF.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(207, '11cSkR2UO5OIv0YCIZxoi93wlcU0tZ', '11cSkR2UO5OIv0YCIZxoi93wlcU0tZ.pdf', 'http://localhost/Infotafel/manager.php', '534t5534t'),
-(208, 'fOadjDkAUJBetilA9GaOJk98r6CWeT', 'fOadjDkAUJBetilA9GaOJk98r6CWeT.pdf', 'http://localhost/Infotafel/manager.php', 'weerervervvrvrvfer'),
-(209, 'g8Ctu8Up3ue2EduiysiEpjFR4KsiSG', 'g8Ctu8Up3ue2EduiysiEpjFR4KsiSG.pdf', 'http://localhost/Infotafel/manager.php', 'weerervervvrvrvfer'),
-(210, 'xZ9uspGs4KFp07l2dVezNdLaZjRDgt', 'xZ9uspGs4KFp07l2dVezNdLaZjRDgt.pdf', 'http://localhost/Infotafel/manager.php', 'weerervervvrvrvfer');
+(222, 'x4EaQXfIYNK4PCM3wQmp', '', 'http://localhost/Infotafel/manager.php', 'qwdqwdqwd'),
+(223, 'h42YwB6kL7DBmaCEPvjB', 'h42YwB6kL7DBmaCEPvjB.pdf', 'http://localhost/Infotafel/manager.php', 'wefwefwef'),
+(225, 'waB4yrCyH3wrPg2cSnkz', 'waB4yrCyH3wrPg2cSnkz.pdf', 'http://localhost/Infotafel/manager.php', 'awedfadawd'),
+(226, 'SDS5XQIIMB3lxSqaNu6F', 'SDS5XQIIMB3lxSqaNu6F.pdf', 'http://localhost/Infotafel/manager.php', 'awedfadawd'),
+(227, '89LBJcMm3gnTYXzxGdaH', '', 'http://localhost/Infotafel/manager.php', 'awedfadawd');
 
 -- --------------------------------------------------------
 
@@ -399,6 +302,7 @@ CREATE TABLE `slider` (
 --
 
 CREATE TABLE `style` (
+  `id` int(11) NOT NULL,
   `style` int(10) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL
@@ -408,12 +312,12 @@ CREATE TABLE `style` (
 -- Daten für Tabelle `style`
 --
 
-INSERT INTO `style` (`style`, `name`, `description`) VALUES
-(1, 'Default', 'gergerg'),
-(2, 'ergergerg', ''),
-(3, 'rfgedrg', 'ergerg'),
-(4, 'wsewefwf', ''),
-(5, 'Kalender', 'Kalender style');
+INSERT INTO `style` (`id`, `style`, `name`, `description`) VALUES
+(1, 1, 'Default Typ1', 'Akzent unten & Icon im Textfeld.'),
+(2, 2, 'Default Typ2', 'Akzent unten & Icon in Ecke ober links.'),
+(3, 3, 'Everyone', 'Akzent auf allen Seiten & Icon in ecke oben links.'),
+(4, 4, 'Alert', 'Blinkender Akzent auf allen Seiten.'),
+(5, 5, 'Kalender', 'Akzent unten & Kalender');
 
 -- --------------------------------------------------------
 
@@ -500,6 +404,12 @@ ALTER TABLE `slider`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indizes für die Tabelle `style`
+--
+ALTER TABLE `style`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indizes für die Tabelle `test`
 --
 ALTER TABLE `test`
@@ -519,19 +429,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `cards`
 --
 ALTER TABLE `cards`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=341;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=362;
 
 --
 -- AUTO_INCREMENT für Tabelle `content`
 --
 ALTER TABLE `content`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=228;
 
 --
 -- AUTO_INCREMENT für Tabelle `slider`
 --
 ALTER TABLE `slider`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `style`
+--
+ALTER TABLE `style`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT für Tabelle `test`

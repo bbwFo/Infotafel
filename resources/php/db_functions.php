@@ -142,16 +142,16 @@ function gen_gradient($TYPE)
 
 
 
-function start_session(string $USERNAME, string $PASSWORD)
-{
-  $UUID = get_uuid();
-
-
-  gen_session('F5VpkT1ZKMAzGtEdsJzeBU0YTwTlNl', array(
-    'cards' => 'all',
-    'content' => array('pdf','html')
-  ));
-}
+// function start_session(string $USERNAME, string $PASSWORD)
+// {
+//   $UUID = get_uuid();
+//
+//
+//   gen_session('F5VpkT1ZKMAzGtEdsJzeBU0YTwTlNl', array(
+//     'cards' => 'all',
+//     'content' => array('pdf','html')
+//   ));
+// }
 
 
 
@@ -272,30 +272,28 @@ function get_value(string $TABLE, string $UUID, string $DATA)
 
 // -----------------------------------------------------------------------------
 
-function db_create_default_user_table()
-{
-  db_create_table('user', array(
-   'id'          => 'INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY',
-   'uuid'        => 'VARCHAR( 150 ) NOT NULL',
-   'username'    => 'VARCHAR( 150 ) NOT NULL',
-   'password'    => 'VARCHAR( 2 ) NOT NULL',
-   'email'       => 'VARCHAR( 150 ) NOT NULL',
-   'steamid'     => 'VARCHAR( 150 ) NOT NULL',
-   'update_date' => 'TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP',
-   'create_date' => 'TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP'
- ));
-
- db_add('user', array(
-   'uuid'        => gen_uuid(),
-   'username'    => 'root',
-   'password'    => psw_hash('1234'),
-   'email'       => '',
-   'steamid'     => '00000000',
- ));
-
-}
-
-
+// function db_create_default_user_table()
+// {
+//   db_create_table('user', array(
+//    'id'          => 'INT( 10 ) NOT NULL AUTO_INCREMENT PRIMARY KEY',
+//    'uuid'        => 'VARCHAR( 150 ) NOT NULL',
+//    'username'    => 'VARCHAR( 150 ) NOT NULL',
+//    'password'    => 'VARCHAR( 2 ) NOT NULL',
+//    'email'       => 'VARCHAR( 150 ) NOT NULL',
+//    'steamid'     => 'VARCHAR( 150 ) NOT NULL',
+//    'update_date' => 'TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP',
+//    'create_date' => 'TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP'
+//  ));
+//
+//  db_add('user', array(
+//    'uuid'        => gen_uuid(),
+//    'username'    => 'root',
+//    'password'    => psw_hash('1234'),
+//    'email'       => '',
+//    'steamid'     => '00000000',
+//  ));
+//
+// }
 
 
 
@@ -306,29 +304,31 @@ function db_create_default_user_table()
 
 
 
-
-function db_backup()
-{
-  include 'db.php';
-
-  $date = date("Y-m-d");
-  $path = 'resources/uploads/';
-
-  $CMD = "mysqldump --routines -h {$host} -u {$username} -p{$password} {$database} > " . $path . "{$date}_{$database}.sql";
-
-  exec($CMD);
-}
-
-
-function db_restore()
-{
-  $restore_file  = "/home/abdul/20140306_world_copy.sql";
-
-  $cmd = "mysql -h {$host} -u {$username} -p{$password} {$database} < $restore_file";
-  exec($cmd);
-}
-
-
+//
+//
+//
+// function db_backup()
+// {
+//   include 'db.php';
+//
+//   $date = date("Y-m-d");
+//   $path = 'resources/uploads/';
+//
+//   $CMD = "mysqldump --routines -h {$host} -u {$username} -p{$password} {$database} > " . $path . "{$date}_{$database}.sql";
+//
+//   exec($CMD);
+// }
+//
+//
+// function db_restore()
+// {
+//   $restore_file  = "/home/abdul/20140306_world_copy.sql";
+//
+//   $cmd = "mysql -h {$host} -u {$username} -p{$password} {$database} < $restore_file";
+//   exec($cmd);
+// }
+//
+//
 
 
 

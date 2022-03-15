@@ -22,12 +22,7 @@
         if (isset($OVER_CONTENT['pdf']))
         {
           ?>
-
-
           <iframe src="resources/uploads/pdf/<?php echo $OVER_CONTENT['pdf'] ?>#toolbar=0"></iframe>
-
-
-
           <?php
         }
         else if (isset($OVER_CONTENT['url']))

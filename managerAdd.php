@@ -17,9 +17,62 @@
 
     <?php
 
-      if (isset($_POST["titel"]) && isset($_POST["description"]) && isset($_POST["row"]) && isset($_POST["icon"]) && isset($_POST["color"]) && isset($_POST["style"]) && isset($_FILES['background']['name']) && isset($_FILES['pdf']['name']) && isset($_POST['url']) && isset($_POST['html']))
+      // echo db_add('cards', array(
+      //   'uuid' => 'test',
+      //   'titel' => 'test',
+      //   'description' => 'test',
+      //   'row' => '1',
+      //   'icon' => 'test',
+      //   'color' => 'test',
+      //   'style' => '1',
+      //   'background' => 'test'
+      // ));
+
+      //
+      // function db_add(string $TABLE, array $DATA)
+      // {
+      //   include 'resources/php/db.php';
+      //
+      //   $INDEX = '';
+      //   $VALUE = '';
+      //
+      //   $X = array_keys($DATA);
+      //   $Y = end($X);
+      //
+      //   foreach ($DATA as $INDEXES => $VALUES) {
+      //
+      //     if ($INDEXES == $Y)
+      //     {
+      //       $INDEX .= $INDEXES."";
+      //       $VALUE .= "'".$VALUES."'";
+      //     }
+      //     else
+      //     {
+      //       $INDEX .= $INDEXES.", ";
+      //       $VALUE .= "'".$VALUES."', ";
+      //     }
+      //   }
+      //
+      //   $EXEC_DATA = "INSERT INTO $TABLE ( $INDEX ) VALUES ( $VALUE )";
+      //   $db -> exec($EXEC_DATA);
+      // }
+      //
+
+
+
+
+      if (isset($_POST["titel"]) && isset($_POST["description"]) && isset($_POST["row"]) && isset($_POST["icon"]) && isset($_POST["color"]) && isset($_POST["style"]))
       {
         $UUID = gen_uuid('cards', '20', 'default');
+
+
+
+        if (empty($_FILES['background']['name'])) { $BG = ''; } else { $BG = save_file('resources/uploads/img/', $_FILES['background'], $UUID); }
+        if (empty($_FILES['pdf']['name'])) { $PDF = ''; } else { $PDF = save_file('resources/uploads/pdf/', $_FILES['pdf'], $UUID); }
+
+        if (isset($_POST["termin"])) { $TERMIN =  $_POST["termin"]; } else { $TERMIN = ''; }
+        if (isset($_POST["url"])) { $URL =  $_POST["url"]; } else { $URL = ''; }
+        if (isset($_POST["html"])) { $HTML =  $_POST["html"]; } else { $HTML = ''; }
 
         db_add('cards', array(
           'uuid' => $UUID,
@@ -29,15 +82,15 @@
           'icon' => $_POST["icon"],
           'color' => $_POST["color"],
           'style' => $_POST["style"],
-          'termin' => $_POST["termin"],
-          'background' => save_file('resources/uploads/img/', $_FILES['background'], $UUID)
+          'termin' => $TERMIN,
+          'background' => $BG
         ));
 
         db_add('content', array(
           'uuid' => $UUID,
-          'pdf' => save_file('resources/uploads/pdf/', $_FILES['pdf'], $UUID),
-          'url' => $_POST["url"],
-          'html' => htmlentities($_POST["html"])
+          'pdf' => $PDF,
+          'url' => $URL,
+          'html' => htmlentities($HTML)
         ));
 
         header("Location: manager.php");
@@ -56,7 +109,7 @@
               <p>Neuen Eintrag erstellen</p>
             </div>
             <div class="Modal_Head_Button">
-              <i class="icon-close"></i>
+              <a href="manager.php"><i class="icon-close"></i></a>
             </div>
           </div>
           <div class="Modal_Content">
@@ -100,8 +153,10 @@
               <form method='post' accept-charset='UTF-8' enctype="multipart/form-data">
                 <div class="ModalContentBodyItem" id="Box1">
                   <p>Titel</p>
+                  <p class="info">Lege den Titel der Kachel fest. Nehme ein Thema oder ein Schlagword was den Inhalt sehenswert macht.</p>
                   <input type="text" name="titel" value="" autocomplete="off">
                   <p>Beschreibung</p>
+                  <p class="info">Beschreibe kurz den Inhalt der Kachel und um was es sich handelt oder einfach was interresantes.</p>
                   <textarea name="description" rows="4" cols="20"></textarea>
                 </div>
                 <div class="ModalContentBodyItem" id="Box2">
@@ -111,8 +166,10 @@
                 </div>
                 <div class="ModalContentBodyItem" id="Box3">
                   <p>Icon</p>
+                  <p class="info">Lege ein Icon fest das zu deinem Thema past.</p>
                   <select name="icon"><?php foreach (db_foreach_values('icons') as $VAR) {?><option value="<?php echo $VAR["unicode"]; ?>"><?php echo $VAR["unicode"]; ?> <?php echo $VAR["name"] ?></option><?php } ?></select>
                   <p>Farbe</p>
+                  <p class="info">Lege die Akzentfarbe fest.</p>
                   <input type="color" name="color" value="#ffffff">
                 </div>
                 <div class="ModalContentBodyItem" id="Box4">

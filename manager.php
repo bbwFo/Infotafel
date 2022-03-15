@@ -31,12 +31,12 @@
 
 
       <ol>
-        <a href="managerAdd.php">Hinzufügen</a>
+        <a href="managerAdd.php"><i class="icon-add"></i>Hinzufügen</a>
         <?php
         foreach (db_foreach_values('cards') as $VALUE)
         {
           ?>
-            <li><?php echo $VALUE['row'] ?> - <?php echo $VALUE['titel'] ?> - <?php echo $VALUE['description'] ?>
+            <li>Level <?php echo $VALUE['row'] ?> - <?php echo $VALUE['titel'] ?> - <?php echo $VALUE['description'] ?>
               <a href="managerEdit.php?uuid=<?php echo $VALUE['uuid'] ?>"><i class="icon-edit"></i>Bearbeiten</a>
               <a href="managerDelete.php?uuid=<?php echo $VALUE['uuid'] ?>"><i class="icon-bin"></i>Löschen</a>
             </li>

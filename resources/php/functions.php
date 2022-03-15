@@ -8,9 +8,12 @@ function db_add(string $TABLE, array $DATA)
   $INDEX = '';
   $VALUE = '';
 
+  $X = array_keys($DATA);
+  $END = end($X);
+
   foreach ($DATA as $INDEXES => $VALUES) {
 
-    if ($VALUES == end($DATA))
+    if ($INDEXES == $END)
     {
       $INDEX .= $INDEXES."";
       $VALUE .= "'".$VALUES."'";
@@ -22,7 +25,7 @@ function db_add(string $TABLE, array $DATA)
     }
   }
 
-  $EXEC_DATA = "INSERT INTO $TABLE( $INDEX ) VALUES ( $VALUE )";
+  $EXEC_DATA = "INSERT INTO $TABLE ( $INDEX ) VALUES ( $VALUE )";
   $db -> exec($EXEC_DATA);
 }
 
@@ -171,13 +174,14 @@ function gen_uuid(string $TABLE, int $LENGHT, string $ZEICHENSATZ)
   do
   {
     $ZEICHEN_LENGTH = strlen($ZEICHEN);
-    $UUID_CODE = '';
+    $UUID = '';
 
-    for ($i = 0; $i < $LENGHT; $i++) { $UUID_CODE .= $ZEICHEN[rand(0, $ZEICHEN_LENGTH - 1)]; }
+    for ($i = 0; $i < $LENGHT; $i++) { $UUID .= $ZEICHEN[rand(0, $ZEICHEN_LENGTH - 1)]; }
   }
-  while (db_count($TABLE, 'uuid', 'all'));
 
-  return $UUID_CODE;
+  while (db_count($TABLE, 'uuid', $UUID));
+
+  return $UUID;
 }
 
 // ############################################################################# SAVE_FILE()

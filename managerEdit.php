@@ -55,10 +55,10 @@
         <div class="Modal">
           <div class="Modal_Head">
             <div class="Modal_Head_Titel">
-              <p>Neuen Eintrag erstellen</p>
+              <p><?php echo $CARDS['titel'] ?> - Bearbeiten</p>
             </div>
             <div class="Modal_Head_Button">
-              <i class="icon-close"></i>
+              <a href="manager.php"><i class="icon-close"></i></a>
             </div>
           </div>
           <div class="Modal_Content">
@@ -111,12 +111,12 @@
                 <div class="ModalContentBodyItem" id="Box2">
                   <p>Reihe</p>
                   <p class="info">Lege hier den bereich fest in den die Kachel angezeigt wird.<br>Das 1. Level befindet sich ganz Oben auf dem Bildschirm.<br>Die Zahl der Kacheln in den optionen zeigt an wie viele Kacheln sich in den Level auf einer Seite im Sichtbereich gleichzeitig befinden.</p>
-                  <select name="row"><option value="<?php echo $CARDS["row"] ?>"><?php echo $CARDS["row"] ?>. Reihe derzeit ausgewählt</option><?php foreach (db_foreach_values('areas') as $VAR) {?><option value="<?php echo $VAR["row"]; ?>">Level <?php echo $VAR["row"]; ?> - <?php echo $VAR["items"] ?> Kacheln</option><?php } ?></select>
+                  <select name="row"><option value="<?php echo $CARDS["row"] ?>">Level <?php echo $CARDS["row"] ?> (aktuell ausgewählt)</option><?php foreach (db_foreach_values('areas') as $VAR) {?><option value="<?php echo $VAR["row"]; ?>">Level <?php echo $VAR["row"]; ?> - <?php echo $VAR["items"] ?> Kacheln</option><?php } ?></select>
                 </div>
 
                 <div class="ModalContentBodyItem" id="Box3">
                   <p>Icon</p>
-                  <select name="icon"><option value="<?php echo $CARDS["icon"] ?>"><?php echo $CARDS["icon"] ?> ist derzeit ausgewählt</option><?php foreach (db_foreach_values('icons') as $VAR) {?><option value="<?php echo $VAR["unicode"]; ?>"><?php echo $VAR["unicode"]; ?> <?php echo $VAR["name"] ?></option><?php } ?></select>
+                  <select name="icon"><option value="<?php echo $CARDS["icon"] ?>"><?php echo $CARDS["icon"] ?> (aktuell ausgewählt)</option><?php foreach (db_foreach_values('icons') as $VAR) {?><option value="<?php echo $VAR["unicode"]; ?>"><?php echo $VAR["unicode"]; ?> <?php echo $VAR["name"] ?></option><?php } ?></select>
                   <p>Farbe</p>
                   <input type="color" name="color" value="<?php echo $CARDS["color"] ?>">
                 </div>
@@ -130,7 +130,7 @@
                 <div class="ModalContentBodyItem" id="Box5">
                   <p>Aussehen (deaktiviert bei Termin)</p>
                   <p class="info">Ändert das Aussehen einer Kachel. (Wird deaktiviert wenn ein Termin festgelegt wurde)</p>
-                  <select name="style"><option value="<?php echo $CARDS["style"] ?>"><?php echo $CARDS["style"] ?>.) Ist derzeit ausgewählt!</option><?php foreach (db_foreach_values('style') as $VAR) { ?><option value="<?php echo $VAR['style'] ?>"><?php echo $VAR['style'] ?>.) <?php echo $VAR['name'] ?> (<?php echo $VAR['description'] ?>)</option><?php } ?></select>
+                  <select name="style"><option value="<?php echo $CARDS["style"] ?>"><?php echo $CARDS["style"] ?>.) (aktuell ausgewählt)</option><?php foreach (db_foreach_values('style') as $VAR) { ?><option value="<?php echo $VAR['style'] ?>"><?php echo $VAR['style'] ?>.) <?php echo $VAR['name'] ?> (<?php echo $VAR['description'] ?>)</option><?php } ?></select>
                 </div>
 
                 <div class="ModalContentBodyItem" id="Box6">
