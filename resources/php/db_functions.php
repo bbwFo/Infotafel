@@ -266,6 +266,149 @@ function get_value(string $TABLE, string $UUID, string $DATA)
 
 
 
+// // CROSS JOIN
+// "SELECT * FROM table1 CROSS JOIN table2"
+// "SELECT * FROM table1, table2"
+//
+//
+// // INNER JOIN
+// "SELECT * FROM table1 JOIN table2 ON table1.uuid = table2.uuid" // mit unterschiedlichen Spalten
+// "SELECT * FROM table1 JOIN table2 USING (uuid)" // mit gleicher spalte
+//
+// "SELECT * FROM table1 JOIN table2 USING (uuid) WHERE uuid = '123'"
+// "SELECT * FROM table1 JOIN table2 USING (uuid) JOIN table3 USING (uuid) WHERE uuid = '123'"
+//
+// // NATURAl JOIN
+// "SELECT * FROM table1 NATURAL JOIN table2" // 2 spalten gleich (=inner Join), Keine spalten gleich (= Cross Join)
+//
+//
+//
+//
+// "SELECT * FROM table1 LEFT JOIN table2 ON table1.uuid = table2.hwid" // Füllt alle nicht übereinstimmenden werte der ersten tabelle mit NULL
+// "SELECT * FROM table1 RIGHT JOIN table2 ON table1.uuid = table2.hwid" // Füllt alle nicht übereinstimmenden werte der letzten tabelle mit NULL
+//
+
+
+//
+// db_join()
+//
+// db_trigger_insert()
+// db_trigger_update()
+// db_trigger_delete()
+//
+//
+// $X = db_join($UUID, array('table1', 'table2'))
+//
+//
+// function db_join(string $UUID, array $TABLES)
+// {
+//   $STRING = "";
+//
+//   foreach ($TABLES as $TABLE)
+//   {
+//     if ($TABLES[0])
+//     {
+//       $STRING .= $TABLE;
+//     }
+//     else if (end($TABLES))
+//     {
+//       $STRING .= " JOIN ".$TABLE." USING (uuid) WHERE uuid = '$UUID'";
+//     }
+//     else
+//     {
+//       $STRING .= " JOIN ".$TABLE." USING (uuid)";
+//     }
+//   }
+//
+//   $QUERY = $db -> prepare("SELECT * FROM $STRING");
+//   $QUERY -> execute();
+//   $RESULT = $QUERY -> fetchAll();
+//
+//   return $RESULT;
+// }
+
+
+
+//
+//
+//
+//
+//
+// db_inner_join('uuid', array(
+//   'table1' => 'all',
+//   'table2' => 'all'
+// ))
+//
+//
+//
+// CREATE TABLE IF NOT EXISTS `foo` (
+//   `id` varchar(128), PRIMARY KEY (`id`(4))
+// )
+//
+//
+//
+//
+//
+// function db_inner_join()
+// {
+//
+//   $QUERY = $db -> prepare("SELECT * FROM table1 INNER JOIN table2 USING (uuid)");
+//   $QUERY -> execute();
+//   $RESULT = $QUERY -> fetchAll();
+//
+//
+//
+//
+//
+//   function db_get_values(string $TABLE, string $UUID, $DATA)
+//   {
+//     include 'db.php';
+//
+//     if (is_array($DATA) && $DATA != 'all') // EINZELNE INDEX-EINTRÄGE
+//     {
+//       $NEW_STRING = '';
+//       $ARRAY = array();
+//
+//       foreach ($DATA as $VALUE) { if ($VALUE == end($DATA)) { $NEW_STRING .= $VALUE; } else { $NEW_STRING .= $VALUE.", "; } }
+//
+//       $QUERY = $db -> prepare("SELECT $NEW_STRING FROM $TABLE WHERE uuid = '$UUID'");
+//       $QUERY -> execute();
+//       $RESULT = $QUERY -> fetchAll();
+//
+//       foreach ($RESULT as $VALUE) { foreach ($DATA as $INDEX) { $ARRAY += array($INDEX => $VALUE[$INDEX]); } }
+//     }
+//     else // ALLE INDEX-EINTRÄGE
+//     {
+//       $ARRAY = array();
+//
+//       $QUERY1 = $db -> prepare("DESCRIBE $TABLE");
+//       $QUERY1 -> execute();
+//       $RESULT1 = $QUERY1 -> fetchAll(PDO::FETCH_COLUMN);
+//
+//       $QUERY2 = $db -> prepare("SELECT * FROM $TABLE WHERE uuid = '$UUID'");
+//       $QUERY2 -> execute();
+//       $RESULT2 = $QUERY2 -> fetchAll();
+//
+//       foreach ($RESULT1 as $INDEX) { foreach (array_values($RESULT2) as $VALUE) { $ARRAY += array($INDEX => $VALUE[$INDEX]); } }
+//     }
+//
+//     return $ARRAY;
+//   }
+// }
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+
 
 
 
