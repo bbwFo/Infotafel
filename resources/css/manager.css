@@ -34,7 +34,7 @@ body {
   height: 100%;
   display: flex;
   justify-content: center;
-  background-color: var(--black);
+  /* background-color: var(--black); */
   color: var(--white);
   overflow-x: hidden;
   overflow-y: hidden;
@@ -305,41 +305,74 @@ form p.info
 
 
 
+
+
+
 .Main
 {
   position: absolute;
   /* border: 1px solid red; */
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 40px 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "MainHead MainHead"
+    "MainMenu MainBody"
+  ;
+  --color1: rgba(75,75,75,1);
+  --color2: rgba(43,43,43,1);
+  --color3: rgba(31,31,31,1);
+}
+
+.Main #ModalIframe
+{
+  position: absolute;
+  border: none;
+  width: 100%;
+  height: 100%;
+  z-index: 9000;
+  background: transparent;
+
+}
+
+
+
+.MainHead
+{
+  /* border: 1px solid red; */
+  grid-area: MainHead;
+  box-sizing: border-box;
+  background: var(--color1);
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 20px 20px;
-
-  background-position: center;
-
-  /* background-color: #111; */
-  /* background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png"); */
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  justify-content: flex-start;
+  padding: 0px 13px;
+  color: var(--white);
+  font-family: "ubuntu-bold";
+  font-size: 14px;
 }
 
-.LogoutLink {
-  width: auto;
-  height: auto;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  padding: 5px 15px;
-  margin: 20px;
-  border-left: 4px solid rgba(244, 67, 54, 1);
-  background: rgba(244, 67, 54, 0.3);
-  border-radius: 5px;
-  color: #eee;
-  text-decoration: none;
-  font-size: 25px;
-  font-family: "ubuntu-medium";
-  backdrop-filter: blur(10px);
+.MainMenu
+{
+  /* border: 1px solid red; */
+  grid-area: MainMenu;
+  box-sizing: border-box;
+  background: var(--color3);
 }
+.MainBody
+{
+  /* border: 1px solid red; */
+  grid-area: MainBody;
+  box-sizing: border-box;
+  background: var(--color2);
+}
+
+
+
 
 .Main .MainItem {
   width: 200px;
@@ -401,7 +434,7 @@ ol
   height: 80%;
   position: absolute;
   overflow-y: auto;
-  border: 2px solid #333;
+  /* border: 2px solid #333; */
   box-sizing: border-box;
 }
 
@@ -480,13 +513,12 @@ ol a
   --modal-color3: rgba(31,31,31,1);
 
 
-
   width: 100%;
   height: 100%;
   position: absolute;
   z-index: 10000;
-  /* background: rgba(255, 255, 255, 0.1); */
-  /* backdrop-filter: blur(2px); */
+  background: rgba(43, 43, 43, 0.1);
+  backdrop-filter: blur(2px);
 
   display: flex;
   align-items: center;
@@ -568,6 +600,7 @@ ol a
 }
 .Modal_Content_Menu {
   width: 200px;
+  height: 100%;
   position: relative;
   grid-area: Modal_Content_Menu;
   background: var(--modal-color3);
@@ -578,6 +611,19 @@ ol a
   padding: 10px 0px;
   box-sizing: border-box;
 }
+
+.Modal_Content_Menu p.copyright {
+  position: absolute;
+  bottom: 13px;
+  left: 0px;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 10px;
+  font-family: "ubuntu-regular";
+  margin-left: 12px;
+  white-space:nowrap;
+  transition: 0.1s all ease-in-out;
+}
+
 .Modal_Content_Menu hr {
   width: calc(100% - 25px);
   height: 2px;
@@ -585,24 +631,54 @@ ol a
   outline: none;
   border: none;
   margin: 10px 0px;
+}
 
+
+
+.Modal_Content_Menu button {
+  width: calc(100% - 25px);
+  height: auto;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 8px 10px ;
+  display: flex;
+  outline: none;
+  align-items: center;
+  justify-content: center;
+  font-family: "ubuntu-bold", "iconfont";
+  color: var(--colorWhite);
+  background: rgba(244, 67, 54, 0.3);
+  border: 2px solid rgba(244, 67, 54, 1);
+}
+
+.Modal_Content_Menu button p {
+  position: relative;
+  color: rgba(244, 67, 54, 1);
+  font-size: 14px;
+  font-family: "ubuntu-bold";
+  white-space:nowrap;
+  margin-left: -21px;
+  transition: 0.1s all ease-in-out;
+}
+.Modal_Content_Menu button i {
+  position: absolute;
+  /* color: rgba(255, 255, 255, 0.5); */
+  font-size: 16px;
+  font-family: "ubuntu-bold";
+  margin-left: 5px;
+  white-space:nowrap;
+  /* transition: 0.1s all ease-in-out; */
 }
 
 .ModalContentBody {
-
   height: 456px;
-
   grid-area: ModalContentBody;
   position: absolute;
-
   display: block;
   flex-direction: column;
   /* scroll-behavior: smooth; */
-
-
-
   overflow: hidden;
-
   box-sizing: border-box;
 }
 
@@ -778,6 +854,15 @@ group input:checked + label {
   white-space:nowrap;
   transition: 0.1s all ease-in-out;
 }
+.checkmark i {
+  position: absolute;
+  /* color: rgba(255, 255, 255, 0.5); */
+  font-size: 16px;
+  font-family: "ubuntu-bold";
+  margin-left: 5px;
+  white-space:nowrap;
+  /* transition: 0.1s all ease-in-out; */
+}
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
@@ -787,6 +872,7 @@ group input:checked + label {
 .container:hover input ~ .checkmark p {
   color: rgba(255, 255, 255, 1);
 }
+
 
 
 

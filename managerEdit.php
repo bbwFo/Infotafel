@@ -39,6 +39,9 @@
         if (isset($_POST["url"]) && $_POST["url"] != $CONTENT['url']) { db_update('content', $UUID, array('url' => $_POST["url"])); }
         if (isset($_POST["html"]) && $_POST["html"] != $CONTENT['html']) { db_update('content', $UUID, array('html' => htmlentities($_POST["html"]))); }
 
+
+        set_cookie('reload', '1', '1');
+
         header("Location: manager.php");
       }
 

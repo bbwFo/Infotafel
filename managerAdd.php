@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="de" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>ManagerAdd</title>
-    <link rel="icon" type="image/png" href="resources/img/favicon.png">
-    <link rel="stylesheet" href="resources/css/manager.css">
-  </head>
-  <body>
+<link rel="stylesheet" href="resources/css/manager.css">
     <?php
       session_start();
 
@@ -93,16 +85,14 @@
           'html' => htmlentities($HTML)
         ));
 
+        set_cookie('reload', '1', '1');
+
         header("Location: manager.php");
       }
 
     ?>
 
-
-    <div class="Main">
-
-
-      <div class="Modal_Screen_Overlay">
+<div class="Modal_Screen_Overlay">
         <div class="Modal">
           <div class="Modal_Head">
             <div class="Modal_Head_Titel">
@@ -227,11 +217,5 @@
       </div>
 
 
-
-    </div>
-
     <script src="resources/js/jquery.js"></script>
     <script src="resources/js/manager.js"></script>
-
-  </body>
-</html>

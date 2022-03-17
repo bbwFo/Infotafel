@@ -33,3 +33,32 @@ $('.overlayCloser').click(function() {
     $('.Item .ItemInner:not(.Item[data-card_id=' + cardID + '] .ItemInner)').removeClass('ItemDisable');
     $('.Item[data-card_id=' + cardID + '] .ItemInner').removeClass('ItemScale');
 });
+
+
+
+
+
+
+
+
+
+function checkCookie()
+{
+
+  if (document.cookie.indexOf("reload=") < 0) {
+    console.log('Nicht gesetzt');
+  }
+  else
+  {
+    deleteCookie("reload")
+    location.reload(true);
+  }
+
+}
+
+function deleteCookie(name) {
+  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+
+setInterval(function () {checkCookie();}, 5000);

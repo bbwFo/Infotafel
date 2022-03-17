@@ -33,6 +33,8 @@
         db_delete('cards', $UUID);
         db_delete('content', $UUID);
 
+        set_cookie('reload', '1', '1');
+
         header("Location: manager.php");
       }
 
