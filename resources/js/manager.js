@@ -2,6 +2,9 @@
 
 
 
+
+
+
 function readURL(input)
 {
   if (input.files && input.files[0]) {
@@ -14,4 +17,33 @@ function readURL(input)
 
        reader.readAsDataURL(input.files[0]);
    }
+}
+
+
+
+
+
+function closeModal()
+{
+  $('#ModalFrame').css({"opacity": "0", "visibility": "hidden"});
+  $('#ModalFrame').load("");
+}
+
+
+function openEditModal(uuid)
+{
+  $('#ModalFrame').css({"opacity": "1", "visibility": "visible"});
+  $('#ModalFrame').load("managerEdit.php?uuid=" + uuid);
+}
+
+function openAddModal()
+{
+  $('#ModalFrame').css({"opacity": "1", "visibility": "visible"});
+  $('#ModalFrame').load("managerAdd.php");
+}
+
+
+function deleteCard(uuid)
+{
+
 }

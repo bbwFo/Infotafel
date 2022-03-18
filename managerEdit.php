@@ -49,10 +49,11 @@
 
     ?>
 
+  
 
     <div class="Main">
 
-      <a class="LogoutLink" href="logout.php"><i class="icon-logout"></i></a>
+
 
       <div class="Modal_Screen_Overlay">
         <div class="Modal">
@@ -61,7 +62,9 @@
               <p><?php echo $CARDS['titel'] ?> - Bearbeiten</p>
             </div>
             <div class="Modal_Head_Button">
-              <a href="manager.php"><i class="icon-close"></i></a>
+
+              <button type="button" name="button" onclick="closeModal();">close</button>
+              <!-- <a href="manager.php"><i class="icon-close"></i></a> -->
             </div>
           </div>
           <div class="Modal_Content">
