@@ -10,7 +10,7 @@
 
     <?php
       include 'resources/php/db.php';
-      include 'resources/php/script.php';
+      include 'resources/php/simple-php.php';
       // include 'resources/php/db_functions.php';
 
       $DEFAULT_IMAGE = 'resources/img/test.svg';
@@ -59,7 +59,7 @@
             else { $BACKGROUND_IMG = $IMAGE_UPLOAD_PATH.$VALUE["background"]; }
             ?>
 
-            <div class="Item" data-card_id="<?php echo $VALUE['uuid'] ?>">
+            <div class="Item" data-card_id="<?php echo $VALUE['id'] ?>">
               <div class="ItemInner" style="border-color:<?php echo $VALUE["color"] ?>; --border-color:<?php echo $VALUE["color"] ?>; background-image:url(<?php echo $BACKGROUND_IMG ?>);" data-icon="<?php echo $VALUE["icon"] ?>" data-date_month="<?php echo $MONTH ?>" data-date_day="<?php echo $DAY ?>" data-style="<?php echo $VALUE["style"] ?>">
                 <div class="ItemInnerBox">
                   <div class="IconBox" data-icon="<?php echo $VALUE["icon"] ?>"></div>
@@ -95,7 +95,7 @@
             else { $BACKGROUND_IMG = $IMAGE_UPLOAD_PATH.$VALUE["background"]; }
             ?>
 
-            <div class="Item" data-card_id="<?php echo $VALUE['uuid'] ?>">
+            <div class="Item" data-card_id="<?php echo $VALUE['id'] ?>">
               <div class="ItemInner" style="border-color:<?php echo $VALUE["color"] ?>; --border-color:<?php echo $VALUE["color"] ?>; background-image:url(<?php echo $BACKGROUND_IMG ?>);" data-icon="<?php echo $VALUE["icon"] ?>" data-date_month="<?php echo $MONTH ?>" data-date_day="<?php echo $DAY ?>" data-style="<?php echo $VALUE["style"] ?>">
                 <div class="ItemInnerBox">
                   <div class="IconBox" data-icon="<?php echo $VALUE["icon"] ?>"></div>
@@ -131,7 +131,7 @@
             else { $BACKGROUND_IMG = $IMAGE_UPLOAD_PATH.$VALUE["background"]; }
             ?>
 
-            <div class="Item" data-card_id="<?php echo $VALUE['uuid'] ?>">
+            <div class="Item" data-card_id="<?php echo $VALUE['id'] ?>">
               <div class="ItemInner" style="border-color:<?php echo $VALUE["color"] ?>; --border-color:<?php echo $VALUE["color"] ?>; background-image:url(<?php echo $BACKGROUND_IMG ?>);" data-icon="<?php echo $VALUE["icon"] ?>" data-date_month="<?php echo $MONTH ?>" data-date_day="<?php echo $DAY ?>" data-style="<?php echo $VALUE["style"] ?>">
                 <div class="ItemInnerBox">
                   <div class="IconBox" data-icon="<?php echo $VALUE["icon"] ?>"></div>
@@ -167,7 +167,7 @@
             else { $BACKGROUND_IMG = $IMAGE_UPLOAD_PATH.$VALUE["background"]; }
             ?>
 
-            <div class="Item" data-card_id="<?php echo $VALUE['uuid'] ?>">
+            <div class="Item" data-card_id="<?php echo $VALUE['id'] ?>">
               <div class="ItemInner" style="border-color:<?php echo $VALUE["color"] ?>; --border-color:<?php echo $VALUE["color"] ?>; background-image:url(<?php echo $BACKGROUND_IMG ?>);" data-icon="<?php echo $VALUE["icon"] ?>" data-date_month="<?php echo $MONTH ?>" data-date_day="<?php echo $DAY ?>" data-style="<?php echo $VALUE["style"] ?>">
                 <div class="ItemInnerBox">
                   <div class="IconBox" data-icon="<?php echo $VALUE["icon"] ?>"></div>

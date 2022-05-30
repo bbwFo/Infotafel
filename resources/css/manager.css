@@ -890,3 +890,160 @@ group input:checked + label {
 .container input:checked ~ .checkmark p {
   color: rgba(255, 255, 255, 1);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.CardModal{
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#dataTable {
+  font-family: arial;
+  border-collapse: collapse;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  user-select: none;
+  font-family: "ubuntu-regular", "iconfont";
+}
+
+
+
+#dataTable th {
+  border: 2px solid #008c59;
+  padding: 8px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+#dataTable td {
+  border: 2px solid #5f5f5f;
+  padding: 8px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+#dataTable tr:nth-child(even)
+{
+  background-color: #111111;
+}
+
+/* #dataTable tr:hover
+{
+  background-color: #ddd;
+} */
+
+#dataTable td::before
+{
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  pointer-events: none;
+  border: 2px solid transparent;
+}
+
+#dataTable td:hover::before
+{
+  border-color: rgb(0, 133, 255);
+}
+
+
+
+
+
+
+
+
+
+
+
+#dataTable td.tdCenter {
+  width: min-content;
+  text-align: center;
+}
+#dataTable td.tdLeft {
+  width: min-content;
+  text-align: left;
+}
+
+
+#dataTable td img {
+  width: 80px;
+  height: 50px;
+  object-fit: cover;
+  object-position: center;
+  background: #111;
+  outline: none;
+  border: none;
+  /* border-radius: 10px; */
+}
+
+
+
+
+#dataTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Modal
+{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 9000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(51, 51, 51, 0.4);
+  backdrop-filter: blur(10px);
+  font-family: "ubuntu-regular", "iconfont";
+}
+
+.Modal select
+{
+  font-family: "ubuntu-regular", "iconfont";
+}

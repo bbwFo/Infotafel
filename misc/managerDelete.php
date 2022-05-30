@@ -17,9 +17,9 @@
 
     <?php
 
-      if (isset($_GET['uuid']))
+      if (isset($_GET['id']))
       {
-        $UUID = $_GET['uuid'];
+        $UUID = $_GET['id'];
 
 
         $BACKGROUND = db_get_values('cards', $UUID, 'all');

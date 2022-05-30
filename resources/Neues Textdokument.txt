@@ -1,8 +1,0 @@
-db_count('user', 'all'); // EINTRÄGE INSGESAMT
-db_count('user', array('username' => 'Askylan'); // EINTRÄGE MIT ÜBEREINSTIMMUNG
-
-db_join_values($UUID, array(
- 'user' => 'all',
- 'content' => array('text', 'option'),
- 'table' => 'all'
-));
