@@ -34,7 +34,7 @@ body {
   height: 100%;
   display: flex;
   justify-content: center;
-  /* background-color: var(--black); */
+  background-color: var(--black);
   color: var(--white);
   overflow-x: hidden;
   overflow-y: hidden;

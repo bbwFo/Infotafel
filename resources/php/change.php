@@ -6,22 +6,22 @@ session_start();
 
 if (!empty($_POST['trigger']))
 {
-  $CHANGEDATE = changeDate('cards', 'update_date');
+  $DATABASE_DATE = changeDate('cards', 'update_date');
 
   if (isset($_SESSION["change"]))
   {
     $CURRENTDATE = $_SESSION["change"];
 
-    if ($CHANGEDATE != $CURRENTDATE)
+    if ($DATABASE_DATE != $CURRENTDATE)
     {
       echo json_encode(['state' => 'change', 'massage' => "↻ Aktualisiert: ($CURRENTDATE) -> ($CHANGEDATE)"]);
-      $_SESSION["change"] = $CHANGEDATE;
+      $_SESSION["change"] = $DATABASE_DATE;
     }
     else { echo json_encode(['state' => 'no-change', 'massage' => 'Keine änderungen']); }
   }
   else
   {
-    $_SESSION["change"] = $CHANGEDATE;
+    $_SESSION["change"] = $DATABASE_DATE;
     echo json_encode(['state' => 'no-change', 'massage' => 'Änderungs-Cookie angellegt']);
   }
 }

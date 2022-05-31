@@ -42,23 +42,29 @@ $('.overlayCloser').click(function() {
 
 
 
-function checkCookie()
+
+setInterval(function () {
+  change();
+  console.log('hallo');
+
+}, 10000);
+
+function change()
 {
-
-  if (document.cookie.indexOf("reload=") < 0) {
-    console.log('Nicht gesetzt');
-  }
-  else
-  {
-    deleteCookie("reload")
-    location.reload(true);
-  }
-
+  $.ajax({
+    url: 'resources/php/change.php',
+    type: 'post',
+    dataType: 'json',
+    cache: false,
+    data: { trigger: 1 },
+    success: function(data)
+    {
+      if (data.state == 'change')
+      {
+        $("#dataTable").load(window.location + " #Main");
+        console.log(data.massage);
+      }
+    },
+    error: function() { console.log('change() - Error'); }
+  })
 }
-
-function deleteCookie(name) {
-  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-}
-
-
-setInterval(function () {checkCookie();}, 5000);

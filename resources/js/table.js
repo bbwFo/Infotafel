@@ -37,10 +37,14 @@ function openModalNEW()
 {
   $('#Modal').css({'display': 'flex'});
   $('#Modal #modalbutton').attr('onclick', 'addEntry()').html('✔ Anlegen');
+
+  $('#Modal input').val('');
+  $('#Modal select').val('');
+  $('#Modal textarea').val('');
 }
 
 
-function openModal(titel, description, row, icon, style, color, termin, id)
+function openModal(titel, description, row, icon, style, color, termin, html, id)
 {
   $('#Modal').css({'display': 'flex'});
   $('#Modal #inputTitel').val(titel);
@@ -50,14 +54,13 @@ function openModal(titel, description, row, icon, style, color, termin, id)
   $('#Modal #inputStyle').val(style);
   $('#Modal #inputColor').val(color);
   $('#Modal #inputTermin').val(termin);
+  $('#Modal #inputHtml').val(html);
   $('#Modal #modalbutton').attr('onclick', 'updateEntry(' + id + ')').html('✔ Speichern');
 }
 
 function closeModal()
 {
   $('#Modal').css({'display': 'none'});
-  // $('#Modal input').val('NULL');
-  // $('#Modal select').val('NULL');
 }
 
 
@@ -93,7 +96,8 @@ function addEntry()
       icon: $('#inputIcon').val(),
       style: $('#inputStyle').val(),
       color: $('#inputColor').val(),
-      termin: $('#inputTermin').val()
+      termin: $('#inputTermin').val(),
+      html: $('#inputHtml').val()
     },
     success: function(data)
     {
@@ -129,6 +133,7 @@ function getEntry(id)
           data.style,
           data.color,
           data.termin,
+          data.html,
           data.id
         );
       }
@@ -137,6 +142,9 @@ function getEntry(id)
     complete: function () { console.log('getEntry() - Complete'); }
   })
 }
+
+
+
 
 
 function updateEntry(id)
@@ -155,10 +163,13 @@ function updateEntry(id)
       icon: $('#inputIcon').val(),
       style: $('#inputStyle').val(),
       color: $('#inputColor').val(),
-      termin: $('#inputTermin').val()
+      termin: $('#inputTermin').val(),
+      html: $('#inputHtml').val()
     },
     success: function(data)
     {
+      console.log(data);
+
       if (data.state == 'done')
       {
         $("#dataTable").load(window.location + " #dataTable");
@@ -231,14 +242,15 @@ function change()
 
 
 
-function fileToServer()
+function fileToServer(name)
 {
   var fd = new FormData();
   var files = $('#inputFile')[0].files;
 
   if (files.length > 0)
   {
-    fd.append('file',files[0]);
+    fd.append('file', files[0]);
+    fd.append('name', name);
 
     $.ajax({
       url: 'resources/php/fileToServer.php',
@@ -250,10 +262,11 @@ function fileToServer()
       success: function(data)
       {
         console.log(data);
+        return data;
       },
       error: function() { console.log('fileToServer() - Error'); },
       complete: function () { console.log('fileToServer() - Complete'); }
-    })
+    }, 'json')
   }
   else
   {

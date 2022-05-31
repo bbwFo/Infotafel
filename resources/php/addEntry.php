@@ -10,7 +10,8 @@ if (
   !empty($_POST['row']) &&
   !empty($_POST['icon']) &&
   !empty($_POST['style']) &&
-  !empty($_POST['color'])
+  !empty($_POST['color']) &&
+  !empty($_POST['html'])
   )
 {
   $ID = gen_id('cards', 'id', 10, '0123456789');
@@ -23,7 +24,8 @@ if (
     'icon' => $_POST['icon'],
     'style' => $_POST['style'],
     'color' => $_POST['color'],
-    'termin' => $_POST['termin']
+    'termin' => $_POST['termin'],
+    'html' => $_POST['html']
   ]);
 
   echo json_encode(['state' => 'done', 'id' => $ID]);

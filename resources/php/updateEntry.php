@@ -8,7 +8,8 @@ if (
   !empty($_POST['row']) &&
   !empty($_POST['icon']) &&
   !empty($_POST['style']) &&
-  !empty($_POST['color'])
+  !empty($_POST['color']) &&
+  !empty($_POST['html'])
   )
 {
   db_update('cards', 'id', $_POST['id'], [
@@ -18,7 +19,8 @@ if (
     'icon' => $_POST['icon'],
     'style' => $_POST['style'],
     'color' => $_POST['color'],
-    'termin' => $_POST['termin']
+    'termin' => $_POST['termin'],
+    'html' => $_POST['html']
   ]);
 
   echo json_encode(['state' => 'done']);

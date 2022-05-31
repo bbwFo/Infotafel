@@ -50,6 +50,8 @@
 
         <input id="inputTermin" type="date">
 
+        <textarea id="inputHtml" rows="8" cols="80" placeholder="Schreib hier HTML"></textarea>
+
         <button type="button" onclick="closeModal()">✘ Abbrechen</button>
         <button id="modalbutton" type="button"></button>
       </div>
@@ -139,6 +141,7 @@
             <th>Titel:</th>
             <th>Beschreibung:</th>
             <th>Level:</th>
+            <th>HTML:</th>
             <th>ID:</th>
             <th>Termin:</th>
             <th>Style:</th>
@@ -159,6 +162,7 @@
               <td class="tdLeft"><?php echo $VALUE['titel'] ?></td>
               <td class="tdLeft"><?php echo $VALUE['description'] ?></td>
               <td class="tdLeft"><?php echo $VALUE['row'] ?></td>
+              <td class="tdLeft"><?php echo $VALUE['html'] ?></td>
               <td class="tdLeft"><?php echo $VALUE['id'] ?></td>
               <td class="tdCenter"><?php echo str_replace('-', '.', $VALUE['termin']) ?></td>
               <td class="tdCenter"><?php echo $VALUE['style'] ?></td>
@@ -176,9 +180,9 @@
         </table>
 
 
-
-        <input id="inputFile" type="file" value="">
-        <button type="button" name="button" onclick="fileToServer()">send</button>
+        <!-- <input id="inputFile" type="file" value="">
+        <button type="button" onclick="fileToServer('hallo')" name="button">erfefef</button>
+ -->
 
 
 

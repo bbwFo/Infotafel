@@ -9,30 +9,30 @@
 
     <?php
 
-      include 'resources/php/db_functions.php';
+      include 'resources/php/simple-php.php';
 
       if (isset($_GET['uuid']))
       {
-        $OVER_CARD = get_values('cards', $_GET['uuid'], array('titel','description'));
 
-        $OVER_CONTENT = get_values('content', $_GET['uuid'], array('pdf','url','html'));
-
+        $DATA = db_get('cards', 'id', $_GET['uuid'], 'all');
 
 
-        if (isset($OVER_CONTENT['pdf']))
+
+
+        if (!empty($DATA['pdf']))
         {
           ?>
-          <iframe src="resources/uploads/pdf/<?php echo $OVER_CONTENT['pdf'] ?>#toolbar=0"></iframe>
+          <iframe src="resources/uploads/pdf/<?php echo $DATA['pdf'] ?>#toolbar=0"></iframe>
           <?php
         }
-        else if (isset($OVER_CONTENT['url']))
+        else if (!empty($DATA['url']))
         {
-          ?><iframe src="<?php echo $OVER_CONTENT['url'] ?>"></iframe><?php
+          ?><iframe src="<?php echo $DATA['url'] ?>"></iframe><?php
         }
-        else if (isset($OVER_CONTENT['html']))
+        else if (!empty($DATA['html']))
         {
           ?>
-          <div class="OverlayHTML"><?php echo $OVER_CONTENT['html'] ?></div>
+          <div class="OverlayHTML"><?php echo $DATA['html'] ?></div>
           <?php
         }
       }

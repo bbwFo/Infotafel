@@ -166,26 +166,7 @@ function gen_username()
 
 // ############################################################################# SAVE_FILE()
 
-function save_file(string $PATH, $FILE, string $NEW_FILENAME, array $VALIDTYPES)
-{
-  $FILENAME = $FILE['name'];
-
-  $PATHTOFILE = $PATH.$FILENAME;
-
-  $FILETYPE = pathinfo($PATHTOFILE, PATHINFO_EXTENSION);
-  $FILETYPE = strtolower($FILETYPE);
-
-  if(in_array(strtolower($FILETYPE), $VALIDTYPES))
-  {
-    if(move_uploaded_file($FILE['tmp_name'], $PATH.$NEW_FILENAME.'.'.$FILETYPE))
-    {
-      return $NEW_FILENAME.'.'.$FILETYPE;
-    }
-  }
-}
-
-
-// function save_file(string $PATH, $FILE, string $UUID)
+// function save_file(string $PATH, $FILE, string $NEW_FILENAME, array $VALIDTYPES)
 // {
 //   $FILENAME = $FILE['name'];
 //
@@ -194,16 +175,55 @@ function save_file(string $PATH, $FILE, string $NEW_FILENAME, array $VALIDTYPES)
 //   $FILETYPE = pathinfo($PATHTOFILE, PATHINFO_EXTENSION);
 //   $FILETYPE = strtolower($FILETYPE);
 //
-//   $VALIDTYPES = array("jpg","jpeg","png","gif","pdf");
-//
 //   if(in_array(strtolower($FILETYPE), $VALIDTYPES))
 //   {
-//     if(move_uploaded_file($FILE['tmp_name'], $PATH.$UUID.'.'.$FILETYPE))
+//     if(move_uploaded_file($FILE['tmp_name'], $PATH.$NEW_FILENAME.'.'.$FILETYPE))
 //     {
-//       return $UUID.'.'.$FILETYPE;
+//       return $NEW_FILENAME.'.'.$FILETYPE;
 //     }
 //   }
 // }
+
+
+function save_file(string $PATH, $FILE, string $NEW_NAME, array $VALIDTYPES)
+{
+  $FILENAME = $FILE['name'];
+  $FILETEMP = $FILE['tmp_name'];
+  $FILESIZE = round($FILE['size'] / 1024, 2);
+
+  $PATHTOFILE = $PATH.$FILENAME;
+
+  $FILETYPE = strtolower(pathinfo($PATHTOFILE, PATHINFO_EXTENSION));
+
+  if (in_array($FILETYPE, $VALIDTYPES))
+  {
+    if (move_uploaded_file($FILETEMP, $PATH.$NEW_NAME.'.'.$FILETYPE))
+    {
+      return $NEW_NAME.'.'.$FILETYPE;
+      // return ['name' => $NEW_NAME.'.'.$FILETYPE, 'size' => $FILESIZE.' KB'];
+    }
+    else { return 'Datei konnte nicht auf den Server verschoben werden'; }
+  }
+  else { return 'Dateityp wird nicht unterstützt'; }
+}
+
+
+
+
+
+
+
+// function get_pathinfo($filepath)
+// {
+//   preg_match('%^(.*?)[\\\\/]*(([^/\\\\]*?)(\.([^\.\\\\/]+?)|))[\\\\/\.]*$%im', $filepath, $X);
+//   if ($X[1]) $ret['dirname'] = $X[1];
+//   if ($X[2]) $ret['basename'] = $X[2];
+//   if ($X[5]) $ret['extension'] = $X[5];
+//   if ($X[3]) $ret['filename'] = $X[3];
+//   return $ret;
+// }
+
+
 
 // ############################################################################# SET_COOKIE()
 

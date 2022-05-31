@@ -4,12 +4,9 @@ include 'simple-php.php';
 
 if (!empty($_FILES['file']['name']))
 {
+  $X = save_file('../../resources/uploads/img/', $_FILES['file'], $_POST['name'], ["jpg", "jpeg", "png", "gif", "pdf"]);
 
-  $VALIDTYPES = ['png', 'jpg', 'jpeg'];
-
-  save_file('resources/uploads/img/', $_FILES['file'], 'testfileName', $VALIDTYPES);
-
-  echo json_encode(['state' => 'uploaded']);
+  echo $X;
 }
 else
 {

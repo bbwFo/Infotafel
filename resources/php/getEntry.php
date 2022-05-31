@@ -17,6 +17,7 @@ if (!empty($_POST['id']))
     'style' => $VALUE['style'],
     'color' => $VALUE['color'],
     'termin' => $VALUE['termin'],
+    'html' => $VALUE['html'],
     'id' => $VALUE['id']
   ]);
 }
