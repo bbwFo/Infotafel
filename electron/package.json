@@ -1,0 +1,29 @@
+{
+  "name": "Infotafel",
+  "version": "1.0.0",
+  "description": "Ein tolles Tool von arklifenet für die Community",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "keywords": [],
+  "author": "Askylan",
+  "license": "ISC",
+  "dependencies": {
+    "electron-reload": "^2.0.0-alpha.1",
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "electron": "^15.1.2",
+    "electron-builder": "^22.13.1"
+  },
+  "build": {
+    "appId": "0001",
+    "win": {
+      "target": "nsis",
+      "icon": "build/mediadrake_icon.ico"
+    }
+  }
+}

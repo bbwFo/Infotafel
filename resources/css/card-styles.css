@@ -24,17 +24,17 @@
   left: 0px;
   width: 0px;
   border-radius: 5px 0px 0px 0px;
-  border-top: 36px solid  var(--border-color);
-  border-left: 36px solid var(--border-color);
-  border-right: 36px solid transparent;
-  border-bottom: 36px solid transparent;
+  border-top: 56px solid  var(--border-color);
+  border-left: 56px solid var(--border-color);
+  border-right: 56px solid transparent;
+  border-bottom: 56px solid transparent;
 }
 .Slider .Item .ItemInner[data-style="2"]:after {
   z-index: 101;
   font-family: "iconfont";
   text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
   content: attr(data-icon);
-  font-size: 30px;
+  font-size: 50px;
   position: absolute;
   top: 6px;
   left: 6px;
@@ -56,17 +56,17 @@
   top: 0px;
   left: 0px;
   width: 0px;
-  border-top: 30px solid  var(--border-color);
-  border-left: 30px solid var(--border-color);
-  border-right: 30px solid transparent;
-  border-bottom: 30px solid transparent;
+  border-top: 50px solid  var(--border-color);
+  border-left: 50px solid var(--border-color);
+  border-right: 50px solid transparent;
+  border-bottom: 50px solid transparent;
 }
 .Slider .Item .ItemInner[data-style="3"]:after {
   z-index: 101;
   font-family: "iconfont";
   text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
   content: attr(data-icon);
-  font-size: 30px;
+  font-size: 50px;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -103,17 +103,17 @@
   justify-content: center;
   content: attr(data-date_month);
   color: var(--white);
-  font-size: 14px;
+  font-size: 25px;
   background: var(--red);
   position: absolute;
   top: 20px;
   right: 20px;
-  width: 50px;
-  height: 20px;
+  width: 100px;
+  height: 40px;
 
-  border-top: 2px solid var(--darkgrey);
-  border-left: 2px solid var(--darkgrey);
-  border-right: 2px solid var(--darkgrey);
+  border-top: 4px solid var(--darkgrey);
+  border-left: 4px solid var(--darkgrey);
+  border-right: 4px solid var(--darkgrey);
   border-bottom: none;
 }
 .Slider .Item .ItemInner[data-style="5"]:after {
@@ -124,23 +124,23 @@
   justify-content: center;
   content: attr(data-date_day);
   color: var(--black);
-  font-size: 25px;
+  font-size: 50px;
   background: var(--white);
   position: absolute;
-  top: 40px;
+  top: 60px;
   right: 20px;
-  width: 50px;
-  height: 30px;
+  width: 100px;
+  height: 60px;
 
   border-top: none;
-  border-left: 2px solid var(--darkgrey);
-  border-right: 2px solid var(--darkgrey);
-  border-bottom: 2px solid var(--darkgrey);
+  border-left: 4px solid var(--darkgrey);
+  border-right: 4px solid var(--darkgrey);
+  border-bottom: 4px solid var(--darkgrey);
 }
 
 
 /* border typ 6 */
-
+/*
 .Slider .Item .ItemInner[data-style="6"] {
   border-top: none;
   border-left: none;
@@ -190,4 +190,4 @@
   border-left: 2px solid var(--black);
   border-right: 2px solid var(--black);
   border-bottom: 2px solid var(--black);
-}
+} */

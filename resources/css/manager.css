@@ -373,6 +373,8 @@ form p.info
   grid-area: MainBody;
   box-sizing: border-box;
   background: var(--color2);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 

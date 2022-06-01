@@ -196,6 +196,6 @@
     <script src="resources/js/slick.js"></script>
     <script src="resources/js/slick.conf.js"></script>
     <script src="resources/js/script.js"></script>
-    <script src="resources/js/manager.js"></script>
+
   </body>
 </html>

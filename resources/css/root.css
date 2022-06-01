@@ -219,7 +219,7 @@ body {
   font-family: "iconfont";
   text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
   content: attr(data-icon);
-  font-size: 30px;
+  font-size: 50px;
   color: var(--white);
   position: relative;
   /* border: 1px solid red; */
@@ -249,7 +249,7 @@ body {
 }
 .Titel p {
   font-family: "ubuntu-bold";
-  font-size: 22px;
+  font-size: 30px;
   color: #eee;
   line-height: 1.5;
   overflow: hidden;
@@ -264,7 +264,7 @@ body {
 }
 .Text p {
   font-family: "ubuntu-medium";
-  font-size: 16px;
+  font-size: 20px;
   color: #eee;
   line-height: 1.5;
   overflow: hidden;

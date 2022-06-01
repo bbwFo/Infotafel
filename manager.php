@@ -35,11 +35,11 @@
         <input id="inputDescription" type="text" placeholder="Description">
 
         <select id="inputRow">
-          <?php foreach (db_get_foreach('areas') as $X) {?><option value="<?php echo $X["row"]; ?>">Level <?php echo $X["row"]; ?> - <?php echo $X["items"] ?> Kacheln</option><?php } ?>
+          <?php foreach (db_get_foreach('areas') as $X) { ?><option value="<?php echo $X["row"]; ?>">Level <?php echo $X["row"]; ?> - <?php echo $X["items"] ?> Kacheln</option><?php } ?>
         </select>
 
         <select id="inputIcon">
-          <?php foreach (db_get_foreach('icons') as $X) {?><option value="<?php echo $X["unicode"]; ?>"><?php echo $X["unicode"]; ?> <?php echo $X["name"] ?></option><?php } ?>
+          <?php foreach (db_get_foreach('icons') as $X) { ?><option value="<?php echo $X["unicode"]; ?>"><?php echo $X["unicode"]; ?> <?php echo $X["name"] ?></option><?php } ?>
         </select>
 
         <select id="inputStyle">
@@ -141,7 +141,7 @@
             <th>Titel:</th>
             <th>Beschreibung:</th>
             <th>Level:</th>
-            <th>HTML:</th>
+            <th>Typ:</th>
             <th>ID:</th>
             <th>Termin:</th>
             <th>Style:</th>
@@ -162,7 +162,13 @@
               <td class="tdLeft"><?php echo $VALUE['titel'] ?></td>
               <td class="tdLeft"><?php echo $VALUE['description'] ?></td>
               <td class="tdLeft"><?php echo $VALUE['row'] ?></td>
-              <td class="tdLeft"><?php echo $VALUE['html'] ?></td>
+              <td class="tdLeft">
+                <?php
+                if ($VALUE['pdf'] != NULL) { ?><i class="icon-file-pdf"></i><?php }
+                else if ($VALUE['url'] != NULL) { ?><i class="icon-link3"></i><?php }
+                else if ($VALUE['html'] != NULL) { ?><i class="icon-html-five2"></i><?php }
+                ?>
+              </td>
               <td class="tdLeft"><?php echo $VALUE['id'] ?></td>
               <td class="tdCenter"><?php echo str_replace('-', '.', $VALUE['termin']) ?></td>
               <td class="tdCenter"><?php echo $VALUE['style'] ?></td>

@@ -45,26 +45,43 @@ $('.overlayCloser').click(function() {
 
 setInterval(function () {
   change();
-  console.log('hallo');
-
 }, 10000);
+
+
+
+
+dTimestamp = '';
+cTimestamp = '';
 
 function change()
 {
   $.ajax({
-    url: 'resources/php/change.php',
+    url: 'resources/php/change2.php',
     type: 'post',
     dataType: 'json',
     cache: false,
     data: { trigger: 1 },
     success: function(data)
     {
-      if (data.state == 'change')
-      {
-        $("#dataTable").load(window.location + " #Main");
-        console.log(data.massage);
-      }
+      dTimestamp = data.date;
+
+      reloadSide();
     },
     error: function() { console.log('change() - Error'); }
   })
+}
+
+function reloadSide(){
+
+  if (cTimestamp != '')
+  {
+    if (cTimestamp != dTimestamp)
+    {
+      location.reload();
+    }
+  }
+  else
+  {
+    cTimestamp = dTimestamp;
+  }
 }

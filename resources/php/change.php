@@ -14,7 +14,7 @@ if (!empty($_POST['trigger']))
 
     if ($DATABASE_DATE != $CURRENTDATE)
     {
-      echo json_encode(['state' => 'change', 'massage' => "↻ Aktualisiert: ($CURRENTDATE) -> ($CHANGEDATE)"]);
+      echo json_encode(['state' => 'change', 'massage' => "↻ Aktualisiert: ($CURRENTDATE) -> ($DATABASE_DATE)"]);
       $_SESSION["change"] = $DATABASE_DATE;
     }
     else { echo json_encode(['state' => 'no-change', 'massage' => 'Keine änderungen']); }

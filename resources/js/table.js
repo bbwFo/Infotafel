@@ -82,6 +82,9 @@ function closeModalQandA()
 
 
 
+
+
+
 function addEntry()
 {
   $.ajax({
@@ -224,11 +227,15 @@ function change()
     data: { trigger: 1 },
     success: function(data)
     {
+      console.log(data);
+
       if (data.state == 'change')
       {
         $("#dataTable").load(window.location + " #dataTable");
         console.log(data.massage);
       }
+      else if (data.state == 'no-change') { console.log(data); }
+      else if (data.state == 'no-trigger') { console.log(data); }
     },
     error: function() { console.log('change() - Error'); }
   })
