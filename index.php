@@ -38,6 +38,14 @@
 
 
       <div class="Navigation">
+
+        <div class="logoname">
+          <p class="first">INFOTAFEL</p>
+          <p class="last">ASKYLAN EDITION</p>
+        </div>
+
+
+
         <p id="dateandtime"></p>
       </div>
 

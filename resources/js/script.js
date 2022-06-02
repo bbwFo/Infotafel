@@ -80,8 +80,5 @@ function reloadSide(){
       location.reload();
     }
   }
-  else
-  {
-    cTimestamp = dTimestamp;
-  }
+  else { cTimestamp = dTimestamp; }
 }

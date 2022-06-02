@@ -9,6 +9,10 @@
   src: url(../fonts/iconfont-v1.0/fonts/iconfont.ttf);
 }
 @font-face {
+  font-family: "comfortaa";
+  src: url(../fonts/comfortaa.ttf);
+}
+@font-face {
   font-family: "ubuntu-bold";
   src: url(../fonts/ubuntu-bold.ttf);
 }
