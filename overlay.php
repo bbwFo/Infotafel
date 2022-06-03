@@ -27,7 +27,7 @@
         }
         else if (!empty($DATA['url']))
         {
-          ?><iframe src="<?php echo $DATA['url'] ?>"></iframe><?php
+          ?><iframe sandbox src="<?php echo $DATA['url'] ?>"></iframe><?php
         }
         else if (!empty($DATA['html']))
         {
