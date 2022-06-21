@@ -27,7 +27,7 @@
         }
         else if (!empty($DATA['url']))
         {
-          ?><iframe sandbox src="<?php echo $DATA['url'] ?>"></iframe><?php
+          ?><iframe allow="camera;microphone" src="<?php echo $DATA['url'] ?>"></iframe><?php
         }
         else if (!empty($DATA['html']))
         {
