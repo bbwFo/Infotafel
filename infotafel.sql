@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 03. Jun 2022 um 11:56
+-- Erstellungszeit: 22. Jun 2022 um 13:04
 -- Server-Version: 10.4.22-MariaDB
 -- PHP-Version: 8.1.2
 
@@ -78,7 +78,7 @@ INSERT INTO `cards` (`id`, `cuid`, `titel`, `description`, `style`, `color`, `ic
 (27, '', 'Hier könnte ihre Werbung stehen!', 'Lorem ipsum dolor sit amet, rmod tempor invidunt ut labore et dolore mwshefbewzeduzeb wqwewefzb wefb zwebfuzwefn uowe fzewb ecubnw uecwu ecuiowec ws uzwb efzwbe ufzbw eufbw uefb wueagna aliquyam', 4, '#0084ff', '', 3, '4.jpg', '2022-06-01 14:06:18', '2022-05-24 12:51:17', '', '', 'Lorem ipsum dolor sit amet, rmod tempor invidu', ''),
 (28, '', 'Hier könnte ihre Werbung stehen!', 'Lorem ipsum dolor sit amet, rmod tempor invidunt ut labore et dolore mwshefbewzeduzeb wqwewefzb wefb zwebfuzwefn uowe fzewb ecubnw uecwu ecuiowec ws uzwb efzwbe ufzbw eufbw uefb wueagna aliquyam', 1, '#b700fa', '', 3, '5.jpg', '2022-06-02 13:44:20', '2022-05-24 12:51:17', '', 'doku.pdf', 'egtetgawerg', ''),
 (29, '', 'Hier könnte ihre Werbung stehen!', 'Lorem ipsum dolor sit amet, rmod tempor invidunt ut labore et dolore mwshefbewzeduzeb wqwewefzb wefb zwebfuzwefn uowe fzewb ecubnw uecwu ecuiowec ws uzwb efzwbe ufzbw eufbw uefb wueagna aliquyam', 3, '#ff9500', '', 3, '6.jpg', '2022-06-02 14:11:41', '2022-05-24 12:51:17', '', '', 'wergawergwergerg', 'https://www.sternfreunde-kelheim.de/'),
-(30, '', 'Hier könnte ihre Werbung stehen!', 'Lorem ipsum dolor sit amet, rmod tempor invidunt ut labore et dolore mwshefbewzeduzeb wqwewefzb wefb zwebfuzwefn uowe fzewb ecubnw uecwu ecuiowec ws uzwb efzwbe ufzbw eufbw uefb wueagna aliquyam', 3, '#71e561', '', 4, '7.jpg', '2022-06-01 07:53:12', '2022-05-24 12:51:34', '', '', 'aekhrgaerghaerthaeth', ''),
+(30, '', 'Hier könnte ihre Werbung stehen!', 'Lorem ipsum dolor sit amet, rmod tempor invidunt ut labore et dolore mwshefbewzeduzeb wqwewefzb wefb zwebfuzwefn uowe fzewb ecubnw uecwu ecuiowec ws uzwb efzwbe ufzbw eufbw uefb wueagna aliquyam', 3, '#71e561', '', 4, '7.jpg', '2022-06-20 12:08:51', '2022-05-24 12:51:34', '', '', 'aekhrgaerghaerthaeth', 'resources/airband/index.php'),
 (31, '', 'Hier könnte ihre Werbung stehen!', 'Lorem ipsum dolor sit amet, rmod tempor invidunt ut labore et dolore mwshefbewzeduzeb wqwewefzb wefb zwebfuzwefn uowe fzewb ecubnw uecwu ecuiowec ws uzwb efzwbe ufzbw eufbw uefb wueagna aliquyam', 5, '#0080ff', '', 4, '8.jpg', '2022-06-01 07:53:18', '2022-05-24 12:51:34', '2022-05-30', '', 'Na was schaust du?', ''),
 (704279109, '', 'Hier könnte ihre Werbung stehen!', 'Lorem ipsum dolor sit amet, rmod tempor invidunt ut labore et dolore mwshefbewzeduzeb wqwewefzb wefb zwebfuzwefn uowe fzewb ecubnw uecwu ecuiowec ws uzwb efzwbe ufzbw eufbw uefb wueagna aliquyam', 1, '#000000', '', 2, '8.jpg', '2022-06-01 14:01:38', '2022-06-01 07:13:50', '', '', 'fgbwh', ''),
 (1822480021, '', 'Hier könnte ihre Werbung stehen!', 'Lorem ipsum dolor sit amet, rmod tempor invidunt ut labore et dolore mwshefbewzeduzeb wqwewefzb wefb zwebfuzwefn uowe fzewb ecubnw uecwu ecuiowec ws uzwb efzwbe ufzbw eufbw uefb wueagna aliquyam', 1, '#000000', '', 4, '8.jpg', '2022-06-01 14:01:41', '2022-06-01 07:14:46', '', '', 'Hello', ''),
