@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <?php 
+    <?php
         include (".inc/head.inc.php");
     ?>
     <!-- <link rel="stylesheet" href="css/instrument_drums.css"> -->
@@ -16,7 +16,7 @@
 <div id="Main">
 <div id="site_wrapper">
         <div id="container">
-            
+
             <button id="backToMenu_button" class="defaultButton handtrack_contol_element" onclick="window.location.href = 'main_menu.php';">Zurück zum Instrumenten Menü</button>
 
             <div id="drawTableDiv">
@@ -54,7 +54,7 @@
                                 <input id="tracker_2_tolerance" type="range" value="50" max="255" min="0" step="1">
                             </div>
                         </div>
-                    </div>     
+                    </div>
                 </div>
             </div>
 
@@ -67,6 +67,6 @@
         </div> <!-- end off container -->
     </div> <!--end of site_wrapper -->
 </div> <!--end of Main -->
-    
+
 </body>
 </html>

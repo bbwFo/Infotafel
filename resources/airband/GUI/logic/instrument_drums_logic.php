@@ -169,7 +169,7 @@ tracker1.on('track', function(e) {
         color1_middle_point_y = 0;
       }
 
-      // # Box Starts 
+      // # Box Starts
       // ## for color1
       box1.StartForColor1(stream_webcam_instrument, canvas_box_width);
       box2.StartForColor1(stream_webcam_instrument, canvas_box_width);
@@ -268,7 +268,7 @@ if(load_cookies_at_start == true)
   color2.r = getCookie("color2r") != null ? getCookie("color2r") : 0;
   color2.g = getCookie("color2g") != null ? getCookie("color2g") : 0;
   color2.b = getCookie("color2b") != null ? getCookie("color2b") : 136;
-  
+
   // Update the div's background so we can see which color was selected
   color_1_swatch.style.backgroundColor = "rgb(" + color1.r + ", " + color1.g + ", " + color1.b + ")";
   color_2_swatch.style.backgroundColor = "rgb(" + color2.r + ", " + color2.g + ", " + color2.b + ")";
@@ -308,7 +308,7 @@ stream_webcam_instrument.addEventListener("click", function (e) {
   }
 
 });
-  // Save the Slider Values as Cookie 
+  // Save the Slider Values as Cookie
   color_1_slider.addEventListener("change", function() {
     SaveColor1silderInCookie(color_1_slider.value);
   });

@@ -1,8 +1,8 @@
 {
   "name": "Infotafel",
   "version": "1.0.0",
-  "description": "Ein tolles Tool von arklifenet für die Community",
-  "main": "main.js",
+  "description": "Ein tolles Tool von Askylan erstellt",
+  "main": "src/js/main.js",
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder --dir",
@@ -23,7 +23,23 @@
     "appId": "0001",
     "win": {
       "target": "nsis",
-      "icon": "build/mediadrake_icon.ico"
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "installerIcon": "build/installerIcon.ico",
+      "uninstallerIcon": "build/uninstallerIcon.ico",
+      "installerSidebar": "build/installerSidebar.bmp",
+      "uninstallerSidebar": "build/uninstallerSidebar.bmp",
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": "always",
+      "shortcutName": "Infotafel",
+      "deleteAppDataOnUninstall": true,
+      "installerHeader": "build/installerHeader.bmp",
+      "installerHeaderIcon": "build/installerHeaderIcon.ico",
+      "uninstallDisplayName": "uninstallDisplayName",
+      "license": "build/license.txt",
+      "deleteAppDataOnUninstall": false
     }
   }
 }

@@ -30,7 +30,7 @@ function SaveColor2silderInCookie(c2s)
 
     // function SaveSettings(){
     //     var valueiouThreshold = document.getElementById('sliderScoreIouThreshold').value;
-    //     setCookie("air_band_iouThreshold", valueiouThreshold, 30);       	
+    //     setCookie("air_band_iouThreshold", valueiouThreshold, 30);
     //     var valuescoreThreshold = document.getElementById('sliderScoreThreshold').value;
     //     setCookie("air_band_scoreThreshold", valuescoreThreshold, 30);
     //     var valueintervalRate = document.getElementById('sliderIntervalRate').value;
